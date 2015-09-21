@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 19, 2015 2:44:42 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.nawandarfilmes.Hibernate.MovieDetail" table="movie_detail" catalog="nawandarfilmesdistribution">
+        <id name="movId" type="java.lang.Integer">
+            <column name="mov_id" />
+            <generator class="identity" />
+        </id>
+        <property name="movName" type="string">
+            <column name="mov_name" length="65535" />
+        </property>
+        <property name="movProduces" type="string">
+            <column name="mov_produces" length="65535" />
+        </property>
+        <property name="movReleaseDate" type="date">
+            <column name="mov_release_Date" length="10" />
+        </property>
+        <property name="movBannesImgLink" type="string">
+            <column name="mov_bannes_img_Link" length="65535" />
+        </property>
+        <property name="movYoutubeLink" type="string">
+            <column name="mov_youtube_Link" length="65535" />
+        </property>
+        <set name="workOrders" inverse="true">
+            <key>
+                <column name="mov_id" />
+            </key>
+            <one-to-many class="com.nawandarfilmes.Hibernate.WorkOrder" />
+        </set>
+    </class>
+</hibernate-mapping>

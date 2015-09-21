@@ -1,0 +1,9 @@
+<a href="add_Party.jsp"><button>Add New Party</button></a>&nbsp;&nbsp;&nbsp;
+<a href="add_Theater.jsp"><button>Add New Theater</button></a>&nbsp;&nbsp;&nbsp;
+<a href="add_Movie.jsp"><button>Add New Movie</button></a>&nbsp;&nbsp;&nbsp;
+<a href="select_Movie.jsp"><button>New Work Order</button></a>&nbsp;&nbsp;&nbsp;
+<a href="Login_Theater.jsp"><button>Received Theater Log</button></a>&nbsp;&nbsp;&nbsp;
+<a href="select_Movie_accept_Payment.jsp"><button>Received Payment</button></a>&nbsp;&nbsp;&nbsp;
+<a href="analysis_week_GRAPH.jsp"><button>Graph Analysis</button></a>&nbsp;&nbsp;&nbsp;
+<a href="analysis_week_EXCEL.jsp"><button>Excel Analysis</button></a>&nbsp;&nbsp;&nbsp;
+<a href="temp/welcome_Admin.jsp"><button>Find all Theater Owner Key Here for Movie WELLCOME</button></a>&nbsp;&nbsp;&nbsp;

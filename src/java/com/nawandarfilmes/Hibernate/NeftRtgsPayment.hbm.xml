@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 19, 2015 2:44:42 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.nawandarfilmes.Hibernate.NeftRtgsPayment" table="neft_rtgs_payment" catalog="nawandarfilmesdistribution">
+        <id name="nrId" type="java.lang.Integer">
+            <column name="nr_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="workOrder" class="com.nawandarfilmes.Hibernate.WorkOrder" fetch="select">
+            <column name="wo_id" />
+        </many-to-one>
+        <property name="utrNo" type="string">
+            <column name="UTR_no" length="65535" />
+        </property>
+        <property name="depositerName" type="string">
+            <column name="depositer_name" length="65535" />
+        </property>
+        <property name="neft" type="java.lang.Boolean">
+            <column name="neft" />
+        </property>
+        <property name="rtgs" type="java.lang.Boolean">
+            <column name="rtgs" />
+        </property>
+        <property name="amtRecv" type="java.lang.Double">
+            <column name="amt_recv" precision="22" scale="0" />
+        </property>
+        <property name="amtRecvDate" type="date">
+            <column name="amt_recv_date" length="10" />
+        </property>
+        <property name="amtRecvTime" type="string">
+            <column name="amt_recv_time" length="65535" />
+        </property>
+        <property name="recvMg" type="java.lang.Boolean">
+            <column name="recv_mg" />
+        </property>
+        <property name="recOther" type="java.lang.Boolean">
+            <column name="rec_other" />
+        </property>
+        <property name="entryDateTime" type="date">
+            <column name="entry_date_time" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

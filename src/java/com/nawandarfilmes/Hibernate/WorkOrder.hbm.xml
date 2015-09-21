@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 19, 2015 2:44:42 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.nawandarfilmes.Hibernate.WorkOrder" table="work_order" catalog="nawandarfilmesdistribution">
+        <id name="woId" type="java.lang.Integer">
+            <column name="wo_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="movieDetail" class="com.nawandarfilmes.Hibernate.MovieDetail" fetch="select">
+            <column name="mov_id" />
+        </many-to-one>
+        <many-to-one name="theaterDetail" class="com.nawandarfilmes.Hibernate.TheaterDetail" fetch="select">
+            <column name="t_id" />
+        </many-to-one>
+        <many-to-one name="screenDetail" class="com.nawandarfilmes.Hibernate.ScreenDetail" fetch="select">
+            <column name="s_id" />
+        </many-to-one>
+        <many-to-one name="partyDetail" class="com.nawandarfilmes.Hibernate.PartyDetail" fetch="select">
+            <column name="p_id" />
+        </many-to-one>
+        <property name="woShowsPerDay" type="java.lang.Integer">
+            <column name="wo_shows_perDay" />
+        </property>
+        <property name="woUnlockKey" type="string">
+            <column name="wo_unlock_key" length="65535" />
+        </property>
+        <property name="woStartDate" type="date">
+            <column name="wo_startDate" length="10" />
+        </property>
+        <property name="woEndDate" type="date">
+            <column name="wo_endDate" length="10" />
+        </property>
+        <property name="woMg" type="java.lang.Boolean">
+            <column name="wo_mg" />
+        </property>
+        <property name="woMgAmount" type="java.lang.Double">
+            <column name="wo_mg_amount" precision="22" scale="0" />
+        </property>
+        <property name="woRent" type="java.lang.Boolean">
+            <column name="wo_rent" />
+        </property>
+        <property name="woSharing" type="java.lang.Boolean">
+            <column name="wo_sharing" />
+        </property>
+        <property name="woAggrement" type="java.lang.Boolean">
+            <column name="wo_aggrement" />
+        </property>
+        <property name="woSentEmail" type="java.lang.Boolean">
+            <column name="wo_sent_email" />
+        </property>
+        <property name="woDateTimeOfAddtion" type="date">
+            <column name="wo_date_time_ofAddtion" length="10" />
+        </property>
+        <set name="profitTicketLogs" inverse="true">
+            <key>
+                <column name="wo_id" />
+            </key>
+            <one-to-many class="com.nawandarfilmes.Hibernate.ProfitTicketLog" />
+        </set>
+        <set name="cheaquePayments" inverse="true">
+            <key>
+                <column name="wo_id" />
+            </key>
+            <one-to-many class="com.nawandarfilmes.Hibernate.CheaquePayment" />
+        </set>
+        <set name="neftRtgsPayments" inverse="true">
+            <key>
+                <column name="wo_id" />
+            </key>
+            <one-to-many class="com.nawandarfilmes.Hibernate.NeftRtgsPayment" />
+        </set>
+        <set name="cashPayments" inverse="true">
+            <key>
+                <column name="wo_id" />
+            </key>
+            <one-to-many class="com.nawandarfilmes.Hibernate.CashPayment" />
+        </set>
+        <set name="woAgrrements" inverse="true">
+            <key>
+                <column name="wo_id" />
+            </key>
+            <one-to-many class="com.nawandarfilmes.Hibernate.WoAgrrement" />
+        </set>
+    </class>
+</hibernate-mapping>

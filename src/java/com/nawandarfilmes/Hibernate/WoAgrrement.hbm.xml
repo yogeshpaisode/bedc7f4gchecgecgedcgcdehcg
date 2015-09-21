@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 19, 2015 2:44:42 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.nawandarfilmes.Hibernate.WoAgrrement" table="wo_agrrement" catalog="nawandarfilmesdistribution">
+        <id name="woAggriId" type="java.lang.Integer">
+            <column name="wo_aggri_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="workOrder" class="com.nawandarfilmes.Hibernate.WorkOrder" fetch="select">
+            <column name="wo_id" />
+        </many-to-one>
+        <property name="weekNo" type="java.lang.Integer">
+            <column name="week_no" />
+        </property>
+        <property name="theaterRent" type="java.lang.Double">
+            <column name="theater_rent" precision="22" scale="0" />
+        </property>
+        <property name="distributerShare" type="java.lang.Double">
+            <column name="distributer_share" precision="22" scale="0" />
+        </property>
+        <property name="ownerShare" type="java.lang.Double">
+            <column name="owner_share" precision="22" scale="0" />
+        </property>
+        <property name="startDate" type="date">
+            <column name="start_date" length="10" />
+        </property>
+        <property name="endDate" type="date">
+            <column name="end_date" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

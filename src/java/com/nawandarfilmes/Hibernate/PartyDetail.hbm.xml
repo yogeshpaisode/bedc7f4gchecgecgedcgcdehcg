@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 19, 2015 2:44:42 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.nawandarfilmes.Hibernate.PartyDetail" table="party_detail" catalog="nawandarfilmesdistribution">
+        <id name="PId" type="java.lang.Integer">
+            <column name="p_id" />
+            <generator class="identity" />
+        </id>
+        <property name="PName" type="string">
+            <column name="p_name" length="65535" />
+        </property>
+        <property name="PEmail" type="string">
+            <column name="p_email" length="65535" />
+        </property>
+        <property name="PPassword" type="string">
+            <column name="p_password" length="65535" />
+        </property>
+        <property name="PStdCode" type="java.lang.Integer">
+            <column name="p_std_code" />
+        </property>
+        <property name="POfficeNumber" type="string">
+            <column name="p_office_number" length="65535" />
+        </property>
+        <property name="PAddress" type="string">
+            <column name="p_address" length="65535" />
+        </property>
+        <property name="PState" type="string">
+            <column name="p_state" length="65535" />
+        </property>
+        <property name="PCity" type="string">
+            <column name="p_city" length="65535" />
+        </property>
+        <property name="PFax" type="string">
+            <column name="p_fax" length="65535" />
+        </property>
+        <property name="PCountry" type="string">
+            <column name="p_country" length="65535" />
+        </property>
+        <property name="PCircuit" type="string">
+            <column name="p_circuit" length="65535" />
+        </property>
+        <property name="PCircuitRegion" type="string">
+            <column name="p_circuit_region" length="65535" />
+        </property>
+        <property name="PDatetimeAddition" type="date">
+            <column name="p_datetime_addition" length="10" />
+        </property>
+        <set name="workOrders" inverse="true">
+            <key>
+                <column name="p_id" />
+            </key>
+            <one-to-many class="com.nawandarfilmes.Hibernate.WorkOrder" />
+        </set>
+        <set name="membersDetails" inverse="true">
+            <key>
+                <column name="p_id" />
+            </key>
+            <one-to-many class="com.nawandarfilmes.Hibernate.MembersDetail" />
+        </set>
+        <set name="screenDetails" inverse="true">
+            <key>
+                <column name="p_id" />
+            </key>
+            <one-to-many class="com.nawandarfilmes.Hibernate.ScreenDetail" />
+        </set>
+        <set name="theaterDetails" inverse="true">
+            <key>
+                <column name="p_id" />
+            </key>
+            <one-to-many class="com.nawandarfilmes.Hibernate.TheaterDetail" />
+        </set>
+    </class>
+</hibernate-mapping>

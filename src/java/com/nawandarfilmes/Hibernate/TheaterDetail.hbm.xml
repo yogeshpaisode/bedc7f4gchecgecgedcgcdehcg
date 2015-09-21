@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 19, 2015 2:44:42 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.nawandarfilmes.Hibernate.TheaterDetail" table="theater_detail" catalog="nawandarfilmesdistribution">
+        <id name="TId" type="java.lang.Integer">
+            <column name="t_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="partyDetail" class="com.nawandarfilmes.Hibernate.PartyDetail" fetch="select">
+            <column name="p_id" />
+        </many-to-one>
+        <property name="TName" type="string">
+            <column name="t_name" length="65535" />
+        </property>
+        <property name="TAddress" type="string">
+            <column name="t_address" length="65535" />
+        </property>
+        <property name="TState" type="string">
+            <column name="t_state" length="65535" />
+        </property>
+        <property name="TCity" type="string">
+            <column name="t_city" length="65535" />
+        </property>
+        <property name="TCountry" type="string">
+            <column name="t_country" length="65535" />
+        </property>
+        <property name="TEmail" type="string">
+            <column name="t_email" length="65535" />
+        </property>
+        <property name="TStdCode" type="java.lang.Integer">
+            <column name="t_std_code" />
+        </property>
+        <property name="TPhoneNumber" type="string">
+            <column name="t_phone_number" length="65535" />
+        </property>
+        <property name="TType" type="string">
+            <column name="t_type" length="65535" />
+        </property>
+        <property name="TDatetimeAddition" type="date">
+            <column name="t_datetime_addition" length="10" />
+        </property>
+        <property name="TNoScreens" type="java.lang.Integer">
+            <column name="t_no_Screens" />
+        </property>
+        <set name="workOrders" inverse="true">
+            <key>
+                <column name="t_id" />
+            </key>
+            <one-to-many class="com.nawandarfilmes.Hibernate.WorkOrder" />
+        </set>
+        <set name="screenDetails" inverse="true">
+            <key>
+                <column name="t_id" />
+            </key>
+            <one-to-many class="com.nawandarfilmes.Hibernate.ScreenDetail" />
+        </set>
+    </class>
+</hibernate-mapping>

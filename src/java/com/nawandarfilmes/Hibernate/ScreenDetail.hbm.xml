@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 19, 2015 2:44:42 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.nawandarfilmes.Hibernate.ScreenDetail" table="screen_detail" catalog="nawandarfilmesdistribution">
+        <id name="SId" type="java.lang.Integer">
+            <column name="s_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="theaterDetail" class="com.nawandarfilmes.Hibernate.TheaterDetail" fetch="select">
+            <column name="t_id" />
+        </many-to-one>
+        <many-to-one name="partyDetail" class="com.nawandarfilmes.Hibernate.PartyDetail" fetch="select">
+            <column name="p_id" />
+        </many-to-one>
+        <property name="SName" type="string">
+            <column name="s_name" length="65535" />
+        </property>
+        <property name="SNumber" type="java.lang.Integer">
+            <column name="s_number" />
+        </property>
+        <property name="SSeats" type="java.lang.Integer">
+            <column name="s_seats" />
+        </property>
+        <set name="workOrders" inverse="true">
+            <key>
+                <column name="s_id" />
+            </key>
+            <one-to-many class="com.nawandarfilmes.Hibernate.WorkOrder" />
+        </set>
+    </class>
+</hibernate-mapping>

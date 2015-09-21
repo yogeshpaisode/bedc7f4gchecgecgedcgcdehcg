@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+
+<struts-config>
+    <form-beans>
+        <form-bean name="Party_Model" type="com.nawandarfilmes.payment.Model.Party_Model"/>
+        <form-bean name="Sell_Profit_Model" type="com.nawandarfilmes.Log.Model.Sell_Profit_Model"/>
+        <form-bean name="Theater_Model" type="com.nawandarfilmes.Login.Model.Theater_Model"/>
+        <form-bean name="Add_Workorder_Model" type="com.nawandarfilmes.workorder.Model.Add_Workorder_Model"/>
+        <form-bean name="Add_Movie_Model" type="com.nawandarfilmes.movie.Model.Add_Movie_Model"/>
+        <form-bean name="Add_Theater_Model" type="com.nawandarfilmes.theater.Model.Add_Theater_Model"/>
+        <form-bean name="Add_Party_Model" type="com.nawandarfilmes.party.Model.Add_Party_Model"/>    
+    </form-beans>
+    
+    <global-exceptions>
+    
+    </global-exceptions>
+
+    <global-forwards>
+        <forward name="welcome"  path="/Welcome.do"/>
+        <forward name="show_Party"  path="/view_PartyDetail.jsp"/>
+        <forward name="show_Theater"  path="/view_TheaterDetail.jsp"/>
+        <forward name="show_Movie"  path="/view_MovieDetail.jsp"/>
+        <forward name="view_Workorder"  path="/view_Workorder.jsp"/>
+        <forward name="Login_Theater"  path="/view_Theater_Daily_InputForm.jsp"/>
+        <forward name="view_all_Profit_Ticket"  path="/view_all_Profit_Ticket.jsp"/>
+    </global-forwards>
+
+    <action-mappings>
+        <action input="/process_Party_Payment.jsp" name="Party_Model" path="/party_payment" scope="session" type="com.nawandarfilmes.payment.Controller.Party_Controlelr"/>
+        <action input="/view_Theater_Daily_InputForm.jsp" name="Sell_Profit_Model" path="/sell_profit" scope="session" type="com.nawandarfilmes.Log.controller.Sell_Profit_Controller"/>
+        <action input="/Login_Theater.jsp" name="Theater_Model" path="/login_theater" scope="session" type="com.nawandarfilmes.Login.Controller.Theater_Controller"/>
+        <action input="/add_Workorder.jsp" name="Add_Workorder_Model" path="/add_workorder" scope="session" type="com.nawandarfilmes.workorder.controller.Add_Workorder_Controller"/>
+        <action input="/add_Movie.jsp" name="Add_Movie_Model" path="/add_Movie" scope="session" type="com.nawandarfilmes.movie.controller.Add_Movie_Controller"/>
+        <action input="/add_Theater.jsp" name="Add_Theater_Model" path="/add_Theater" scope="session" type="com.nawandarfilmes.theater.controller.Add_Theater_Controller"/>
+        <action input="/add_Party.jsp" name="Add_Party_Model" path="/add_Party" scope="session" type="com.nawandarfilmes.party.controller.Add_Party_Controller"/>
+        <action path="/Welcome" forward="/welcomeStruts.jsp"/>
+    </action-mappings>
+    
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+
+    <message-resources parameter="com/myapp/struts/ApplicationResource"/>    
+    
+    <!-- ========================= Tiles plugin ===============================-->
+    <!--
+    This plugin initialize Tiles definition factory. This later can takes some
+    parameters explained here after. The plugin first read parameters from
+    web.xml, thenoverload them with parameters defined here. All parameters
+    are optional.
+    The plugin should be declared in each struts-config file.
+    - definitions-config: (optional)
+    Specify configuration file names. There can be several comma
+    separated file names (default: ?? )
+    - moduleAware: (optional - struts1.1)
+    Specify if the Tiles definition factory is module aware. If true
+    (default), there will be one factory for each Struts module.
+    If false, there will be one common factory for all module. In this
+    later case, it is still needed to declare one plugin per module.
+    The factory will be initialized with parameters found in the first
+    initialized plugin (generally the one associated with the default
+    module).
+    true : One factory per module. (default)
+    false : one single shared factory for all modules
+    - definitions-parser-validate: (optional)
+    Specify if xml parser should validate the Tiles configuration file.
+    true : validate. DTD should be specified in file header (default)
+    false : no validation
+
+    Paths found in Tiles definitions are relative to the main context.
+    -->
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />      
+        <set-property property="moduleAware" value="true" />
+    </plug-in>
+    
+    <!-- ========================= Validator plugin ================================= -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+            property="pathnames"
+            value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+  
+</struts-config>

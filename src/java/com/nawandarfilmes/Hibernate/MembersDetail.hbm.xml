@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 19, 2015 2:44:42 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.nawandarfilmes.Hibernate.MembersDetail" table="members_detail" catalog="nawandarfilmesdistribution">
+        <id name="MId" type="java.lang.Integer">
+            <column name="m_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="partyDetail" class="com.nawandarfilmes.Hibernate.PartyDetail" fetch="select">
+            <column name="p_id" />
+        </many-to-one>
+        <property name="MName" type="string">
+            <column name="m_name" length="65535" />
+        </property>
+        <property name="MEmail" type="string">
+            <column name="m_email" length="65535" />
+        </property>
+        <property name="MContact" type="string">
+            <column name="m_contact" length="65535" />
+        </property>
+    </class>
+</hibernate-mapping>
