@@ -30,14 +30,14 @@
     <jsp:include page="sidebar.jsp"/>
     
     <%
+           try{
             int mov_id = 0;
             int id=0;
             Common common = new Common();
             MovieDetail movieDetail = null;
             SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
             Session hib_session = sessionFactory.openSession();
-            mov_id = Integer.parseInt(request.getParameter("mov_id"));
-
+            mov_id = Integer.parseInt(session.getAttribute("mov_id").toString());
             Criteria criteria = hib_session.createCriteria(MovieDetail.class);
             criteria.add(Restrictions.eq("movId", mov_id));
 
@@ -199,6 +199,10 @@
                 }//Party Loop
 
                 hib_session.close();
+                               }
+           catch(Exception e){
+               System.out.print("\n\n\n"+e+"\n\n\n");
+           }
 
             %>
                       
