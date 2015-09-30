@@ -28,11 +28,7 @@
           <!-- SELECT2 EXAMPLE -->
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">About Party</h3>
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
-              </div>
+              <h3 class="box-title">About Party</h3>              
             </div><!-- /.box-header -->
             <div class="box-body">
               <div class="row">
@@ -123,91 +119,77 @@
                                        <div class="row">
                                            <div class="col-md-6">
                                              <div class="form-group">
-                                                <label for="exampleInputEmail1">Member Name1</label>
-                                                <input type="text" class="form-control" id="m_name1" name="m1_name" placeholder=" Member Name">
+                                                <label for="exampleInputEmail1">Member1 Name</label>
+                                                <input type="text" class="form-control" id="m_name1" name="m1_name" placeholder="Member Name">
                                              </div>
                    
                                              <div class="form-group">
-                                                 <label for="exampleInputEmail1">Mobile Number</label>
+                                                 <label for="exampleInputEmail1">Mobile1 Number</label>
                                                  <input type="number" class="form-control" id="m_contact1" name="m1_contact" placeholder="Mobile Number">
                                             </div>
                                           </div><!-- /.col -->
                                           <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Email address</label>
+                                                <label for="exampleInputEmail1">Email1 address</label>
                                                 <input type="email" class="form-control" id="m_email1" name="m1_email" placeholder="Enter email">
                                             </div>
-                                            <div class="form-inline">
-                                                <div class="form-group">
-                                                    <label  for="exampleInputEmail1">STD Code</label><br>
-                                                    <input type="number" class="form-control" id="m_std_cont1" name="m1_std_cont" placeholder="Std Code">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label  for="exampleInputPassword1">Phone Number</label><br>
-                                                    <input type="number" class="form-control" id="m_std_num1" name="m1_std_num" placeholder="Phone Number">
-                                                </div>
-                                            </div>
-                                              
                                          </div><!-- /.col -->
                                         </div><!-- /.row -->
                                         <div class="row">
                                            <div class="col-md-6">
                                              <div class="form-group">
-                                                <label for="exampleInputEmail1">Member Name2</label>
+                                                <label for="exampleInputEmail1">Member2 Name</label>
                                                 <input type="text" class="form-control" id="m_name2" name="m2_name" placeholder=" Member Name">
                                              </div>
                    
                                              <div class="form-group">
-                                                 <label for="exampleInputEmail1">Mobile Number</label>
+                                                 <label for="exampleInputEmail1">Mobile2 Number</label>
                                                  <input type="number" class="form-control" id="m_contact2" name="m2_contact" placeholder="Mobile Number">
                                             </div>
                                           </div><!-- /.col -->
                                           <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Email address</label>
+                                                <label for="exampleInputEmail1">Email2 address</label>
                                                 <input type="email" class="form-control" id="m_email2" name="m2_email" placeholder="Enter email">
                                             </div>
-                                            <div class="form-inline">
-                                                <div class="form-group">
-                                                    <label  for="exampleInputEmail1">STD Code</label><br>
-                                                    <input type="number" class="form-control" id="m_std_cont2" name="m2_std_cont" placeholder="Std Code">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label  for="exampleInputPassword1">Phone Number</label><br>
-                                                    <input type="number" class="form-control" id="m_std_num2" name="m2_std_number" placeholder="Phone Number">
-                                                </div>
-                                            </div>
-                                              
                                          </div><!-- /.col -->
                                         </div><!-- /.row -->
                                         <div class="row">
                                            <div class="col-md-6">
                                              <div class="form-group">
-                                                <label for="exampleInputEmail1">Member Name3</label>
+                                                <label for="exampleInputEmail1">Member3 Name</label>
                                                 <input type="text" class="form-control" id="m_name3" name="m3_name" placeholder=" Member Name">
                                              </div>
                    
                                              <div class="form-group">
-                                                 <label for="exampleInputEmail1">Mobile Number</label>
+                                                 <label for="exampleInputEmail1">Mobile3 Number</label>
                                                  <input type="number" class="form-control" id="m_contact3" name="m3_contact" placeholder="Mobile Number">
                                             </div>
                                           </div><!-- /.col -->
                                           <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">Email address</label>
+                                                <label for="exampleInputEmail1">Email3 address</label>
                                                 <input type="email" class="form-control" id="m_email3" name="m3_email" placeholder="Enter email">
                                             </div>
-                                            <div class="form-inline">
-                                                <div class="form-group">
-                                                    <label  for="exampleInputEmail1">STD Code</label><br>
-                                                    <input type="number" class="form-control" id="m_std_cont3" name="m3_std_cont" placeholder="Std Code">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label  for="exampleInputPassword1">Phone Number</label><br>
-                                                    <input type="number" class="form-control" id="m_std_num3" name="m3_std_num" placeholder="Phone Number">
-                                                </div>
+                                         </div><!-- /.col -->
+                                        </div><!-- /.row -->
+                                        <div class="row">
+                                           <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label for="exampleInputEmail1">Member4 Name</label>
+                                                <input type="text" class="form-control" id="m_name3" name="m4_name" placeholder=" Member Name">
+                                             </div>
+                   
+                                             <div class="form-group">
+                                                 <label for="exampleInputEmail1">Mobile4 Number</label>
+                                                 <input type="number" class="form-control" id="m_contact3" name="m4_contact" placeholder="Mobile Number">
                                             </div>
-                                              
+                                          </div><!-- /.col -->
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Email4 address</label>
+                                                <input type="email" class="form-control" id="m_email3" name="m4_email" placeholder="Enter email">
+                                            </div>
                                          </div><!-- /.col -->
                                         </div><!-- /.row -->
                                   </div><!-- /.box-body -->
