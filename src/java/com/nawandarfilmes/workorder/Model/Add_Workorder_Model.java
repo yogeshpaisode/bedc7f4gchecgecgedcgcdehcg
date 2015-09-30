@@ -5,6 +5,7 @@
 package com.nawandarfilmes.workorder.Model;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
@@ -15,10 +16,10 @@ import org.apache.struts.action.ActionMessage;
  * @author yogesh
  */
 public class Add_Workorder_Model extends org.apache.struts.action.ActionForm {
-    
-   private String p_id="";
-   private String woSentEmail="";
-   private String shows_per_day="";
+
+    private String p_id = "";
+    private String woSentEmail = "";
+    private String shows_per_day = "";
 
     public String getShows_per_day() {
         return shows_per_day;
@@ -35,11 +36,11 @@ public class Add_Workorder_Model extends org.apache.struts.action.ActionForm {
     public void setWoSentEmail(String woSentEmail) {
         this.woSentEmail = woSentEmail;
     }
-   private String t_id="";
-   private String s_id="";
-   private String mov_id="";
-   private String start_date="";
-   private String end_date="";
+    private String t_id = "";
+    private String s_id = "";
+    private String mov_id = "";
+    private String start_date = "";
+    private String end_date = "";
 
     public String getD_1() {
         return d_1;
@@ -96,46 +97,40 @@ public class Add_Workorder_Model extends org.apache.struts.action.ActionForm {
     public void setEnd_date(String end_date) {
         this.end_date = end_date;
     }
-   
-   private String d_1="";
-   private String d_2="";
-   private String d_3="";
-   private String d_4="";
-   private String d_5="";
-   private String d_6="";
-   
-   
-   private String t1_rent="";
-   private String t2_rent="";
-   private String t3_rent="";
-   private String t4_rent="";
-   private String t5_rent="";
-   private String t6_rent="";
-   
-   private String distr1_share="";
-   private String distr2_share="";
-   private String distr3_share="";
-   private String distr4_share="";
-   private String distr5_share="";
-   private String distr6_share="";
-   
-   private String owner1_share="";
-   private String owner2_share="";
-   private String owner3_share="";
-   private String owner4_share="";
-   private String owner5_share="";
-   private String owner6_share="";
-   
-   private String wo_type="";
-   private String mg_amount="";
-   private String payment_Method="";
-   private String utr_no="";
-   private String cheaque_no="";
-   private String bank_name="";
-   private String depositor_name="";
-   private String amount_recv="";
-   private String amount_recv_date="";
-   private String amount_recv_time="";
+    private String d_1 = "";
+    private String d_2 = "";
+    private String d_3 = "";
+    private String d_4 = "";
+    private String d_5 = "";
+    private String d_6 = "";
+    private String t1_rent = "";
+    private String t2_rent = "";
+    private String t3_rent = "";
+    private String t4_rent = "";
+    private String t5_rent = "";
+    private String t6_rent = "";
+    private String distr1_share = "";
+    private String distr2_share = "";
+    private String distr3_share = "";
+    private String distr4_share = "";
+    private String distr5_share = "";
+    private String distr6_share = "";
+    private String owner1_share = "";
+    private String owner2_share = "";
+    private String owner3_share = "";
+    private String owner4_share = "";
+    private String owner5_share = "";
+    private String owner6_share = "";
+    private String wo_type = "";
+    private String mg_amount = "";
+    private String payment_Method = "";
+    private String utr_no = "";
+    private String cheaque_no = "";
+    private String bank_name = "";
+    private String depositor_name = "";
+    private String amount_recv = "";
+    private String amount_recv_date = "";
+    private String amount_recv_time = "";
 
     public String getAmount_recv() {
         return amount_recv;
@@ -329,7 +324,6 @@ public class Add_Workorder_Model extends org.apache.struts.action.ActionForm {
         this.start_date = start_date;
     }
 
-  
     public String getT1_rent() {
         return t1_rent;
     }
@@ -386,7 +380,6 @@ public class Add_Workorder_Model extends org.apache.struts.action.ActionForm {
         this.t_id = t_id;
     }
 
-  
     public String getUtr_no() {
         return utr_no;
     }
@@ -402,9 +395,6 @@ public class Add_Workorder_Model extends org.apache.struts.action.ActionForm {
     public void setWo_type(String wo_type) {
         this.wo_type = wo_type;
     }
-   
-   
-   
 
     /**
      *
@@ -422,6 +412,11 @@ public class Add_Workorder_Model extends org.apache.struts.action.ActionForm {
      * @return
      */
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        setP_id(session.getAttribute("p_id").toString());
+        setT_id(session.getAttribute("t_id").toString());
+        setS_id(session.getAttribute("s_id").toString());
+        setMov_id(session.getAttribute("mov_id").toString());
         ActionErrors errors = new ActionErrors();
 //        if (getName() == null || getName().length() < 1) {
 //            errors.add("name", new ActionMessage("error.name.required"));
