@@ -438,17 +438,12 @@
                             </label>
                         </div>
                     </div><!-- /.col -->
-                    <div class="col-xs-6">
-
-                    </div><!-- /.col -->
                 </div><!-- /.row -->
 
                 <!-- this row will not appear when printing -->
                 <div class="row no-print">
                     <div class="col-xs-12">
-
-                        <button type="submit" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</button>
-
+                        <button type="submit" class="btn btn-success pull-right"><i class="fa fa-print"></i>&nbsp;Submit Work Order</button>
                     </div>
                 </div>
             </html:form>
