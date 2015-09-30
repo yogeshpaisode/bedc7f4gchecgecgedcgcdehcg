@@ -20,6 +20,12 @@
             String m_id = request.getParameter("m_id").toString();
             String t_id = request.getParameter("t_id").toString();
 
+            session.setAttribute("p_id", p_id);
+            session.setAttribute("t_id", t_id);
+            session.setAttribute("s_id", s_id);
+            session.setAttribute("mov_id", m_id);
+
+
             String p_name = request.getParameter("p_name").toString();
             String p_phone = request.getParameter("p_phone").toString();
 
@@ -92,12 +98,10 @@
             <html:form action="/add_workorder">
                 <div class="row">
                     <!-- accepted payments column -->
-                    <input type="password" hidden="" name="p_id" value="<% out.print(p_id);%>"/><input type="password" hidden="" name="t_id" value="<% out.print(t_id);%>"/><input type="password" hidden="" name="s_id" value="<% out.print(s_id);%>"/><input type="password" hidden="" name="mov_id" value="<% out.print(m_id);%>"/>
                     <h2 class="page-header">
                         <i class="fa fa-files-o"></i>Theater Agreement Details
                     </h2>
                 </div>
-
 
                 <div class="box-body">
                     <div class="row">
@@ -423,13 +427,13 @@
                     <div class="col-xs-6">
                         <div class="col-xs-3" style="width:50%;">
                             <label>
-                                <input type="radio" name="woSentEmail" id="optionsRadios1" value="option1" checked>
+                                <input type="radio" name="woSentEmail" id="optionsRadios1" value="true" checked>
                                 Send Email Notification
                             </label>
                         </div>
                         <div class="col-xs-4" style="width:50%;">
                             <label>
-                                <input type="radio" name="woSentEmail" id="optionsRadios2" value="option2">
+                                <input type="radio" name="woSentEmail" id="optionsRadios2" value="false">
                                 Don't Send
                             </label>
                         </div>
