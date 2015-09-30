@@ -25,26 +25,27 @@
 <%@page import="com.nawandarfilmes.Hibernate.*"%>
 
 <html>
+    <head>
+        <title>NFD-Select Screen</title>
+        <jsp:include page="header.jsp"/>
+        <jsp:include page="sidebar.jsp"/>
 
-    <jsp:include page="header.jsp"/>
-    <jsp:include page="sidebar.jsp"/>
+        <%
+            try {
+                int mov_id = 0;
+                int id = 0;
+                Common common = new Common();
+                MovieDetail movieDetail = null;
+                SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+                Session hib_session = sessionFactory.openSession();
+                mov_id = Integer.parseInt(session.getAttribute("mov_id").toString());
+                Criteria criteria = hib_session.createCriteria(MovieDetail.class);
+                criteria.add(Restrictions.eq("movId", mov_id));
 
-    <%
-        try {
-            int mov_id = 0;
-            int id = 0;
-            Common common = new Common();
-            MovieDetail movieDetail = null;
-            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-            Session hib_session = sessionFactory.openSession();
-            mov_id = Integer.parseInt(session.getAttribute("mov_id").toString());
-            Criteria criteria = hib_session.createCriteria(MovieDetail.class);
-            criteria.add(Restrictions.eq("movId", mov_id));
-
-            movieDetail = (MovieDetail) criteria.list().get(0);
+                movieDetail = (MovieDetail) criteria.list().get(0);
 
 
-    %>
+        %>
 
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -65,8 +66,8 @@
             <div class="row">
                 <div class="col-xs-12">
                     <h2 class="page-header">
-                        <i class="fa fa-globe"></i> <% out.print(movieDetail.getMovName());%>
-                        <small class="pull-right">Realese Date:<% out.print(movieDetail.getMovReleaseDate());%></small>
+                        <i class="fa fa-film"></i> <% out.print(movieDetail.getMovName());%>
+                        <small class="pull-right">Realese Date:<% out.print(common.formateDate(movieDetail.getMovReleaseDate()));%></small>
                     </h2>
                 </div><!-- /.col -->
             </div>
@@ -79,7 +80,7 @@
                         <strong>Producer:</strong><br>
                         <% out.print(movieDetail.getMovProduces());%><br>
                         <strong>Realese Date.</strong><br>
-                        <% out.print(movieDetail.getMovReleaseDate());%>
+                        <% out.print(common.formateDate(movieDetail.getMovReleaseDate()));%>
                     </address>
                 </div><!-- /.col -->
 
