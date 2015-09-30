@@ -1,3 +1,4 @@
+<%@page import="com.nawandarfilmes.commonUtility.Common"%>
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 
@@ -6,31 +7,34 @@
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 
 <html:html lang="true">
+    <head>
+        <title>NFD-Work Order</title>
+        <jsp:include page="header.jsp"/>
+        <jsp:include page="sidebar.jsp"/>
 
-    <jsp:include page="header.jsp"/>
-    <jsp:include page="sidebar.jsp"/>
-    
 
-    <%
-        String p_id = request.getParameter("p_id").toString();
-        String s_id = request.getParameter("s_id").toString();
-        String m_id = request.getParameter("m_id").toString();
-        String t_id = request.getParameter("t_id").toString();
+        <%
+            Common com = new Common();
+            String p_id = request.getParameter("p_id").toString();
+            String s_id = request.getParameter("s_id").toString();
+            String m_id = request.getParameter("m_id").toString();
+            String t_id = request.getParameter("t_id").toString();
 
-        String p_name = request.getParameter("p_name").toString();
-        String p_phone = request.getParameter("p_phone").toString();
+            String p_name = request.getParameter("p_name").toString();
+            String p_phone = request.getParameter("p_phone").toString();
 
-        String t_name = request.getParameter("t_name").toString();
-        String t_phone = request.getParameter("t_phone").toString();
-        String s_name = request.getParameter("s_name").toString();
-        String s_no = request.getParameter("s_no").toString();
-    %>
+            String t_name = request.getParameter("t_name").toString();
+            String t_phone = request.getParameter("t_phone").toString();
+            String s_name = request.getParameter("s_name").toString();
+            String s_no = request.getParameter("s_no").toString();
+            String mov_name=request.getParameter("mov_name").toString();
+        %>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Invoice
-                <small><% out.print(p_id);%></small>
+                Invoice For:
+                <small><% out.print("#NFD-"+com.getZeros(Integer.parseInt(p_id))+p_id);%></small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -47,8 +51,8 @@
             <div class="row">
                 <div class="col-xs-12">
                     <h2 class="page-header">
-                        <i class="fa fa-globe"></i> Welcome Back.
-                        <small class="pull-right">Date: <%= new java.util.Date()%></small>
+                        <i class="fa fa-film"></i>&nbsp;<%out.print(mov_name);%>
+                        <small class="pull-right">Date: <%out.print(com.formateDate(new java.util.Date()));%></small>
                     </h2>
                 </div><!-- /.col -->
             </div>
@@ -58,7 +62,7 @@
                     <address>
                         <b>Party Details</b><br>
                         <br>
-                        <b>Party ID:</b>  <% out.print(p_id);%><br>
+                        <b>Party ID:</b>  <% out.print("#NFD-"+com.getZeros(Integer.parseInt(p_id))+p_id);%><br>
                         <b>Party Name:</b> <% out.print(p_name);%><br>
                         <b>Mobile No:</b> <% out.print(p_phone);%><br>
                         <b>Address:</b> Address<br>
@@ -69,7 +73,7 @@
                     <address>
                         <b>Theater Details</b><br>
                         <br>
-                        <b>Theater ID:</b> <% out.print(t_id);%><br>
+                        <b>Theater ID:</b> <% out.print("#NFD-"+com.getZeros(Integer.parseInt(t_id))+t_id);%><br>
                         <b>Theater Name:</b> <% out.print(t_name);%><br>
                         <b>Address:</b> Subham Nagar, Hingna, Nagpur<br>
                         <b>Mobile No:</b><% out.print(t_phone);%><br>
@@ -79,7 +83,7 @@
                 <div class="col-sm-4 invoice-col">
                     <b>Screen Details</b><br>
                     <br>
-                    <b>Screen ID:</b> <% out.print(s_id);%><br>
+                    <b>Screen ID:</b> <% out.print("#NFD-"+com.getZeros(Integer.parseInt(s_id))+s_id);%><br>
                     <b>Screen Name:</b> <% out.print(s_name);%><br>
                     <b>Total Seats:</b> <% out.print(s_no);%>
                 </div><!-- /.col -->
@@ -90,12 +94,11 @@
                     <!-- accepted payments column -->
                     <input type="password" hidden="" name="p_id" value="<% out.print(p_id);%>"/><input type="password" hidden="" name="t_id" value="<% out.print(t_id);%>"/><input type="password" hidden="" name="s_id" value="<% out.print(s_id);%>"/><input type="password" hidden="" name="mov_id" value="<% out.print(m_id);%>"/>
                     <h2 class="page-header">
-                        <i class="fa fa-globe"></i> Theater Agreement Details
-                        <small class="pull-right">Date: <%= new java.util.Date()%></small>
+                        <i class="fa fa-files-o"></i>Theater Agreement Details
                     </h2>
                 </div>
-                   
-            
+
+
                 <div class="box-body">
                     <div class="row">
 
@@ -174,64 +177,64 @@
                     </div>
                 </div>
 
-                    <div class="row">
+                <div class="row">
                     <!-- accepted payments column -->
                     <div class="col-xs-6">
                         <p class="lead">Agreement Type:</p>
-                      
-                    
-                  <div class="table-responsive">
+
+
+                        <div class="table-responsive">
                             <table class="table">
                                 <tr>
                                     <th style="width:50%">Choose one:</th>
                                     <td><div class="form-group">
-                                         <select class="form-control select2" style="width: 100%;" id="ddlCategory" name="wo_type">
-                                            <option selected="selected" value="sharing">Sharing</option>
-                                            <option value="rent">Rent</option>
-                                            <option value="mg">MG(Minimal Guarantee)</option>
-                                            
-                                        </select>
+                                            <select class="form-control select2" style="width: 100%;" id="ddlCategory" name="wo_type">
+                                                <option selected="selected" value="sharing">Sharing</option>
+                                                <option value="rent">Rent</option>
+                                                <option value="mg">MG(Minimal Guarantee)</option>
+
+                                            </select>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr id="pm" style="display: none">
                                     <th style="width:50%">Payment Method:</th>
                                     <td><div class="form-group">
-                                         <select id="paymeth" name="payment_Method" class="form-control select2" style="width: 100%;">
-                                            <option selected="selected" value="cash">CASH</option>
-                                            <option value="neft">NEFT</option>
-                                            <option value="rtgs">RTGS</option>
-                                            <option value="cheque">CHEQUE</option>
-                                        </select>
+                                            <select id="paymeth" name="payment_Method" class="form-control select2" style="width: 100%;">
+                                                <option selected="selected" value="cash">CASH</option>
+                                                <option value="neft">NEFT</option>
+                                                <option value="rtgs">RTGS</option>
+                                                <option value="cheque">CHEQUE</option>
+                                            </select>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr id="mga" style="display: none">
                                     <th style="width:50%">MG Amount:</th>
                                     <td><div class="form-group">
-                                          <input type="text" name="mg_amount" value="00" class="form-control" placeholder="MG Amount ...">
+                                            <input type="text" name="mg_amount" value="00" class="form-control" placeholder="MG Amount ...">
                                         </div>
                                     </td>
                                 </tr>
                                 <tr id="dn" style="display: none">
                                     <th>Depositor Name:</th>
                                     <td><div class="form-group">
-                                          <input type="text" name="depositor_name" class="form-control" placeholder="Depositor Name ...">
+                                            <input type="text" name="depositor_name" class="form-control" placeholder="Depositor Name ...">
                                         </div></td>
                                 </tr>
                                 <tr id="ar" style="display: none">
                                     <th>Amount Received:</th>
                                     <td><div class="form-group">
-                                          <input type="text" name="amount_recv" value="00" class="form-control" placeholder="Amount Received ...">
+                                            <input type="text" name="amount_recv" value="00" class="form-control" placeholder="Amount Received ...">
                                         </div></td>
                                 </tr>
-                                
+
                             </table>
                         </div>
-                  
-                  
-                  
-                  
+
+
+
+
                     </div><!-- /.col -->
                     <div class="col-xs-6">
                         <p class="lead"><br></p>
@@ -240,31 +243,31 @@
                                 <tr id="utr" style="display: none">
                                     <th style="width:50%">UTR No:</th>
                                     <td><div class="form-group">
-                                          <input type="text" name="utr_no" value="00" class="form-control" placeholder="UTR No ...">
+                                            <input type="text" name="utr_no" value="00" class="form-control" placeholder="UTR No ...">
                                         </div></td>
                                 </tr>
                                 <tr id="cn" style="display: none">
                                     <th>Cheque No.:</th>
                                     <td><div class="form-group">
-                                          <input type="text" name="cheaque_no" value="00" class="form-control" placeholder="Cheque No">
+                                            <input type="text" name="cheaque_no" value="00" class="form-control" placeholder="Cheque No">
                                         </div></td>
                                 </tr>
                                 <tr id="bn" style="display: none">
                                     <th>Bank Name:</th>
                                     <td><div class="form-group">
-                                          <input type="text" name="bank_name" class="form-control" placeholder="Bank Name">
+                                            <input type="text" name="bank_name" class="form-control" placeholder="Bank Name">
                                         </div></td>
                                 </tr>
                                 <tr id="ard" style="display: none">
                                     <th>Amount Received Date:</th>
                                     <td><div class="form-group">
-                                          <input type="date" name="amount_recv_date" class="form-control" placeholder="Amount Received Date">
+                                            <input type="date" name="amount_recv_date" class="form-control" placeholder="Amount Received Date">
                                         </div></td>
                                 </tr>
                                 <tr id="art" style="display: none">
                                     <th>Amount Received Time:</th>
                                     <td><div class="form-group">
-                                          <input type="time" name="amount_recv_time" class="form-control" placeholder="Amount Received Time">
+                                            <input type="time" name="amount_recv_time" class="form-control" placeholder="Amount Received Time">
                                         </div></td>
                                 </tr>
                             </table>
@@ -418,30 +421,30 @@
                 <div class="row">
                     <!-- accepted payments column -->
                     <div class="col-xs-6">
-                       <div class="col-xs-3" style="width:50%;">
-                       <label>
-                          <input type="radio" name="woSentEmail" id="optionsRadios1" value="option1" checked>
-                          Received Payment and Send Email Notification
-                        </label>
-                    </div>
-                    <div class="col-xs-4" style="width:50%;">
-                      <label>
-                          <input type="radio" name="woSentEmail" id="optionsRadios2" value="option2">
-                          Payment Not Received Yet
-                        </label>
-                    </div>
+                        <div class="col-xs-3" style="width:50%;">
+                            <label>
+                                <input type="radio" name="woSentEmail" id="optionsRadios1" value="option1" checked>
+                                Received Payment and Send Email Notification
+                            </label>
+                        </div>
+                        <div class="col-xs-4" style="width:50%;">
+                            <label>
+                                <input type="radio" name="woSentEmail" id="optionsRadios2" value="option2">
+                                Payment Not Received Yet
+                            </label>
+                        </div>
                     </div><!-- /.col -->
                     <div class="col-xs-6">
-                        
+
                     </div><!-- /.col -->
                 </div><!-- /.row -->
 
                 <!-- this row will not appear when printing -->
                 <div class="row no-print">
                     <div class="col-xs-12">
-                       
+
                         <button type="submit" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</button>
-                        
+
                     </div>
                 </div>
             </html:form>
@@ -624,71 +627,71 @@
     
   
    
-        $(document).ready(function () {
-            $('#ddlCategory').change(function () {
-                if (this.value == "mg") {
-                    $('#pm').show();
-                    //$('#mga').show();
-                    $('#dn').show();
-                    $('#ar').show();
-                    //$('#utr').show();
-                    //$('#cn').show();
-                    //$('#bn').show();
-                    $('#ard').show();
-                    $('#art').show();
-                } else {
-                    $('#pm').hide();
-                    $('#mga').hide();
-                    $('#dn').hide();
-                    $('#ar').hide();
-                    $('#utr').hide();
-                    $('#cn').hide();
-                    $('#bn').hide();
-                    $('#ard').hide();
-                    $('#art').hide();
-                }
+    $(document).ready(function () {
+        $('#ddlCategory').change(function () {
+            if (this.value == "mg") {
+                $('#pm').show();
+                //$('#mga').show();
+                $('#dn').show();
+                $('#ar').show();
+                //$('#utr').show();
+                //$('#cn').show();
+                //$('#bn').show();
+                $('#ard').show();
+                $('#art').show();
+            } else {
+                $('#pm').hide();
+                $('#mga').hide();
+                $('#dn').hide();
+                $('#ar').hide();
+                $('#utr').hide();
+                $('#cn').hide();
+                $('#bn').hide();
+                $('#ard').hide();
+                $('#art').hide();
+            }
 
-            });
+        });
             
-            $('#paymeth').change(function () {
-                if (this.value == "neft"||this.value == "rtgs") {
-                    $('#pm').show();
-                    //$('#mga').show();
-                    $('#dn').show();
-                    $('#ar').show();
-                    $('#utr').show();
-                    //$('#cn').show();
-                    //$('#bn').show();
-                    $('#ard').show();
-                    $('#art').show();
-                } else {
+        $('#paymeth').change(function () {
+            if (this.value == "neft"||this.value == "rtgs") {
+                $('#pm').show();
+                //$('#mga').show();
+                $('#dn').show();
+                $('#ar').show();
+                $('#utr').show();
+                //$('#cn').show();
+                //$('#bn').show();
+                $('#ard').show();
+                $('#art').show();
+            } else {
                     
-                    $('#utr').hide();
+                $('#utr').hide();
                     
-                }
-                if (this.value == "cheque") {
-                    $('#pm').show();
-                    //$('#mga').show();
-                    $('#dn').show();
-                    $('#ar').show();
-                    //$('#utr').show();
-                    $('#cn').show();
-                    $('#bn').show();
-                    $('#ard').show();
-                    $('#art').show();
-                } else {
+            }
+            if (this.value == "cheque") {
+                $('#pm').show();
+                //$('#mga').show();
+                $('#dn').show();
+                $('#ar').show();
+                //$('#utr').show();
+                $('#cn').show();
+                $('#bn').show();
+                $('#ard').show();
+                $('#art').show();
+            } else {
                     
-                    //$('#utr').hide();
-                    $('#cn').hide();
-                    $('#bn').hide();
+                //$('#utr').hide();
+                $('#cn').hide();
+                $('#bn').hide();
                     
-                }
+            }
                 
 
-            });
-            
-            
         });
+            
+            
+    });
         
 </script>
 </body>
