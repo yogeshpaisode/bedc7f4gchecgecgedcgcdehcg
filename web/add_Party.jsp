@@ -18,7 +18,7 @@
                 Party Detail :            
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="index.jsp"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li><a href="add_Party.jsp">Master</a></li>
                 <li class="active"><a href="add_Party.jsp">Add New Party Detail</a></li>
             </ol>
