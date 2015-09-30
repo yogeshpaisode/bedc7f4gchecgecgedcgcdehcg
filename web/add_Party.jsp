@@ -6,82 +6,238 @@
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 
 <html:html lang="true">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Add New Party</title>
-        <html:base/>
-    </head>
-    <body style="background-color: white">
-        <jsp:include page="header.jsp"/><br>
-        <h4>Add Party Detail</h4>
-        <html:form action="/add_Party">
+    
+    <%@ include file="header.jsp" %>
+    
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Party Detail            
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Forms</a></li>
+            <li class="active">Advanced Elements</li>
+          </ol>
+        </section>
 
-            Party Name:<input type="text" name="p_name" /><br>
-            STD Code:<input type="text" name="p_std_code" /><br>
-            Office Number:<input type="text" name="p_std_number" /><br>
-            Email :<input type="text" name="p_email" /><br>
-            Address:<textarea name="p_address"></textarea></br>
-            State:<input type="text" name="p_state" /><br>
-            City:<input type="text" name="p_city" /><br>
-            Fax:<input type="text" name="p_fax" /><br>
-            Country:<input type="text" name="p_country" /><br>
-            Circuit:<input type="text" name="p_circuit" /><br>
-            Region:<input type="text" name="p_circuit_region" /><br>
+        <!-- Main content -->
+        <section class="content">
 
-            <br>
+          <!-- SELECT2 EXAMPLE -->
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">About Party</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+              </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
+                 <html:form action="/add_Party">
+                <div class="col-md-6">
+                   <div class="form-group">
+                      <label for="exampleInputEmail1">Party Name</label>
+                      <input type="text" class="form-control" id="p_name" name="p_name" placeholder="Party Name">
+                    </div>
+                   
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Mobile Number</label>
+                      <input type="number" class="form-control" id="p_contact" name="p_contact" placeholder="Party Mobile Number">
+                    </div>
+                     <div class="form-group">
+                      <label for="exampleInputEmail1">Address</label>
+                      <textarea class="form-control" rows="3" placeholder="Full Address" id="p_address" name="p_address" style="height: 113px;"></textarea>
+                    </div>
+                     <div class="form-group">
+                      <label for="exampleInputEmail1">Fax Number</label>
+                      <input type="number" class="form-control" id="p_fax" name="p_fax" placeholder="Fax Number">
+                    </div>
+                    <div class="form-group">
+                      
+                      <label for="exampleInputEmail1">Circuit Area</label>
+                      <select id="p_circuit" name="p_circuit" class="form-control">
+                        <option>Bombay </option>
+                        <option>Delhi</option>
+                        <option>East Punjab Circuit</option>
+                        <option>CP-CI-Rajasthan Circuit</option>
+                        <option>Eastern Circuit</option>
+                        <option>South India Circuit</option>
+                        <option>Over Sea Circuit</option>
+                      </select>
+                    </div>
+                </div><!-- /.col -->
+                
+                
+                <div class="col-md-6">
+                  
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" class="form-control" id="p_email" name="p_email" placeholder="Enter email">
+                    </div>
+                     <div class="form-inline">
+                      <div class="form-group">
+                         <label  for="exampleInputEmail1">STD Code</label><br>
+                         <input type="number" class="form-control" id="p_std_code" name="p_std_code" placeholder="Std Code">
+                     </div>
+                     <div class="form-group">
+                          <label  for="exampleInputPassword1">Phone Number</label><br>
+                          <input type="number" class="form-control" id="p_std_number" name="p_std_number" placeholder="Phone Number">
+                     </div>
+                       <div class="form-group">
+                           <br>
+                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Add Members</button>
+                     </div>
+                     </div><br>
+                     <div class="form-group">
+                      <label for="exampleInputEmail1">City</label>
+                      <input type="text" class="form-control" id="p_city" name="p_city" placeholder="City">
+                    </div>
+                     <div class="form-group">
+                      <label for="exampleInputEmail1">State</label>
+                      <input type="text" class="form-control" id="p_state" name="p_state" placeholder="State">
+                    </div>
+                     <div class="form-group">
+                      <label for="exampleInputEmail1">Country </label>
+                      <input type="text" class="form-control" id="p_country" name="p_country" value="India">
+                    </div>
+                     <div class="form-group">
+                      <label for="exampleInputEmail1">Circuit Region </label>
+                      <input type="text" class="form-control" id="p_circuit_region" name="p_circuit_region" placeholder="Your Circuit Region">
+                    </div>
+                    <!--model-->
+                     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                         <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                                 <div class="box box-default">
+                                   <div class="box-header with-border">
+                                      <h3 class="box-title">Member Details</h3>
+                                         <div class="box-tools pull-right">
+                                            
+                                             <button type="button" class="btn btn-box-tool" data-dismiss="modal"><i class="fa fa-remove"></i></button>
+                                         </div>
+                                   </div><!-- /.box-header -->
+                                   <div class="box-body">
+                                       <div class="row">
+                                           <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label for="exampleInputEmail1">Member Name1</label>
+                                                <input type="text" class="form-control" id="m_name1" name="m1_name" placeholder=" Member Name">
+                                             </div>
+                   
+                                             <div class="form-group">
+                                                 <label for="exampleInputEmail1">Mobile Number</label>
+                                                 <input type="number" class="form-control" id="m_contact1" name="m1_contact" placeholder="Mobile Number">
+                                            </div>
+                                          </div><!-- /.col -->
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Email address</label>
+                                                <input type="email" class="form-control" id="m_email1" name="m1_email" placeholder="Enter email">
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label  for="exampleInputEmail1">STD Code</label><br>
+                                                    <input type="number" class="form-control" id="m_std_cont1" name="m1_std_cont" placeholder="Std Code">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label  for="exampleInputPassword1">Phone Number</label><br>
+                                                    <input type="number" class="form-control" id="m_std_num1" name="m1_std_num" placeholder="Phone Number">
+                                                </div>
+                                            </div>
+                                              
+                                         </div><!-- /.col -->
+                                        </div><!-- /.row -->
+                                        <div class="row">
+                                           <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label for="exampleInputEmail1">Member Name2</label>
+                                                <input type="text" class="form-control" id="m_name2" name="m2_name" placeholder=" Member Name">
+                                             </div>
+                   
+                                             <div class="form-group">
+                                                 <label for="exampleInputEmail1">Mobile Number</label>
+                                                 <input type="number" class="form-control" id="m_contact2" name="m2_contact" placeholder="Mobile Number">
+                                            </div>
+                                          </div><!-- /.col -->
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Email address</label>
+                                                <input type="email" class="form-control" id="m_email2" name="m2_email" placeholder="Enter email">
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label  for="exampleInputEmail1">STD Code</label><br>
+                                                    <input type="number" class="form-control" id="m_std_cont2" name="m2_std_cont" placeholder="Std Code">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label  for="exampleInputPassword1">Phone Number</label><br>
+                                                    <input type="number" class="form-control" id="m_std_num2" name="m2_std_number" placeholder="Phone Number">
+                                                </div>
+                                            </div>
+                                              
+                                         </div><!-- /.col -->
+                                        </div><!-- /.row -->
+                                        <div class="row">
+                                           <div class="col-md-6">
+                                             <div class="form-group">
+                                                <label for="exampleInputEmail1">Member Name3</label>
+                                                <input type="text" class="form-control" id="m_name3" name="m3_name" placeholder=" Member Name">
+                                             </div>
+                   
+                                             <div class="form-group">
+                                                 <label for="exampleInputEmail1">Mobile Number</label>
+                                                 <input type="number" class="form-control" id="m_contact3" name="m3_contact" placeholder="Mobile Number">
+                                            </div>
+                                          </div><!-- /.col -->
+                                          <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Email address</label>
+                                                <input type="email" class="form-control" id="m_email3" name="m3_email" placeholder="Enter email">
+                                            </div>
+                                            <div class="form-inline">
+                                                <div class="form-group">
+                                                    <label  for="exampleInputEmail1">STD Code</label><br>
+                                                    <input type="number" class="form-control" id="m_std_cont3" name="m3_std_cont" placeholder="Std Code">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label  for="exampleInputPassword1">Phone Number</label><br>
+                                                    <input type="number" class="form-control" id="m_std_num3" name="m3_std_num" placeholder="Phone Number">
+                                                </div>
+                                            </div>
+                                              
+                                         </div><!-- /.col -->
+                                        </div><!-- /.row -->
+                                  </div><!-- /.box-body -->
+                                </div><!-- /.box -->
+                             </div>
+                        </div>
+                    </div>
+                    <!--end model-->
+                    
+                    
+                </div><!-- /.col -->
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-primary">Clear</button>
+                  </div>
+            </html:form>
+              </div><!-- /.row -->
+            </div><!-- /.box-body -->
+           
+          </div><!-- /.box -->
 
-            <br>
-            <hr>
-            1st Member Detail:
-            Name:<input type="text" name="m1_name"/><br>
-            Email:<input type="email" name="m1_email"/><br>
-            Contact Number:<input type="text" name="m1_contact"/><br>
-            <hr>
-            <br>
+          
 
-            <br>
-            <hr>
-            2nd Member Detail:
-            Name:<input type="text" name="m2_name"/><br>
-            Email:<input type="email" name="m2_email"/><br>
-            Contact Number:<input type="text" name="m2_contact"/><br>
-            <hr>
-            <br>
-
-            <br>
-            <hr>
-            3rd Member Detail:
-            Name:<input type="text" name="m3_name"/><br>
-            Email:<input type="email" name="m3_email"/><br>
-            Contact Number:<input type="text" name="m3_contact"/><br>
-            <hr>
-            <br>
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
 
 
-            <br>
-            <hr>
-            4th Member Detail:
-            Name:<input type="text" name="m4_name"/><br>
-            Email:<input type="email" name="m4_email"/><br>
-            Contact Number:<input type="text" name="m4_contact"/><br>
-            <hr>
-            <br>
+<%@ include file="sidebar.jsp" %>
+<%@ include file="footer.jsp" %>
 
-            <br>
-            <hr>
-            5th Member Detail:
-            Name:<input type="text" name="m5_name"/><br>
-            Email:<input type="email" name="m5_email"/><br>
-            Contact Number:<input type="text" name="m5_contact"/><br>
-            <hr>
-            <br>
-
-
-            <input type="submit"/><input type="reset"/>
-
-        </html:form>
-
-
-
-    </body>
-</html:html>
+          </html:html>
+    
+    

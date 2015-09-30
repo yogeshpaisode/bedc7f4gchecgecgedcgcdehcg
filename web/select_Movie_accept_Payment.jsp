@@ -12,17 +12,36 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Select Movie</title>
-    </head>
-    <body>
-         <jsp:include page="header.jsp"/><br>
-        <h4>Select Movie</h4>
+    
+     <%@ include file="header.jsp" %>
+   
+     <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Work Order
+            
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="index.jsp"><i class="fa fa-dashboard"></i> Home</a></li>
+           
+            <li class="active">Work Order</li>
+          </ol>
+        </section>
 
-        <form action="select_work_order.jsp" method="post">
-        
-        <%
+        <!-- Main content -->
+        <section class="content">
+
+          <!-- SELECT2 EXAMPLE -->
+          <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Movie allotment</h3>
+              
+            </div><!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
+                  
+                   <%
             try {
                 SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
                 Session hib_session = sessionFactory.openSession();
@@ -35,14 +54,27 @@
 
                 for (Object o : movieList) {
                     MovieDetail md = (MovieDetail) o;
-                    if (count % 4 == 0) {
-                        apender = apender + "<br>";
-                    }
-                    apender = apender + "<input type='radio' value='" + md.getMovId() + "' name=\"mov_id\"/>&nbsp;&nbsp;" + md.getMovName();
-                    count++;
-                }
-
-                out.print(apender);
+                   
+                   
+                   %>
+                   <input type="hidden" name="mov_id" value="<% md.getMovId(); %>">
+                    <a href="select_work_order.jsp?mov_id=<% out.print(md.getMovId()); %>">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-number"><% out.print(md.getMovName()); %></span>
+                  <span class="info-box-text">Nawandar Films</span>
+                  <span class="info-box-text">Realease Date: <br><% out.print(md.getMovReleaseDate()); %> </span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col --></a>
+                   
+                   
+                   
+                <%}
+%>
+               <% out.print(apender);
 
                 hib_session.close();
 
@@ -52,11 +84,28 @@
 
         %>
 
-        <br>
-        <input type="submit" /><input type="reset"/>
-        
-        </form>
+                  
+                  
+                  
+                  
+                  
+                  
+            
+            
+            
+          </div><!-- /.row -->
+            </div><!-- /.box-body -->
+           
+          </div><!-- /.box -->
+
+          
+
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
 
 
-    </body>
+<%@ include file="sidebar.jsp" %>
+<%@ include file="footer.jsp" %>
 </html>
+     
+        
