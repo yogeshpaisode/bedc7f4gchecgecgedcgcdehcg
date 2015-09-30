@@ -27,14 +27,14 @@
             String t_phone = request.getParameter("t_phone").toString();
             String s_name = request.getParameter("s_name").toString();
             String s_no = request.getParameter("s_no").toString();
-            String mov_name=request.getParameter("mov_name").toString();
+            String mov_name = request.getParameter("mov_name").toString();
         %>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
                 Invoice For:
-                <small><% out.print("#NFD-"+com.getZeros(Integer.parseInt(p_id))+p_id);%></small>
+                <small><% out.print("#NFD-" + com.getZeros(Integer.parseInt(p_id)) + p_id);%></small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -62,7 +62,7 @@
                     <address>
                         <b>Party Details</b><br>
                         <br>
-                        <b>Party ID:</b>  <% out.print("#NFD-"+com.getZeros(Integer.parseInt(p_id))+p_id);%><br>
+                        <b>Party ID:</b>  <% out.print("#NFD-" + com.getZeros(Integer.parseInt(p_id)) + p_id);%><br>
                         <b>Party Name:</b> <% out.print(p_name);%><br>
                         <b>Mobile No:</b> <% out.print(p_phone);%><br>
                         <b>Address:</b> Address<br>
@@ -73,7 +73,7 @@
                     <address>
                         <b>Theater Details</b><br>
                         <br>
-                        <b>Theater ID:</b> <% out.print("#NFD-"+com.getZeros(Integer.parseInt(t_id))+t_id);%><br>
+                        <b>Theater ID:</b> <% out.print("#NFD-" + com.getZeros(Integer.parseInt(t_id)) + t_id);%><br>
                         <b>Theater Name:</b> <% out.print(t_name);%><br>
                         <b>Address:</b> Subham Nagar, Hingna, Nagpur<br>
                         <b>Mobile No:</b><% out.print(t_phone);%><br>
@@ -83,7 +83,7 @@
                 <div class="col-sm-4 invoice-col">
                     <b>Screen Details</b><br>
                     <br>
-                    <b>Screen ID:</b> <% out.print("#NFD-"+com.getZeros(Integer.parseInt(s_id))+s_id);%><br>
+                    <b>Screen ID:</b> <% out.print("#NFD-" + com.getZeros(Integer.parseInt(s_id)) + s_id);%><br>
                     <b>Screen Name:</b> <% out.print(s_name);%><br>
                     <b>Total Seats:</b> <% out.print(s_no);%>
                 </div><!-- /.col -->
@@ -155,11 +155,11 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
-                                        <input type="text" class="form-control" value="1" disabled="disabled" data-mask>
+                                        <input type="text" class="form-control" value="0" disabled="disabled" data-mask id="total_weeks">
                                     </div><!-- /.input group -->
                                 </div><!-- /.form group -->
                                 <div class="form-group">
-                                    <label>Show Per Week:</label>
+                                    <label>Show Per Day:</label>
                                     <div class="input-group">
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
@@ -186,7 +186,7 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <tr>
-                                    <th style="width:50%">Choose one:</th>
+                                    <th style="width:50%">Agrrement Type:</th>
                                     <td><div class="form-group">
                                             <select class="form-control select2" style="width: 100%;" id="ddlCategory" name="wo_type">
                                                 <option selected="selected" value="sharing">Sharing</option>
@@ -196,7 +196,7 @@
                                             </select>
                                         </div>
                                     </td>
-                                </tr>
+                                </tr>                               
                                 <tr id="pm" style="display: none">
                                     <th style="width:50%">Payment Method:</th>
                                     <td><div class="form-group">
@@ -212,7 +212,7 @@
                                 <tr id="mga" style="display: none">
                                     <th style="width:50%">MG Amount:</th>
                                     <td><div class="form-group">
-                                            <input type="text" name="mg_amount" value="00" class="form-control" placeholder="MG Amount ...">
+                                            <input type="text" name="mg_amount" value="0" class="form-control" placeholder="MG Amount ...">
                                         </div>
                                     </td>
                                 </tr>
@@ -225,7 +225,7 @@
                                 <tr id="ar" style="display: none">
                                     <th>Amount Received:</th>
                                     <td><div class="form-group">
-                                            <input type="text" name="amount_recv" value="00" class="form-control" placeholder="Amount Received ...">
+                                            <input type="text" name="amount_recv" value="0" class="form-control" placeholder="Amount Received ...">
                                         </div></td>
                                 </tr>
 
@@ -243,13 +243,13 @@
                                 <tr id="utr" style="display: none">
                                     <th style="width:50%">UTR No:</th>
                                     <td><div class="form-group">
-                                            <input type="text" name="utr_no" value="00" class="form-control" placeholder="UTR No ...">
+                                            <input type="text" name="utr_no" value="" class="form-control" placeholder="UTR Number">
                                         </div></td>
                                 </tr>
                                 <tr id="cn" style="display: none">
                                     <th>Cheque No.:</th>
                                     <td><div class="form-group">
-                                            <input type="text" name="cheaque_no" value="00" class="form-control" placeholder="Cheque No">
+                                            <input type="text" name="cheaque_no" value="" class="form-control" placeholder="Cheque Number">
                                         </div></td>
                                 </tr>
                                 <tr id="bn" style="display: none">
@@ -276,7 +276,7 @@
                 </div><!-- /.row -->
 
 
-                <div class="row">
+                <div class="row" id="aggrement_table">
                     <div class="col-xs-12 table-responsive">
                         <table class="table table-striped">
                             <thead>
@@ -291,8 +291,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td id="1week">1 Week</td>
+                                <tr id="1flag">
+                                    <td id="1week">1st Week</td>
                                     <td id="1start"></td>
                                     <td id="1end"></td>
                                     <td><div class="input-group">
@@ -311,7 +311,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr id="2flag">
                                     <td id="2week">2 Week</td>
                                     <td id="2start"></td>
                                     <td id="2end"></td>
@@ -331,8 +331,8 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td id="1week">3 Week</td>
+                                <tr id="3flag">
+                                    <td id="3week">3 Week</td>
                                     <td id="3start"></td>
                                     <td id="3end"></td>
                                     <td><div class="input-group">
@@ -352,8 +352,8 @@
                                     </td>
                                 </tr>
 
-                                <tr>
-                                    <td id="1week">4 Week</td>
+                                <tr id="4flag">
+                                    <td id="4week">4 Week</td>
                                     <td id="4start"></td>
                                     <td id="4end"></td>
                                     <td><div class="input-group">
@@ -372,8 +372,8 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td id="1week">5 Week</td>
+                                <tr id="5flag">
+                                    <td id="5week">5 Week</td>
                                     <td id="5start"></td>
                                     <td id="5end"></td>
                                     <td><div class="input-group">
@@ -392,8 +392,8 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td id="1week">6 Week</td>
+                                <tr id="6flag">
+                                    <td id="6week">6 Week</td>
                                     <td id="6start"></td>
                                     <td id="6end"></td>
                                     <td><div class="input-group">
@@ -424,13 +424,13 @@
                         <div class="col-xs-3" style="width:50%;">
                             <label>
                                 <input type="radio" name="woSentEmail" id="optionsRadios1" value="option1" checked>
-                                Received Payment and Send Email Notification
+                                Send Email Notification
                             </label>
                         </div>
                         <div class="col-xs-4" style="width:50%;">
                             <label>
                                 <input type="radio" name="woSentEmail" id="optionsRadios2" value="option2">
-                                Payment Not Received Yet
+                                Don't Send
                             </label>
                         </div>
                     </div><!-- /.col -->
@@ -558,8 +558,11 @@
       
       
     function parseDate(){
-        for(var j=1;i<=6;i++){
-            $("#"+i+"week").html("");
+        $("#aggrement_table").show();
+       
+        for(var j=1;j<=6;j++){
+            $("#"+j+"week").html("");
+            $("#"+j+"flag").hide();
         }
         var s=$("#start_date").val().split("-");
         var e=$("#end_date").val().split("-");
@@ -592,9 +595,12 @@
         var weeks=weeksAry[0];
         var daysAry=(days%7)+"".split(".");
         var weeks_days=daysAry[0];
-                
+        
+        $("#total_weeks").val(weeks+" Week and "+daysAry[0]+" Day");      
+        
         weeks=parseInt(weeks);
         weeks_days=parseInt(weeks_days);
+        
         for(var i=1;i<=weeks;i++){
             var date="";
             date=date+start_date+" To ";
@@ -604,34 +610,39 @@
             //$("#"+i+"week").html("Week "+i+" Detail: "+date);                    
             $("#"+i+"end").html((""+start_date).substring(4,15));
             start_date.setDate(start_date.getDate() +1);
-                    
             $("#"+i+"detil").val(date);
-                    
+            $("#"+i+"week").html("<b>Week "+i+" Detail:</b> ");
+            $("#"+i+"flag").show();        
         }
                 
-        if(weeks_days>=1){
+        if(weeks_days>=1){          
             $("#"+(weeks+1)+"start").html((""+start_date).substring(4,15));
             var date=start_date+"";
             start_date.setDate(start_date.getDate() +(weeks_days-1));
             date=date+" To "+start_date;
             // $("#"+(weeks+1)+"week").html("Last "+weeks_days+" Days Detail: "+date);
-            
             $("#"+(weeks+1)+"end").html((""+start_date).substring(4,15));
-                    
             $("#"+i+"detil").val(date);
+            $("#"+(weeks+1)+"week").html("<b>Last "+weeks_days+" Day Detail: </b>");
+            $("#"+(weeks+1)+"flag").show();
                     
         }
-               
-               
     }
     
-  
-   
+    
     $(document).ready(function () {
+        
+        $("#1flag").hide();
+        $("#2flag").hide();
+        $("#3flag").hide();
+        $("#4flag").hide();
+        $("#5flag").hide();
+        $("#6flag").hide();
+        $("#aggrement_table").hide();
         $('#ddlCategory').change(function () {
             if (this.value == "mg") {
                 $('#pm').show();
-                //$('#mga').show();
+                $('#mga').show();
                 $('#dn').show();
                 $('#ar').show();
                 //$('#utr').show();
@@ -661,7 +672,7 @@
                 $('#ar').show();
                 $('#utr').show();
                 //$('#cn').show();
-                //$('#bn').show();
+                $('#bn').show();
                 $('#ard').show();
                 $('#art').show();
             } else {
@@ -683,7 +694,6 @@
                     
                 //$('#utr').hide();
                 $('#cn').hide();
-                $('#bn').hide();
                     
             }
                 
