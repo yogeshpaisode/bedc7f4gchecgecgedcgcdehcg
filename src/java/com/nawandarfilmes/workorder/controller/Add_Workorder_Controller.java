@@ -48,6 +48,7 @@ public class Add_Workorder_Controller extends org.apache.struts.action.Action {
 
         Add_Workorder_Model awm = (Add_Workorder_Model) form;
         int wo_id = 0;
+        String payment_flag="Cash";
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date woStartDate = formatter.parse(awm.getStart_date());
         Date woEndDate = formatter.parse(awm.getEnd_date());
@@ -128,7 +129,7 @@ public class Add_Workorder_Controller extends org.apache.struts.action.Action {
         System.out.println("\n\n\n MovID " + mov_id + "\n\n\n");
         System.out.println("\n\n\n Shows Per Day :" + awm.getShows_per_day() + "\n\n\n");
         int woShowsPerDay = Integer.parseInt(awm.getShows_per_day());
-        
+
         String randomString = "nawa#@53662ndarfilmes@43857462distr232ibutionpartyDetail89625438476209388@#$$#@";
 
         String woUnlockKey = RandomStringUtils.random(9, 0, 9, true, true, randomString.toCharArray()).toUpperCase();
@@ -287,18 +288,22 @@ public class Add_Workorder_Controller extends org.apache.struts.action.Action {
 
             if (payment_Method.equals("cash")) {
                 CashPayment cp = new CashPayment(wo, depositerName, amtRecv, amtRecvDate, amtRecvTime, true, false, new Date());
+                payment_flag="cash";
                 session.save(cp);
             }
             if (payment_Method.equals("neft")) {
                 NeftRtgsPayment neft = new NeftRtgsPayment(wo, utrNo, depositerName, true, false, amtRecv, amtRecvDate, amtRecvTime, true, false, new Date());
+                payment_flag="neft";
                 session.save(neft);
             }
             if (payment_Method.equals("rtgs")) {
                 NeftRtgsPayment rtgs = new NeftRtgsPayment(wo, utrNo, depositerName, false, true, amtRecv, amtRecvDate, amtRecvTime, true, false, new Date());
+                payment_flag="rtgs";
                 session.save(rtgs);
             }
             if (payment_Method.equals("cheque")) {
                 CheaquePayment cp = new CheaquePayment(wo, cheaqueNo, bankName, depositerName, amtRecv, amtRecvDate, amtRecvTime, true, false, new Date());
+                payment_flag="cheque";
                 session.save(cp);
             }
 
@@ -311,13 +316,9 @@ public class Add_Workorder_Controller extends org.apache.struts.action.Action {
         session.close();
 
         //-----------Business logic----------------
-
-        request.setAttribute("partyDetail", partyDetail);
-        request.setAttribute("movieDetail", movieDetail);
-        request.setAttribute("theaterDetail", theaterDetail);
-        request.setAttribute("screenDetail", screenDetail);
-        request.setAttribute("wo", wo);
         request.setAttribute("wo_id", wo_id);
+        request.setAttribute("payment_flag", payment_flag);
+        
 
 
         return mapping.findForward(SUCCESS);
