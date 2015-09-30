@@ -149,7 +149,7 @@
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
-                                        <input type="text" id="total_days" class="form-control" disabled="disabled" data-mask>
+                                        <input type="text" id="total_days" class="form-control" disabled="disabled" data-mask value="0">
                                     </div><!-- /.input group -->
                                 </div><!-- /.form group -->
 
@@ -671,7 +671,7 @@
                 $('#ar').show();
                 $('#utr').show();
                 //$('#cn').show();
-                $('#bn').show();
+                //$('#bn').show();
                 $('#ard').show();
                 $('#art').show();
             } else {
@@ -693,6 +693,7 @@
                     
                 //$('#utr').hide();
                 $('#cn').hide();
+                $('#bn').hide();
                     
             }
                 
