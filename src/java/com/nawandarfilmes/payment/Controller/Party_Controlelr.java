@@ -48,7 +48,9 @@ public class Party_Controlelr extends org.apache.struts.action.Action {
         Party_Model pm = (Party_Model) form;
         WorkOrder workOrder;
         String depositerName=pm.getDepo_name();
+        
         Double amtRecv=Double.parseDouble(pm.getAmt_recv());
+        
         Date amtRecvDate=null;
         String amtRecvTime=pm.getTime();
         Boolean recvMg=false;
@@ -58,9 +60,11 @@ public class Party_Controlelr extends org.apache.struts.action.Action {
         String cheaqueNo=pm.getCheq_no();
         String bankName=pm.getBank();
         int wo_id=Integer.parseInt(pm.getWo_id());
+        
         String payment=pm.getPayment();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         amtRecvDate=formatter.parse(pm.getDate());
+        
         
         SessionFactory sessionFactory=HibernateUtil.getSessionFactory();
         Session session=sessionFactory.openSession();

@@ -60,11 +60,12 @@ public class Add_Theater_Controller extends org.apache.struts.action.Action {
             String TCity = atm.getT_city();
             String TCountry = atm.getT_country();
             String TEmail = atm.getT_email();
+           
             int TStdCode = Integer.parseInt(atm.getT_std_Code());
             String TPhoneNumber = atm.getT_phone();
             String TType = atm.getT_type();
             Date TDatetimeAddition = new Date();
-            int TNoScreens = Integer.parseInt(atm.getT_no_Screen());
+            int TNoScreens =0;
 
 
             String s1_name = atm.getS1_name();
@@ -83,6 +84,17 @@ public class Add_Theater_Controller extends org.apache.struts.action.Action {
             String s4_number = atm.getS4_number();
             String s4_seats = atm.getS4_seats();
 
+            String s5_name = atm.getS5_name();
+            String s5_number = atm.getS5_number();
+            String s5_seats = atm.getS5_seats();
+
+            String s6_name = atm.getS6_name();
+            String s6_number = atm.getS6_number();
+            String s6_seats = atm.getS6_seats();
+
+            String ss_name = atm.getSs_name();
+            String ss_number = atm.getSs_number();
+            String ss_seats = atm.getSs_seats();
 
 
 
@@ -107,7 +119,7 @@ public class Add_Theater_Controller extends org.apache.struts.action.Action {
             cr.add(Restrictions.eq("TPhoneNumber", TPhoneNumber));
             cr.add(Restrictions.eq("TNoScreens", TNoScreens));
             cr.add(Restrictions.eq("partyDetail", partyDetail));
-            
+
 
             if (cr.list().size() >= 1) {
                 theaterDetail = (TheaterDetail) cr.list().get(0);
@@ -119,25 +131,47 @@ public class Add_Theater_Controller extends org.apache.struts.action.Action {
                 theaterDetail = new TheaterDetail(partyDetail, TName, TAddress, TState, TCity, TCountry, TEmail, TStdCode, TPhoneNumber, TType, TDatetimeAddition, TNoScreens, null, null);
                 session.save(theaterDetail);
 
-                if (!(s1_name.length() <= 0)) {
-                    ScreenDetail screenDetail = new ScreenDetail(theaterDetail, partyDetail, s1_name, Integer.parseInt(s1_number), Integer.parseInt(s1_seats), null);
+
+
+                if (TType.equals("Single Screen")) {
+                    System.out.println("\n\n\n" + ss_name + "\n\n\n");
+                    ScreenDetail screenDetail = new ScreenDetail(theaterDetail, partyDetail, ss_name, Integer.parseInt(ss_number), Integer.parseInt(ss_seats), null);
                     session.save(screenDetail);
+
+                } else {
+
+                    if (!(s1_name.length() <= 0)) {
+                        ScreenDetail screenDetail = new ScreenDetail(theaterDetail, partyDetail, s1_name, Integer.parseInt(s1_number), Integer.parseInt(s1_seats), null);
+                        session.save(screenDetail);
+                    }
+
+                    if (!(s2_name.length() <= 0)) {
+                        ScreenDetail screenDetail = new ScreenDetail(theaterDetail, partyDetail, s2_name, Integer.parseInt(s2_number), Integer.parseInt(s2_seats), null);
+                        session.save(screenDetail);
+                    }
+
+                    if (!(s3_name.length() <= 0)) {
+                        ScreenDetail screenDetail = new ScreenDetail(theaterDetail, partyDetail, s3_name, Integer.parseInt(s3_number), Integer.parseInt(s3_seats), null);
+                        session.save(screenDetail);
+                    }
+
+                    if (!(s4_name.length() <= 0)) {
+                        ScreenDetail screenDetail = new ScreenDetail(theaterDetail, partyDetail, s4_name, Integer.parseInt(s4_number), Integer.parseInt(s4_seats), null);
+                        session.save(screenDetail);
+                    }
+
+                    if (!(s5_name.length() <= 0)) {
+                        ScreenDetail screenDetail = new ScreenDetail(theaterDetail, partyDetail, s5_name, Integer.parseInt(s5_number), Integer.parseInt(s5_seats), null);
+                        session.save(screenDetail);
+                    }
+
+                    if (!(s6_name.length() <= 0)) {
+                        ScreenDetail screenDetail = new ScreenDetail(theaterDetail, partyDetail, s6_name, Integer.parseInt(s6_number), Integer.parseInt(s6_seats), null);
+                        session.save(screenDetail);
+                    }
+
                 }
 
-                if (!(s2_name.length() <= 0)) {
-                    ScreenDetail screenDetail = new ScreenDetail(theaterDetail, partyDetail, s2_name, Integer.parseInt(s2_number), Integer.parseInt(s2_seats), null);
-                    session.save(screenDetail);
-                }
-
-                if (!(s3_name.length() <= 0)) {
-                    ScreenDetail screenDetail = new ScreenDetail(theaterDetail, partyDetail, s3_name, Integer.parseInt(s3_number), Integer.parseInt(s3_seats), null);
-                    session.save(screenDetail);
-                }
-
-                if (!(s4_name.length() <= 0)) {
-                    ScreenDetail screenDetail = new ScreenDetail(theaterDetail, partyDetail, s4_name, Integer.parseInt(s4_number), Integer.parseInt(s4_seats), null);
-                    session.save(screenDetail);
-                }
 
                 t_id = theaterDetail.getTId();
                 transaction.commit();

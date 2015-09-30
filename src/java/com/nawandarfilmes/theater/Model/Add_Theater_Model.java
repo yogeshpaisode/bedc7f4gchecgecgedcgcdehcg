@@ -238,6 +238,92 @@ public class Add_Theater_Model extends org.apache.struts.action.ActionForm {
     private String s4_seats="";
     
     
+    private String s5_name="";
+
+    public String getS5_name() {
+        return s5_name;
+    }
+
+    public void setS5_name(String s5_name) {
+        this.s5_name = s5_name;
+    }
+
+    public String getS5_number() {
+        return s5_number;
+    }
+
+    public void setS5_number(String s5_number) {
+        this.s5_number = s5_number;
+    }
+
+    public String getS5_seats() {
+        return s5_seats;
+    }
+
+    public void setS5_seats(String s5_seats) {
+        this.s5_seats = s5_seats;
+    }
+
+    public String getS6_name() {
+        return s6_name;
+    }
+
+    public void setS6_name(String s6_name) {
+        this.s6_name = s6_name;
+    }
+
+    public String getS6_number() {
+        return s6_number;
+    }
+
+    public void setS6_number(String s6_number) {
+        this.s6_number = s6_number;
+    }
+
+    public String getS6_seats() {
+        return s6_seats;
+    }
+
+    public void setS6_seats(String s6_seats) {
+        this.s6_seats = s6_seats;
+    }
+
+    public String getSs_name() {
+        return ss_name;
+    }
+
+    public void setSs_name(String ss_name) {
+        this.ss_name = ss_name;
+    }
+
+    public String getSs_number() {
+        return ss_number;
+    }
+
+    public void setSs_number(String ss_number) {
+        this.ss_number = ss_number;
+    }
+
+    public String getSs_seats() {
+        return ss_seats;
+    }
+
+    public void setSs_seats(String ss_seats) {
+        this.ss_seats = ss_seats;
+    }
+    private String s5_number="";
+    private String s5_seats="";
+    
+    
+    private String s6_name="";
+    private String s6_number="";
+    private String s6_seats="";
+    
+    
+    private String ss_name="";
+    private String ss_number="";
+    private String ss_seats="";
+    
 
     /**
      *

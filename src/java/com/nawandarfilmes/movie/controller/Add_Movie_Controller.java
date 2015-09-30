@@ -45,7 +45,7 @@ public class Add_Movie_Controller extends org.apache.struts.action.Action {
         
         Add_Movie_Model  amm=(Add_Movie_Model) form;
         
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
         String movName=amm.getM_name();
         String movProduces=amm.getM_producer();
         Date movReleaseDate = formatter.parse(amm.getM_release_date());
