@@ -1,3 +1,4 @@
+drop database if exists nawandarfilmesdistribution;
 create database nawandarfilmesdistribution;
 use nawandarfilmesdistribution;
 
