@@ -41,6 +41,10 @@ public class Common {
         return zero;
     }
 
+    public String getDayName(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE");
+        return sdf.format(date);
+    }
     public String formateDate(Date date) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
         return sdf.format(date);
