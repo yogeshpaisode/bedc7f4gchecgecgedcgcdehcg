@@ -38,13 +38,13 @@
             </li>
             <li class="active treeview">
               <a href="add_Party.jsp">
-                <i class="fa fa-dashboard"></i> <span>Add Party Details</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-user-plus"></i> <span>Add Party Details</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               
             </li>
             <li class="treeview">
               <a href="add_Theater.jsp">
-                <i class="fa fa-files-o"></i>
+                <i class="fa fa-university"></i>
                 <span>Add Theater Details</span>
                 <span class="label label-primary pull-right">4</span>
               </a>
@@ -52,32 +52,44 @@
             </li>
             <li>
               <a href="add_Movie.jsp">
-                <i class="fa fa-th"></i> <span>Movie Details</span> <small class="label pull-right bg-green">new</small>
+                <i class="fa fa-film"></i> <span>Movie Details</span> <i class="fa fa-chevron-circle-right pull-right"></i>
               </a>
             </li>
             <li>
               <a href="select_Movie.jsp">
-                <i class="fa fa-book"></i> <span>New Work Order</span> <small class="label pull-right bg-green">new</small>
+                <i class="fa fa-globe"></i> <span>New Work Order</span> <i class="fa fa-chevron-circle-right pull-right"></i>
               </a>
             </li>
             <li>
               <a href="Login_Theater.jsp">
-                <i class="fa fa-th"></i> <span>Received Theater Log</span> <small class="label pull-right bg-green">new</small>
+                <i class="fa fa-th"></i> <span>Received Theater Log</span> <i class="fa fa-chevron-circle-right pull-right"></i>
               </a>
             </li>
             <li>
               <a href="select_Movie_accept_Payment.jsp">
-                <i class="fa fa-th"></i> <span>Received Payments</span> <small class="label pull-right bg-green">new</small>
+                <i class="fa fa-money"></i> <span>Received Payments</span> <i class="fa fa-chevron-circle-right pull-right"></i>
               </a>
             </li>
             <li>
+              <a href="profit_graph.jsp">
+                <i class="fa fa-bar-chart"></i> <span>Profit Graph</span> <i class="fa fa-chevron-circle-right pull-right"></i>
+              </a>
+                <ul class="treeview-menu">
+                <li><a href="profit_graph.jsp"><i class="fa fa-line-chart"></i> Date Profit</a></li>
+                <li><a href="profit_graph.jsp"><i class="fa fa-pie-chart"></i> Circuit Wise Profit</a></li>
+                <li><a href="profit_graph.jsp"><i class="fa fa-pie-chart"></i> Day Profit</a></li>
+                <li><a href="profit_graph.jsp"><i class="fa fa-bar-chart"></i> Weekly Profit</a></li>
+                
+              </ul>
+            </li>
+            <li>
               <a href="analysis_week_GRAPH.jsp">
-                <i class="fa fa-th"></i> <span>Graph Analysis</span> <small class="label pull-right bg-green">new</small>
+                <i class="fa fa-th"></i> <span>Graph Analysis</span> <i class="fa fa-chevron-circle-right pull-right"></i>
               </a>
             </li>
             <li>
               <a href="analysis_week_EXCEL.jsp">
-                <i class="fa fa-th"></i> <span>Excel Analysis</span> <small class="label pull-right bg-green">new</small>
+                <i class="fa fa-file-excel-o"></i><span>Excel Analysis</span> <i class="fa fa-chevron-circle-right pull-right"></i>
               </a>
             </li>
             
