@@ -120,7 +120,7 @@
                                     String tr = "";
                                     date_List.add(start_Date);
                                     String temp_tr = "<tr align='center'><td style=\"min-width:23px;\"><b>Sr.No</b></td><td style=\"min-width:75px;\"><b>Theater Name</b></td><td style=\"min-width:75px;\"><b>Agrrement Type</b></td>";
-                                    th = th + "<th><tr><td colspan=\"3\" align='center'><b>Days</b></td><td  colspan=\"2\" align='center' style=\"min-width: 150px;\"><b>" + common.formateDate(start_Date) + "</b></td>";
+                                    th = th + "<tr><td colspan=\"3\" align='center'><b>Days</b></td><td  colspan=\"2\" align='center' style=\"min-width: 150px;\"><b>" + common.formateDate(start_Date) + "</b></td>";
                                     for (int i = 1; i < days_from_two; i++) {
                                         Calendar c = Calendar.getInstance();
                                         c.setTime(start_Date); // Now use today date.
@@ -142,7 +142,7 @@
                                         temp_tr = temp_tr + "<td><b>G.P</b></td><td><b>D.P</b></td>";
                                     }
                                     temp_tr = temp_tr + "<td><b>G.P</b></td><td><b>D.P</b></td><td style=\"min-width: 130px;\" align='center'><b>Distributer Profit</b></td><td style=\"min-width: 130px;\" align='center'><b>Payment Received</b></td><td style=\"min-width: 130px;\" align='center'><b>Diffrence</b></td></tr>";
-                                    th = th + "<tr></th>" + temp_tr;
+                                    th = th + "</tr>" + temp_tr;
                                     //--Create Table
 
                                     for (Object wo_obj : wo_criteria.list()) {
@@ -230,9 +230,9 @@
 
                             <div  style="overflow-x: scroll;">
                                 <table class="table table-bordered table-hover" align="center" style="width: 100%">
-                                    <tr>
+                                    
                                         <% out.print(th + tr);%>
-                                    </tr>
+                                    
                                 </table>
                             </div>
                         </div>
