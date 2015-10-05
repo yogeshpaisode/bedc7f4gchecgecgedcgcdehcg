@@ -7,6 +7,7 @@
 
 <struts-config>
     <form-beans>
+        <form-bean name="Admin_Model" type="com.nawandarfilmes.Login.Model.Admin_Model"/>
         <form-bean name="Party_Model" type="com.nawandarfilmes.payment.Model.Party_Model"/>
         <form-bean name="Sell_Profit_Model" type="com.nawandarfilmes.Log.Model.Sell_Profit_Model"/>
         <form-bean name="Theater_Model" type="com.nawandarfilmes.Login.Model.Theater_Model"/>
@@ -28,9 +29,11 @@
         <forward name="view_Workorder"  path="/view_Workorder.jsp"/>
         <forward name="Login_Theater"  path="/view_Theater_Daily_InputForm.jsp"/>
         <forward name="view_all_Profit_Ticket"  path="/view_all_Profit_Ticket.jsp"/>
+        <forward name="home-priless.jsp"  path="/home-priless.jsp"/>
     </global-forwards>
 
     <action-mappings>
+        <action input="/index.jsp" name="Admin_Model" path="/admin_Login" scope="session" type="com.nawandarfilmes.Login.Controller.Admin_Controller"/>
         <action input="/process_Party_Payment.jsp" name="Party_Model" path="/party_payment" scope="session" type="com.nawandarfilmes.payment.Controller.Party_Controlelr"/>
         <action input="/view_Theater_Daily_InputForm.jsp" name="Sell_Profit_Model" path="/sell_profit" scope="session" type="com.nawandarfilmes.Log.controller.Sell_Profit_Controller"/>
         <action input="/Login_Theater.jsp" name="Theater_Model" path="/login_theater" scope="session" type="com.nawandarfilmes.Login.Controller.Theater_Controller"/>
