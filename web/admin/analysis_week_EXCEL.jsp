@@ -118,7 +118,8 @@
                                     double global_amtRecv = 0;
                                     double global_diffrence = 0;
                                     double global_distributer_profit = 0;
-                                    int mov_id = 1;
+                                    Common common = new Common();
+                                    int mov_id = common.getMovie_ID();
                                     SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
                                     Session hib_session = sessionFactory.openSession();
                                     Criteria mov_criteria = hib_session.createCriteria(MovieDetail.class);
@@ -128,8 +129,7 @@
                                     wo_criteria.add(Restrictions.eq("movieDetail", movieDetail));
 
                                     Date start_Date = movieDetail.getMovReleaseDate();
-                                    Date end_Date = new Date();
-                                    Common common = new Common();
+                                    Date end_Date =common.get_Last_End_Date(mov_id);                                    
                                     int days_from_two = common.getDays(end_Date, start_Date);
                                     String distri_Print = "";
                                     Date temp_Date = null;
