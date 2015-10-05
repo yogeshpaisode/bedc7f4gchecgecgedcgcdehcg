@@ -16,12 +16,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Party Detail</title>
-    </head>
-    <body>
-         <jsp:include page="header.jsp"/><br>
-        <h4>View Party Detail</h4>
+        <title>NFD-Select Movie</title>
+        <%@ include file="header.jsp" %>
+        
         <%
             try {
 
@@ -45,25 +42,127 @@
                 cr.add(Restrictions.eq("partyDetail", pd));
                 party_Members_Detail = cr.list();
 
-                out.print("Party Name:" + pd.getPName() + "<br>");
-                out.print("Party State:" + pd.getPState() + "<br>");
-                out.print("Party City:" + pd.getPCity() + "<br>");
-                out.print("Party Circuit:" + pd.getPCircuit() + "<br>");
-                out.print("Party Region:" + pd.getPCircuitRegion() + "<br>");
+                //out.print("Party Name:" + pd.getPName() + "<br>");
+                //out.print("Party State:" + pd.getPState() + "<br>");
+                //out.print("Party City:" + pd.getPCity() + "<br>");
+                //out.print("Party Circuit:" + pd.getPCircuit() + "<br>");
+                //out.print("Party Region:" + pd.getPCircuitRegion() + "<br>");
+%>
+ <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Party Detail Preview
+            <small>#007612</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Add Party</a></li>
+            <li class="active">Party Detail Preview</li>
+          </ol>
+        </section>
 
-                if (party_Members_Detail.size() >= 1) {
-                    out.print("Member Detail:<br><br>");
-                    out.print("<table><th> <tr> <td>Name</td> <td>Email</td> <td>Contact</td> </tr> </th>");
-                }
+        <div class="pad margin no-print">
+          <div class="callout callout-info" style="margin-bottom: 0!important;">
+            <h4><i class="fa fa-info"></i> Note:</h4>
+            All Details are Stored.
+          </div>
+        </div>
 
-                for (Object o : party_Members_Detail) {
-                    MembersDetail membersDetail = (MembersDetail) o;
-                    out.print("<tr> <td>" + membersDetail.getMName() + "</td> <td>" + membersDetail.getMEmail() + "</td> <td>" + membersDetail.getMContact() + "</td> </tr>");
-                }
+        <!-- Main content -->
+        <section class="invoice">
+          <!-- title row -->
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="page-header">
+                <i class="fa fa-globe"></i> Party Details.
+                <small class="pull-right">Date: 2/10/2014</small>
+              </h2>
+            </div><!-- /.col -->
+          </div>
+          <!-- info row -->
+          <div class="row invoice-info">
+            <div class="col-sm-4 invoice-col">
+              
+              <address>
+               <b>Name: <% out.print(pd.getPName());%></b><br>
+              
+              <b>Address:</b> <% out.print(pd.getPAddress()); %><br>
+              <b>City:</b> <% out.print(pd.getPCity()); %><br>
+              <b>State:</b> <% out.print(pd.getPState()); %>
+              </address>
+            </div><!-- /.col -->
+            <div class="col-sm-4 invoice-col">
+             
+              <address>
+                 <b>Mobile No: <% out.print(pd.getPStdCode());%>-<% out.print(pd.getPOfficeNumber());%></b><br>
+             
+              <b>Email: </b> <% out.print(pd.getPEmail()); %><br>
+              <b>Fax: </b> <% out.print(pd.getPFax()); %><br>
+              
+              </address>
+            </div><!-- /.col -->
+            <div class="col-sm-4 invoice-col">
+              <b>Circuit Area: <% out.print(pd.getPCircuit());%></b><br>
+              
+              <b>Circuit Region </b> <% out.print(pd.getPCircuitRegion()); %> <br>
+              <b>Country: </b> <% out.print(pd.getPCountry()); %><br>
+              
+            </div><!-- /.col -->
+          </div><!-- /.row -->
 
-                if (party_Members_Detail.size() >= 1) {
-                    out.print("</table>");
-                }
+          <!-- Table row -->
+          <div class="row">
+            <div class="col-xs-12 table-responsive">
+                <%
+if (party_Members_Detail.size() >= 1) {
+                   // out.print("Member Detail:<br><br>");
+                   // out.print("<table><th> <tr> <td>Name</td> <td>Email</td> <td>Contact</td> </tr> </th>");
+             %>  
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Member Name</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    
+                  </tr>
+                </thead>
+                <% }                
+%>
+                <tbody>
+                   <%  for (Object o : party_Members_Detail) { 
+                     MembersDetail membersDetail = (MembersDetail) o;                   
+                        %>
+                  <tr>
+                    <td><% out.print(membersDetail.getMName());%></td>
+                    <td><% out.print(membersDetail.getMEmail());%></td>
+                    <td><% out.print(membersDetail.getMContact());%></td>
+                    
+                  </tr>
+                  <% } %>
+                </tbody>
+              </table>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+
+         
+
+          <!-- this row will not appear when printing -->
+          <div class="row no-print">
+            <div class="col-xs-12">
+              
+              <a href="add_Party.jsp"><button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Add More Party</button></a>
+             
+            </div>
+          </div>
+        </section><!-- /.content -->
+        <div class="clearfix"></div>
+      </div><!-- /.content-wrapper -->
+
+
+<%
+             
                 hib_session.close();
             } catch (Exception e) {
                 out.print(e + "");
@@ -72,7 +171,7 @@
 
 
         %>
-        <br><br>
-        <a href="add_Party.jsp"><button>Add More Party</button></a>
-    </body>
+        
+  <%@ include file="sidebar.jsp" %>
+    <%@ include file="footer.jsp" %>
 </html>

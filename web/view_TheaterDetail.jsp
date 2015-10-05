@@ -19,12 +19,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Theater Detail</title>
-    </head>
-    <body>
-         <jsp:include page="header.jsp"/><br>
-        <h4>View Theater Detail</h4>
+        <title>NFD-Theater Preview</title>
+        <%@ include file="header.jsp" %>
+        
         <%
             try {
 
@@ -46,7 +43,7 @@
                 partyList = cr.list();
                 partyDetail = (PartyDetail) partyList.get(0);
 
-                out.print("<h1>" + partyDetail.getPName() + "</h1>");
+                //out.print("<h1>" + partyDetail.getPName() + "</h1>");
 
 
                 cr = hib_session.createCriteria(TheaterDetail.class);
@@ -54,27 +51,133 @@
                 theaterlist = cr.list();
                 theaterDetail = (TheaterDetail) theaterlist.get(0);
 
-                out.print("Theater Name:" + theaterDetail.getTName() + "<br>");
-                out.print("Theater Type:" + theaterDetail.getTType() + "<br>");
+                //out.print("Theater Name:" + theaterDetail.getTName() + "<br>");
+                //out.print("Theater Type:" + theaterDetail.getTType() + "<br>");
 
                 cr = hib_session.createCriteria(ScreenDetail.class);
                 cr.add(Restrictions.eq("theaterDetail", theaterDetail));
                 screeList = cr.list();
+%>
+                <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Theater Detail Preview
+            <small>#007612</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Add Theater</a></li>
+            <li class="active">Theater Detail Preview</li>
+          </ol>
+        </section>
 
-                if (screeList.size() >= 1) {
-                    out.print("Screen Detail:<br><br>");
-                    out.print("<table><th> <tr> <td>Screen Name</td> <td>Screen Number</td> <td>Screen Seats</td> </tr> </th>");
-                }
+        <div class="pad margin no-print">
+          <div class="callout callout-info" style="margin-bottom: 0!important;">
+            <h4><i class="fa fa-info"></i> Note:</h4>
+            All Details are Stored.
+          </div>
+        </div>
 
+        <!-- Main content -->
+        <section class="invoice">
+          <!-- title row -->
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="page-header">
+                <i class="fa fa-globe"></i> Theater Details.
+                <small class="pull-right">Date: 2/10/2014</small>
+              </h2>
+            </div><!-- /.col -->
+          </div>
+          <!-- info row -->
+          <div class="row invoice-info">
+            <div class="col-sm-4 invoice-col">
+              
+              <address>
+               <b>Party Name: <% out.print(partyDetail.getPName());%></b><br>
+              
+              <b>Address:</b> <% out.print(partyDetail.getPAddress()); %><br>
+              <b>City:</b> <% out.print(partyDetail.getPCity()); %><br>
+              <b>State:</b> <% out.print(partyDetail.getPState()); %>
+              </address>
+            </div><!-- /.col -->
+            <div class="col-sm-4 invoice-col">
+             
+              <address>
+                 <b>Theater Name: <% out.print(theaterDetail.getTName());%></b><br>
+             
+              <b>Address </b> <% out.print(theaterDetail.getTAddress()); %><br>
+              <b>Type: </b> <% out.print(theaterDetail.getTType()); %><br>
+              <b>City: </b> <% out.print(theaterDetail.getTCity()); %><br>
+              <b>State: </b> <% out.print(theaterDetail.getTState()); %>
+              </address>
+            </div><!-- /.col -->
+            <div class="col-sm-4 invoice-col">
+              <b>Email: <% out.print(theaterDetail.getTEmail());%></b><br>
+              
+              <b>Contact: </b> <% out.print(theaterDetail.getTStdCode()); %>-<% out.print(theaterDetail.getTPhoneNumber());%> <br>
+              <b>No. of Screen </b> <% out.print(theaterDetail.getTNoScreens()); %>
+              
+            </div><!-- /.col -->
+          </div><!-- /.row -->
 
-                for (Object o : screeList) {
-                    ScreenDetail sd = (ScreenDetail) o;
-                    out.print("<tr> <td>" + sd.getSName() + "</td> <td>" + sd.getSNumber() + "</td> <td>" + sd.getSSeats() + "</td> </tr>");
-                }
+          <!-- Table row -->
+          <div class="row">
+            <div class="col-xs-12 table-responsive">
+                <%
+           if (screeList.size() >= 1) {
+                   // out.print("Member Detail:<br><br>");
+                   // out.print("<table><th> <tr> <td>Name</td> <td>Email</td> <td>Contact</td> </tr> </th>");
+             %>  
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Screen Name</th>
+                    <th>Screen No.</th>
+                    <th>Seats</th>
+                    
+                  </tr>
+                </thead>
+                <% }                
+%>
+                <tbody>
+                   <%  for (Object o : screeList) {
+                    ScreenDetail sd = (ScreenDetail) o;                  
+                        %>
+                  <tr>
+                    <td><% out.print(sd.getSName());%></td>
+                    <td><% out.print(sd.getSNumber());%></td>
+                    <td><% out.print(sd.getSSeats());%></td>
+                    
+                  </tr>
+                  <% } %>
+                </tbody>
+              </table>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
 
-                if (screeList.size() >= 1) {
-                    out.print("</table>");
-                }
+         
+
+          <!-- this row will not appear when printing -->
+          <div class="row no-print">
+            <div class="col-xs-12">
+              
+              <a href="add_Theater.jsp"><button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Add More Theaters</button></a>
+             
+            </div>
+          </div>
+        </section><!-- /.content -->
+        <div class="clearfix"></div>
+      </div><!-- /.content-wrapper -->
+                
+                
+                
+                
+                
+                
+                <%
+               
                 hib_session.close();
 
             } catch (Exception e) {
@@ -84,7 +187,6 @@
 
 
         %>
-        <br><br>
-        <a href="add_Theater.jsp"><button>Add More Theater</button></a>
-    </body>
+     <%@ include file="sidebar.jsp" %>
+    <%@ include file="footer.jsp" %>
 </html>

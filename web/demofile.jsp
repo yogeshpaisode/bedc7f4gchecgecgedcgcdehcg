@@ -1,135 +1,78 @@
 <%-- 
-    Document   : view_MovieDetail
-    Created on : Sep 11, 2015, 11:32:58 AM
+    Document   : view_PartyDetail
+    Created on : Sep 10, 2015, 4:15:00 PM
     Author     : yogesh
 --%>
 
 <%@page import="java.util.List"%>
+<%@page import="org.hibernate.criterion.Restrictions"%>
 <%@page import="org.hibernate.Criteria"%>
+<%@page import="org.omg.PortableServer.REQUEST_PROCESSING_POLICY_ID"%>
 <%@page import="org.hibernate.Session"%>
 <%@page import="org.hibernate.SessionFactory"%>
 <%@page import="com.nawandarfilmes.Hibernate.*"%>
-<%@page import="com.nawandarfilmes.commonUtility.Common"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>NFD-Select Movie</title>
-        <%@ include file="header.jsp" %>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Party Detail</title>
+    </head>
+    <body>
+         <jsp:include page="header.jsp"/><br>
+        <h4>View Party Detail</h4>
+        <%
+            try {
 
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-                Select Movie and Action:
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="index.jsp"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Select movie</li>
-            </ol>
-        </section>
+                int p_id = Integer.parseInt(request.getAttribute("p_id").toString());
+                List party_Detail = null;
+                List party_Members_Detail = null;
+                PartyDetail pd = null;
 
-        <!-- Main content -->
-        <section class="content">
-            <form action="process_selected_movie.jsp" method="post">
-                <!-- SELECT2 EXAMPLE -->
-                <div class="box box-info">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Movie allotment</h3>
+                SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+                Session hib_session = sessionFactory.openSession();
 
-                    </div><!-- /.box-header -->
-                    <div class="box-body">
-                        <div class="row">
-
-                            <%
-                                try {
-                                    SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-                                    Session hib_session = sessionFactory.openSession();
-                                    List movieList = null;
-                                    Criteria criteria = hib_session.createCriteria(MovieDetail.class);
-                                    movieList = criteria.list();
-                                    Common com = new Common();
-                                    for (Object o : movieList) {
-                                        MovieDetail md = (MovieDetail) o;
+                Criteria cr = hib_session.createCriteria(PartyDetail.class);
+                cr.add(Restrictions.eq("PId", p_id));
+                party_Detail = cr.list();
 
 
-                            %>
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="info-box">
-                                    <span class="info-box-icon bg-aqua"><i class="fa fa-film"></i></span>
-                                    <div class="info-box-content">
-                                        <span class="info-box-number"><% out.print(md.getMovName());%></span>
-                                        <span class="info-box-text"><% out.print(md.getMovProduces());%></span>
-                                        <span class="info-box-text">Realease Date: <br><label><input type="radio" class="minimal-red" name="mov_id" value="<%out.print(md.getMovId());%>"/></label><%out.print(com.formateDate(md.getMovReleaseDate()));%> </span>
-                                    </div><!-- /.info-box-content -->
-                                </div><!-- /.info-box -->
-                            </div><!-- /.col -->
-                            <%
-                                    }
-              String b=request.getParameter("mov_id");
-                                    hib_session.close();
-
-                                } catch (Exception e) {
-                                    out.print(""+e+ "");
-                                }
-
-                            %>
-                        </div><!-- /.row -->
-                    </div><!-- /.box-body -->
-                </div><!-- /.box -->
-
-                <!-- New Row Start-->
-                <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <a href="process_selected_movie.jsp?action=wo&mov_id=<% out.print(b); %>">
-              <div class="info-box">
-                <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Messages</span>
-                  <span class="info-box-number">1,410</span>
-                </div><!-- /.info-box-content -->
-              </div><!-- /.info-box -->
-                </a>
-            </div><!-- /.col -->
-            <div class="col-md-3 col-sm-6 col-xs-12">
-              <div class="info-box">
-                <span class="info-box-icon bg-green"><i class="fa fa-flag-o"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Bookmarks</span>
-                  <span class="info-box-number">410</span>
-                </div><!-- /.info-box-content -->
-              </div><!-- /.info-box -->
-            </div><!-- /.col -->
-            <div class="col-md-3 col-sm-6 col-xs-12">
-              <div class="info-box">
-                <span class="info-box-icon bg-yellow"><i class="fa fa-files-o"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Uploads</span>
-                  <span class="info-box-number">13,648</span>
-                </div><!-- /.info-box-content -->
-              </div><!-- /.info-box -->
-            </div><!-- /.col -->
-            <div class="col-md-3 col-sm-6 col-xs-12">
-              <div class="info-box">
-                <span class="info-box-icon bg-red"><i class="fa fa-star-o"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Likes</span>
-                  <span class="info-box-number">93,139</span>
-                </div><!-- /.info-box-content -->
-              </div><!-- /.info-box -->
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-              <!--New Row end -->  
-              
-                <input type="radio" name="action" value="wo"/>New Work Order<br>
-                <input type="submit"/>
-            </form>
-
-        </section><!-- /.content -->
-    </div><!-- /.content-wrapper -->
+                pd = (PartyDetail) party_Detail.get(0);
 
 
-    <%@ include file="sidebar.jsp" %>
-    <%@ include file="footer.jsp" %>
+                cr = hib_session.createCriteria(MembersDetail.class);
+                cr.add(Restrictions.eq("partyDetail", pd));
+                party_Members_Detail = cr.list();
+
+                out.print("Party Name:" + pd.getPName() + "<br>");
+                out.print("Party State:" + pd.getPState() + "<br>");
+                out.print("Party City:" + pd.getPCity() + "<br>");
+                out.print("Party Circuit:" + pd.getPCircuit() + "<br>");
+                out.print("Party Region:" + pd.getPCircuitRegion() + "<br>");
+
+                if (party_Members_Detail.size() >= 1) {
+                    out.print("Member Detail:<br><br>");
+                    out.print("<table><th> <tr> <td>Name</td> <td>Email</td> <td>Contact</td> </tr> </th>");
+                }
+
+                for (Object o : party_Members_Detail) {
+                    MembersDetail membersDetail = (MembersDetail) o;
+                    out.print("<tr> <td>" + membersDetail.getMName() + "</td> <td>" + membersDetail.getMEmail() + "</td> <td>" + membersDetail.getMContact() + "</td> </tr>");
+                }
+
+                if (party_Members_Detail.size() >= 1) {
+                    out.print("</table>");
+                }
+                hib_session.close();
+            } catch (Exception e) {
+                out.print(e + "");
+            }
+
+
+
+        %>
+        <br><br>
+        <a href="add_Party.jsp"><button>Add More Party</button></a>
+    </body>
 </html>
-
