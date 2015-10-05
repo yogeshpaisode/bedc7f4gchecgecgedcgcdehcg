@@ -45,10 +45,10 @@
     Common common = new Common();
     int days_from_two = common.getDays(end_Date, start_Date);
     Date temp_Date = null;
-    HashMap<Date, DistributerProfit_Bean> date_Map = new HashMap<Date, DistributerProfit_Bean>();
+    HashMap<String, DistributerProfit_Bean> date_Map = new HashMap<String, DistributerProfit_Bean>();
     HashMap<String, Days_Bean> week_days_Map = new HashMap<String, Days_Bean>();
     HashMap<String, Circuit_Bean> circuit_Map = new HashMap<String, Circuit_Bean>();
-
+    List date_List = new ArrayList();
     List week_days_list = new ArrayList();
     week_days_list.add("Fri");
     week_days_list.add("Sat");
@@ -72,22 +72,21 @@
     DistributerProfit_Bean dp_b = new DistributerProfit_Bean();
     dp_b.setAmount(0);
     dp_b.setId(common.formateDate(start_Date));
-    date_Map.put(start_Date, dp_b);
-
+    date_Map.put(common.formateDate(start_Date), dp_b);
+    date_List.add(common.formateDate(start_Date));
+    
     for (int i = 1; i < days_from_two; i++) {
         Calendar c = Calendar.getInstance();
         c.setTime(start_Date); // Now use today date.
         c.add(Calendar.DATE, i);
         temp_Date = c.getTime();
-
+        date_List.add(common.formateDate(temp_Date));
         DistributerProfit_Bean dpb = new DistributerProfit_Bean();
         dpb.setAmount(0);
         dpb.setId(common.formateDate(temp_Date));
-        date_Map.put(temp_Date, dpb);
+        date_Map.put(common.formateDate(temp_Date), dpb);
 
     }
-
-    System.out.println("\n" + date_Map + "\n");
     //--Create Table
 
     for (Object wo_obj : wo_criteria.list()) {
@@ -128,7 +127,7 @@
                     amount = com.getDistributerProfit(wo.getWoRent(), wo.getWoSharing(), wo.getWoMg(), wa.getTheaterRent(), wa.getDistributerShare(), mg_amount, ptl.getNettProfit(), true, days);
                     global_distributer_profit = global_distributer_profit + amount;
                     total = total + amount;
-                    DistributerProfit_Bean dpb = date_Map.get(ptl.getLogDate());
+                    DistributerProfit_Bean dpb = date_Map.get(common.formateDate(ptl.getLogDate()));
                     dpb.setAmount(amount);
                     //Week Day Wise
                     Days_Bean days_Bean = week_days_Map.get(com.getDayName(ptl.getLogDate()));
@@ -136,7 +135,7 @@
                     //Circuit Wise
                     Circuit_Bean circuit_Bean = circuit_Map.get(circuit);
                     circuit_Bean.setAmount(amount);
-                    
+
                     break;
                 }
             }//--Aggrement Loop
@@ -145,11 +144,12 @@
         global_diffrence = global_diffrence + (total - amt_recv);
     }//--Work Order Loop
 
-    for (Map.Entry m : date_Map.entrySet()) {
-        DistributerProfit_Bean dpb = (DistributerProfit_Bean) m.getValue();
+    for (Object o : date_List) {
+        DistributerProfit_Bean dpb = date_Map.get(o.toString());
         chart = chart + "{\"category\": \"" + dpb.getId() + "\",\"column-1\": \"" + dpb.getAmount() + "\"},";
         grand_Total = grand_Total + dpb.getAmount();
     }
+    out.print(chart+"<br>");
     hib_session.close();
 %>
 
