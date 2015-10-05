@@ -31,7 +31,7 @@
 
         <!-- Main content -->
         <section class="content">
-            <form action="process_selected_movie.jsp" method="post">
+            <form action="process_selected_movie.jsp" method="post" id="form1">
                 <!-- SELECT2 EXAMPLE -->
                 <div class="box box-info">
                     <div class="box-header with-border">
@@ -55,14 +55,16 @@
 
                             %>
                             <div class="col-md-3 col-sm-6 col-xs-12">
+                                <label style="cursor:pointer;">
                                 <div class="info-box">
                                     <span class="info-box-icon bg-aqua"><i class="fa fa-film"></i></span>
                                     <div class="info-box-content">
                                         <span class="info-box-number"><% out.print(md.getMovName());%></span>
                                         <span class="info-box-text"><% out.print(md.getMovProduces());%></span>
-                                        <span class="info-box-text">Realease Date: <br><input type="radio" name="mov_id" value="<%out.print(md.getMovId());%>"/><%out.print(com.formateDate(md.getMovReleaseDate()));%> </span>
+                                        <span class="info-box-text">Realease Date: <br><label><input type="radio" class="minimal-red" name="mov_id" value="<%out.print(md.getMovId());%>"/></label><%out.print(com.formateDate(md.getMovReleaseDate()));%> </span>
                                     </div><!-- /.info-box-content -->
                                 </div><!-- /.info-box -->
+                                </label>
                             </div><!-- /.col -->
                             <%
                                     }
@@ -78,8 +80,51 @@
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
 
-                <input type="radio" name="action" value="wo"/>New Work Order<br>
-                <input type="submit"/>
+                <!-- New Row Start-->
+                <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <a href="javascript:;" onclick="document.getElementById('form1').submit();">
+              <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
+                <div class="info-box-content">
+                    <input type="hidden" name="action" value="wo"/>
+                  <span class="info-box-text">New Work Order</span>
+                  <span class="info-box-number">1,410</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+                </a>
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-green"><i class="fa fa-flag-o"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Received Payments</span>
+                  <span class="info-box-number">410</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-yellow"><i class="fa fa-files-o"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Uploads</span>
+                  <span class="info-box-number">13,648</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-red"><i class="fa fa-star-o"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Likes</span>
+                  <span class="info-box-number">93,139</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+              <!--New Row end -->  
+              <input type="hidden" name="mess" value=""/>
+                
             </form>
 
         </section><!-- /.content -->

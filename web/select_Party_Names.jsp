@@ -173,11 +173,11 @@
                                                     work_order_Criteria.add(Restrictions.eq("woAggrement", true));
 
                                                     if (work_order_Criteria.list().size() >= 1) {
-                                                        color = "red";
+                                                        color = "btn-success";
                                                         actionName = "Update Work Order";
                                                         redirectPageName = "";
                                                     } else {
-                                                        color = "green";
+                                                        color = "btn-warning";
                                                         actionName = "Place Work Order";
                                                         redirectPageName = "add_Workorder.jsp";
                                                     }
@@ -192,7 +192,7 @@
                                         <td><% out.print(s_name);%></td>
                                         <td><% out.print(s_number);%></td>
 
-                                        <td><form action='<% out.print(redirectPageName);%>' method=\"get\"><input type='password' hidden name='mov_name' value='<%out.print(movieDetail.getMovName());%>'/><input type='password' hidden name='p_id' value='<%out.print(id);%>'/><input type='password' hidden name='p_name' value='<%out.print(p_name);%>'/><input type='password' hidden name='p_phone' value='<%out.print(p_phone);%>'/><input type='password' hidden name='t_id' value='<%out.print(t_id);%>'/><input type='password' hidden name='t_name' value='<%out.print(t_name);%>'/><input type='password' hidden name='t_phone' value='<%out.print(t_phone);%>'/><input type='password' hidden name='s_name' value='<%out.print(s_name);%>'/><input type='password' hidden name='s_no' value='<%out.print(s_no);%>'/><input type='password' hidden name='s_id' value='<%out.print(s_id);%>'/><input type='password' hidden name='m_id' value='<%out.print(mov_id);%>'/><input type='submit' value='<% out.print(actionName);%>'/></form></td>
+                                        <td><form action='<% out.print(redirectPageName);%>' method=\"get\"><input type='password' hidden name='mov_name' value='<%out.print(movieDetail.getMovName());%>'/><input type='password' hidden name='p_id' value='<%out.print(id);%>'/><input type='password' hidden name='p_name' value='<%out.print(p_name);%>'/><input type='password' hidden name='p_phone' value='<%out.print(p_phone);%>'/><input type='password' hidden name='t_id' value='<%out.print(t_id);%>'/><input type='password' hidden name='t_name' value='<%out.print(t_name);%>'/><input type='password' hidden name='t_phone' value='<%out.print(t_phone);%>'/><input type='password' hidden name='s_name' value='<%out.print(s_name);%>'/><input type='password' hidden name='s_no' value='<%out.print(s_no);%>'/><input type='password' hidden name='s_id' value='<%out.print(s_id);%>'/><input type='password' hidden name='m_id' value='<%out.print(mov_id);%>'/><button type="submit" value='<% out.print(actionName);%>' class="btn btn-block <% out.print(color);%>"><% out.print(actionName);%></button><!--<input type='submit' value='<%// out.print(actionName);%>'/>--></form></td>
 
                                     </tr>
                                     <%   }//Screen Loop
@@ -232,9 +232,9 @@
     </div><!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-            <b>Version</b> 2.3.0
+            <b>Version</b> 1.0
         </div>
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+        <strong>Copyright &copy;2015 <a href="#">Nawander Film Studio</a>.</strong> All rights reserved.
     </footer>
 
 

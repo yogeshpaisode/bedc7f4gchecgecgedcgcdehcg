@@ -1,75 +1,135 @@
 <%-- 
-    Document   : view_all_Profit_Ticket
-    Created on : Sep 14, 2015, 4:14:53 PM
+    Document   : view_MovieDetail
+    Created on : Sep 11, 2015, 11:32:58 AM
     Author     : yogesh
 --%>
 
-
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="org.hibernate.criterion.Restrictions"%>
+<%@page import="java.util.List"%>
 <%@page import="org.hibernate.Criteria"%>
 <%@page import="org.hibernate.Session"%>
 <%@page import="org.hibernate.SessionFactory"%>
 <%@page import="com.nawandarfilmes.Hibernate.*"%>
+<%@page import="com.nawandarfilmes.commonUtility.Common"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Log</title>
-        <script src="js/jquery-1.11.2.min.js"></script>
+        <title>NFD-Select Movie</title>
+        <%@ include file="header.jsp" %>
 
-        <script type="text/javascript">
-            function disableF5(e) { if ((e.which || e.keyCode) == 116 || (e.which || e.keyCode) == 82) e.preventDefault(); };
-            $(document).ready(function(){
-                $(document).on("keydown", disableF5);
-            });
-            window.location.hash="no-back-button";
-            window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
-            window.onhashchange=function(){window.location.hash="no-back-button";}
-        </script>
-    </head>
-    <body>
-         <jsp:include page="header.jsp"/><br>
-        <h4>View Theater Profit Detail:</h4>
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Select Movie and Action:
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="index.jsp"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">Select movie</li>
+            </ol>
+        </section>
 
-        <br><br><br>
+        <!-- Main content -->
+        <section class="content">
+            <form action="process_selected_movie.jsp" method="post">
+                <!-- SELECT2 EXAMPLE -->
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Movie allotment</h3>
+
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="row">
+
+                            <%
+                                try {
+                                    SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+                                    Session hib_session = sessionFactory.openSession();
+                                    List movieList = null;
+                                    Criteria criteria = hib_session.createCriteria(MovieDetail.class);
+                                    movieList = criteria.list();
+                                    Common com = new Common();
+                                    for (Object o : movieList) {
+                                        MovieDetail md = (MovieDetail) o;
 
 
-        <table align="center">
-            <tr>
-                <th>Sr.No:</th>
-                <th>Log Date:</th>
-                <th>Entry Date:</th>
-                <th>Total Ticket Sold:</th>
-                <th>Profit:</th>
-            </tr>
+                            %>
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="info-box">
+                                    <span class="info-box-icon bg-aqua"><i class="fa fa-film"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-number"><% out.print(md.getMovName());%></span>
+                                        <span class="info-box-text"><% out.print(md.getMovProduces());%></span>
+                                        <span class="info-box-text">Realease Date: <br><label><input type="radio" class="minimal-red" name="mov_id" value="<%out.print(md.getMovId());%>"/></label><%out.print(com.formateDate(md.getMovReleaseDate()));%> </span>
+                                    </div><!-- /.info-box-content -->
+                                </div><!-- /.info-box -->
+                            </div><!-- /.col -->
+                            <%
+                                    }
+              String b=request.getParameter("mov_id");
+                                    hib_session.close();
+
+                                } catch (Exception e) {
+                                    out.print(""+e+ "");
+                                }
+
+                            %>
+                        </div><!-- /.row -->
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+
+                <!-- New Row Start-->
+                <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <a href="process_selected_movie.jsp?action=wo&mov_id=<% out.print(b); %>">
+              <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Messages</span>
+                  <span class="info-box-number">1,410</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+                </a>
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-green"><i class="fa fa-flag-o"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Bookmarks</span>
+                  <span class="info-box-number">410</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-yellow"><i class="fa fa-files-o"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Uploads</span>
+                  <span class="info-box-number">13,648</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-red"><i class="fa fa-star-o"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Likes</span>
+                  <span class="info-box-number">93,139</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+              <!--New Row end -->  
+              
+                <input type="radio" name="action" value="wo"/>New Work Order<br>
+                <input type="submit"/>
+            </form>
+
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
 
 
-            <%
-                int wo_id = Integer.parseInt(request.getAttribute("wo_id").toString());
-                SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-                Session hib_session = sessionFactory.openSession();
-                int count = 0;
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
-                Criteria criteria = hib_session.createCriteria(WorkOrder.class);
-                criteria.add(Restrictions.eq("woId", wo_id));
-
-                WorkOrder wo = (WorkOrder) criteria.list().get(0);
-                criteria = hib_session.createCriteria(ProfitTicketLog.class);
-                criteria.add(Restrictions.eq("workOrder", wo));
-                double totalProfit = 0;
-                for (Object o : criteria.list()) {
-
-                    ProfitTicketLog log = (ProfitTicketLog) o;
-                    totalProfit = totalProfit + log.getNettProfit();
-                    out.print("<tr><td>" + (++count) + "</td><td>" + dateFormat.format(log.getLogDate()) + "</td><td>" + dateFormat.format(log.getEntryDateTime()) + "</td><td>" + log.getTicketSold() + "</td><td>" + log.getNettProfit() + "</td></tr>");
-                }
-                out.print("<tr><td></td><td></td><td></td><td>Total Profit:</td><td>" + totalProfit + "</td></tr>");
-
-            %>
-
-        </table>
-
-    </body>
+    <%@ include file="sidebar.jsp" %>
+    <%@ include file="footer.jsp" %>
 </html>
+
