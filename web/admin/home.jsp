@@ -362,7 +362,7 @@
             "valueAxes": [
                 {
                     "id": "ValueAxis-1",
-                    "title": "Lakh"
+                    "title": "Profit"
                 }
             ],
             "allLabels": [],
