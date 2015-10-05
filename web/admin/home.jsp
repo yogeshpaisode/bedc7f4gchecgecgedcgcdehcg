@@ -209,14 +209,6 @@
                     "title": "<%out.print(movie_name);%>",
                     "type": "column",
                     "valueField": "<%out.print(movie_name);%>"
-                },
-                {
-                    "balloonText": "[[title]] of [[category]]:[[value]]",
-                    "fillAlphas": 1,
-                    "id": "AmGraph-2",
-                    "title": "bajiraov Mastani",
-                    "type": "column",
-                    "valueField": "Bajiraov Mastani"
                 }
             ],
             "guides": [],
@@ -351,14 +343,6 @@
                     "title": "<%out.print(movie_name);%>",
                     "type": "smoothedLine",
                     "valueField": "column-1"
-                },
-                {
-                    "balloonText": "[[title]] of [[category]]:[[value]]",
-                    "bullet": "square",
-                    "id": "AmGraph-2",
-                    "title": "graph 2",
-                    "type": "smoothedLine",
-                    "valueField": "column-2"
                 }
             ],
             "guides": [],
