@@ -8,7 +8,7 @@
         <div class="pull-right hidden-xs">
           <b>Version</b> 1.0
         </div>
-        <strong>Copyright &copy; 2015 <a href="http://almsaeedstudio.com">Nawandar Films Distribution</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2015 <a href="http://nawandarfilms.com">Nawandar Films Distribution</a>.</strong> All rights reserved.
       </footer>
 
 

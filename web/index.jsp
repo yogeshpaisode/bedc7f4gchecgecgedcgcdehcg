@@ -25,7 +25,7 @@
         <!-- Automatic element centering -->
         <div class="lockscreen-wrapper">
             <div class="lockscreen-logo">
-                <a href="http://NAWANDARFILMS.com" class="text-black"><b>Nawandar</b>FILMS</a>
+                <a href="http://nawandarfilms.com" class="text-black"><b>Nawandar</b>FILMS</a>
             </div>
             <!-- User name -->
             <div class="lockscreen-name">Admin Login</div>
