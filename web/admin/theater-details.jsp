@@ -84,20 +84,20 @@
                                 for (Object to : party_List) {
 
                                     TheaterDetail pd = (TheaterDetail) to;
-                                    id = pd.getTId();
+                                    id = pd.getTId();                                    
+                                    PartyDetail p=pd.getPartyDetail();
 
                             %>
                             <tr>
                                 <td><% out.print(++list);%></td>
                                 <td><% out.print(pd.getTName());%></td>
-                                <td></td>
-                                <td></td>
+                                <td><% out.print(p.getPCircuit());%></td>
+                                <td><% out.print(p.getPName());%></td>
                                 <td><% out.print(pd.getTType());%></td>
                                 <td><% out.print(pd.getTAddress());%></td>
                                 <td> <% out.print(pd.getTCity());%></td>
                                 <td><% out.print(pd.getTEmail());%></td>
                                 <td><% out.print(pd.getTPhoneNumber());%></td>
-
                             </tr>
                             <%
                                 }
