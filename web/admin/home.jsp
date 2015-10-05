@@ -37,7 +37,8 @@
     double global_amtRecv = 0;
     double global_diffrence = 0;
     double global_distributer_profit = 0;
-    int mov_id = 1;
+    Common common = new Common();
+    int mov_id=common.getMovie_ID();
     String chart = "";
     String day_chart = "";
     String circuit_chart = "";
@@ -45,15 +46,14 @@
     SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     Session hib_session = sessionFactory.openSession();
     Criteria mov_criteria = hib_session.createCriteria(MovieDetail.class);
-    mov_criteria.add(Restrictions.eq("movId", mov_id));
+    mov_criteria.add(Restrictions.eq("movId",mov_id));
     MovieDetail movieDetail = (MovieDetail) mov_criteria.list().get(0);
     movie_name=movieDetail.getMovName();
     Criteria wo_criteria = hib_session.createCriteria(WorkOrder.class);
     wo_criteria.add(Restrictions.eq("movieDetail", movieDetail));
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     Date start_Date = movieDetail.getMovReleaseDate();
-    Date end_Date = new Date();
-    Common common = new Common();
+    Date end_Date = common.get_Last_End_Date(mov_id);
     int days_from_two = common.getDays(end_Date, start_Date);
     Date temp_Date = null;
     HashMap<String, DistributerProfit_Bean> date_Map = new HashMap<String, DistributerProfit_Bean>();
@@ -328,9 +328,9 @@
             "titles": [],
             "dataProvider": [
         <% out.print(circuit_chart);%>
-                         ]
-                     }
-                 );
+                ]
+            }
+        );
     </script>
     <!-- amCharts javascript code -->
     <script type="text/javascript">
