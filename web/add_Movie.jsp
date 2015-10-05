@@ -36,12 +36,12 @@
                         <html:form action="/add_Movie">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Movie Name</label>
+                                    <label for="exampleInputEmail1">Movie Name <font color="red"><html:errors property="login" /></font></label>
                                     <input type="text" class="form-control" id="m_name" name="m_name" placeholder="Movie Name">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Producer Name</label>
+                                    <label for="exampleInputEmail1">Producer Name <font color="red"><html:errors property="login" /></font></label>
                                     <input type="text" class="form-control" id="m_producer" name="m_producer" placeholder="Producer Name">
                                 </div>
 
@@ -53,12 +53,12 @@
 
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Movie Release Date</label>
+                                    <label for="exampleInputEmail1">Movie Release Date <font color="red"><html:errors property="login" /></font></label>
 
                                     <input type="text" id="m_realese_date" name="m_release_date" class="form-control" data-provide="datepicker" placeholder="month/day/year">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Movie Banner Link</label>
+                                    <label for="exampleInputEmail1">Movie Banner Link <font color="red"><html:errors property="login" /></font></label>
                                     <input type="text" class="form-control" id="m_banner_link" name="m_banner_img_link" placeholder="paste Link">
                                 </div>
 

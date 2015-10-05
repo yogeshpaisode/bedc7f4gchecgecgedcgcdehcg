@@ -37,25 +37,25 @@
                         <html:form action="/add_Party">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Party Name</label>
+                                    <label for="exampleInputEmail1">Party Name <font color="red"><html:errors property="login" /></font></label>
                                     <input type="text" class="form-control" id="p_name" name="p_name" placeholder="Party Name">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Mobile Number</label>
+                                    <label for="exampleInputEmail1">Mobile Number <font color="red"><html:errors property="login" /></font></label>
                                     <input type="number" class="form-control" id="p_contact" name="p_contact" placeholder="Party Mobile Number">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Address</label>
+                                    <label for="exampleInputEmail1">Address <font color="red"><html:errors property="login" /></font></label>
                                     <textarea class="form-control" rows="3" placeholder="Full Address" id="p_address" name="p_address" style="height: 113px;"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Fax Number</label>
+                                    <label for="exampleInputEmail1">Fax Number <font color="red"><html:errors property="login" /></font></label>
                                     <input type="number" class="form-control" id="p_fax" name="p_fax" placeholder="Fax Number">
                                 </div>
                                 <div class="form-group">
 
-                                    <label for="exampleInputEmail1">Circuit Area</label>
+                                    <label for="exampleInputEmail1">Circuit Area <font color="red"><html:errors property="login" /></font></label>
                                     <select id="p_circuit" name="p_circuit" class="form-control">
                                         <option>Bombay </option>
                                         <option>Delhi</option>
@@ -72,16 +72,16 @@
                             <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
+                                    <label for="exampleInputEmail1">Email address <font color="red"><html:errors property="login" /></font></label>
                                     <input type="email" class="form-control" id="p_email" name="p_email" placeholder="Enter email">
                                 </div>
                                 <div class="form-inline">
                                     <div class="form-group">
-                                        <label  for="exampleInputEmail1">STD Code</label><br>
+                                        <label  for="exampleInputEmail1">STD Code <font color="red"><html:errors property="login" /></font></label><br>
                                         <input type="number" class="form-control" id="p_std_code" name="p_std_code" placeholder="Std Code">
                                     </div>
                                     <div class="form-group">
-                                        <label  for="exampleInputPassword1">Phone Number</label><br>
+                                        <label  for="exampleInputPassword1">Phone Number <font color="red"><html:errors property="login" /></font></label><br>
                                         <input type="number" class="form-control" id="p_std_number" name="p_std_number" placeholder="Phone Number">
                                     </div>
                                     <div class="form-group">
@@ -90,19 +90,19 @@
                                     </div>
                                 </div><br>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">City</label>
+                                    <label for="exampleInputEmail1">City <font color="red"><html:errors property="login" /></font></label>
                                     <input type="text" class="form-control" id="p_city" name="p_city" placeholder="City">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">State</label>
+                                    <label for="exampleInputEmail1">State <font color="red"><html:errors property="login" /></font></label>
                                     <input type="text" class="form-control" id="p_state" name="p_state" placeholder="State">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Country </label>
+                                    <label for="exampleInputEmail1">Country <font color="red"><html:errors property="login" /></font></label>
                                     <input type="text" class="form-control" id="p_country" name="p_country" value="India">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Circuit Region </label>
+                                    <label for="exampleInputEmail1">Circuit Region <font color="red"><html:errors property="login" /></font></label>
                                     <input type="text" class="form-control" id="p_circuit_region" name="p_circuit_region" placeholder="Your Circuit Region">
                                 </div>
                                 <!--model-->
@@ -111,7 +111,7 @@
                                         <div class="modal-content">
                                             <div class="box box-default">
                                                 <div class="box-header with-border">
-                                                    <h3 class="box-title">Member Details</h3>
+                                                    <h3 class="box-title">Member Details <font color="red"><html:errors property="login" /></font></h3>
                                                     <div class="box-tools pull-right">
 
                                                         <button type="button" class="btn btn-box-tool" data-dismiss="modal"><i class="fa fa-remove"></i></button>

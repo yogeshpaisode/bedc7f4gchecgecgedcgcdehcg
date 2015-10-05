@@ -51,7 +51,7 @@
                             %>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Party Name</label>
+                                    <label for="exampleInputEmail1">Party Name <font color="red"><html:errors property="login" /></font></label>
                                     <select class="form-control" id="t_o_name" name="p_id">
                                         <%
                                             for (Object o : partyList) {
@@ -64,15 +64,15 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Theater Name</label>
+                                    <label for="exampleInputEmail1">Theater Name <font color="red"><html:errors property="login" /></font></label>
                                     <input type="text" class="form-control" id="t_name" name="t_name" placeholder="Theater name">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Theater Address</label>
+                                    <label for="exampleInputEmail1">Theater Address <font color="red"><html:errors property="login" /></font></label>
                                     <textarea class="form-control" rows="3" id="t_address" name="t_address" placeholder="Full Address" style="height: 113px;"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Mobile Number</label>
+                                    <label for="exampleInputEmail1">Mobile Number <font color="red"><html:errors property="login" /></font></label>
                                     <input type="number" class="form-control" id="t_number" name="t_number" placeholder="Fax Number">
                                 </div>
 
@@ -82,35 +82,35 @@
                             <div class="col-md-6">
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Email Address</label>
+                                    <label for="exampleInputEmail1">Email Address <font color="red"><html:errors property="login" /></font></label>
                                     <input type="email" class="form-control" id="t_email" name="t_email" placeholder="Enter email">
                                 </div>
                                 <div class="form-inline">
                                     <div class="form-group">
-                                        <label  for="exampleInputEmail1">STD Code</label><br>
+                                        <label  for="exampleInputEmail1">STD Code <font color="red"><html:errors property="login" /></font></label><br>
                                         <input type="number" class="form-control" id="t_std_code" name="t_std_Code" placeholder="Std Code">
                                     </div>
                                     <div class="form-group">
-                                        <label  for="exampleInputPassword1">LandLine/Mobile Number</label><br>
+                                        <label  for="exampleInputPassword1">LandLine/Mobile Number <font color="red"><html:errors property="login" /></font></label><br>
                                         <input type="number" class="form-control" id="t_std_num" name="t_phone" placeholder="Phone Number">
                                     </div>
 
                                 </div><br>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">City</label>
+                                    <label for="exampleInputEmail1">City <font color="red"><html:errors property="login" /></font></label>
                                     <input type="text" class="form-control" id="t_city" name="t_city" placeholder="City">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">State</label>
+                                    <label for="exampleInputEmail1">State <font color="red"><html:errors property="login" /></font></label>
                                     <input type="text" class="form-control" id="t_state" name="t_state" placeholder="State">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Country </label>
+                                    <label for="exampleInputEmail1">Country <font color="red"><html:errors property="login" /></font></label>
                                     <input type="text" class="form-control" id="t_country" name="t_country" value="India">
                                 </div>
                                 <div class="form-group">
 
-                                    <label for="exampleInputEmail1">Screen Type</label>
+                                    <label for="exampleInputEmail1">Screen Type <font color="red"><html:errors property="login" /></font></label>
                                     <div class="radio">
                                         <label>
                                             <input type="radio" name="t_type" id="t_type1" value="Single Screen" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg-single">
@@ -140,7 +140,7 @@
                                                 <div class="box-body">
                                                     <div class="row">
                                                         <div class="box-header with-border">
-                                                            <h3 class="box-title">Screen1 Details</h3>
+                                                            <h3 class="box-title">Screen1 Details <font color="red"><html:errors property="login" /></font></h3>
 
                                                         </div><!-- /.box-header -->
                                                         <div class="col-xs-3">

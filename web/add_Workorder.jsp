@@ -184,13 +184,13 @@
                 <div class="row">
                     <!-- accepted payments column -->
                     <div class="col-xs-6">
-                        <p class="lead">Agreement Type:</p>
+                        <p class="lead">Agreement Type: </p>
 
 
                         <div class="table-responsive">
                             <table class="table">
                                 <tr>
-                                    <th style="width:50%">Agrrement Type:</th>
+                                    <th style="width:50%">Agrrement Type <font color="red"><html:errors property="login" /></font></th>
                                     <td><div class="form-group">
                                             <select class="form-control select2" style="width: 100%;" id="ddlCategory" name="wo_type">
                                                 <option selected="selected" value="sharing">Sharing</option>
@@ -202,7 +202,7 @@
                                     </td>
                                 </tr>                               
                                 <tr id="pm" style="display: none">
-                                    <th style="width:50%">Payment Method:</th>
+                                    <th style="width:50%">Payment Method <font color="red"><html:errors property="login" /></font></th>
                                     <td><div class="form-group">
                                             <select id="paymeth" name="payment_Method" class="form-control select2" style="width: 100%;">
                                                 <option selected="selected" value="cash">CASH</option>
@@ -214,20 +214,20 @@
                                     </td>
                                 </tr>
                                 <tr id="mga" style="display: none">
-                                    <th style="width:50%">MG Amount:</th>
+                                    <th style="width:50%">MG Amount <font color="red"><html:errors property="login" /></font></th>
                                     <td><div class="form-group">
                                             <input type="text" name="mg_amount" value="0" class="form-control" placeholder="MG Amount ...">
                                         </div>
                                     </td>
                                 </tr>
                                 <tr id="dn" style="display: none">
-                                    <th>Depositor Name:</th>
+                                    <th>Depositor Name <font color="red"><html:errors property="login" /></font></th>
                                     <td><div class="form-group">
                                             <input type="text" name="depositor_name" class="form-control" placeholder="Depositor Name ...">
                                         </div></td>
                                 </tr>
                                 <tr id="ar" style="display: none">
-                                    <th>Amount Received:</th>
+                                    <th>Amount Received <font color="red"><html:errors property="login" /></font></th>
                                     <td><div class="form-group">
                                             <input type="text" name="amount_recv" value="0" class="form-control" placeholder="Amount Received ...">
                                         </div></td>
@@ -245,31 +245,31 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <tr id="utr" style="display: none">
-                                    <th style="width:50%">UTR No:</th>
+                                    <th style="width:50%">UTR No <font color="red"><html:errors property="login" /></font></th>
                                     <td><div class="form-group">
                                             <input type="text" name="utr_no" value="" class="form-control" placeholder="UTR Number">
                                         </div></td>
                                 </tr>
                                 <tr id="cn" style="display: none">
-                                    <th>Cheque No.:</th>
+                                    <th>Cheque No.: <font color="red"><html:errors property="login" /></font></th>
                                     <td><div class="form-group">
                                             <input type="text" name="cheaque_no" value="" class="form-control" placeholder="Cheque Number">
                                         </div></td>
                                 </tr>
                                 <tr id="bn" style="display: none">
-                                    <th>Bank Name:</th>
+                                    <th>Bank Name: <font color="red"><html:errors property="login" /></font></th>
                                     <td><div class="form-group">
                                             <input type="text" name="bank_name" class="form-control" placeholder="Bank Name">
                                         </div></td>
                                 </tr>
                                 <tr id="ard" style="display: none">
-                                    <th>Amount Received Date:</th>
+                                    <th>Amount Received Date: <font color="red"><html:errors property="login" /></font></th>
                                     <td><div class="form-group">
                                             <input type="date" name="amount_recv_date" class="form-control" placeholder="Amount Received Date">
                                         </div></td>
                                 </tr>
                                 <tr id="art" style="display: none">
-                                    <th>Amount Received Time:</th>
+                                    <th>Amount Received Time: <font color="red"><html:errors property="login" /></font></th>
                                     <td><div class="form-group">
                                             <input type="time" name="amount_recv_time" class="form-control" placeholder="Amount Received Time">
                                         </div></td>
