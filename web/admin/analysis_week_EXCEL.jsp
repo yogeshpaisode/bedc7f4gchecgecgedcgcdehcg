@@ -54,14 +54,26 @@
                         <h3 class="box-title">About Movie</h3>
 
                     </div><!-- /.box-header -->
+                    <section class="invoice">
+                    <h4>G.P : Gross Profit<br>D.P : Distributer Profit</h4>
+
+                    <div class="row no-print">
+                        <div class="col-xs-12">
+                            <form action="analysis_from_to_date.jsp" method="post">
+                                Start Date:<input type="date" name="start_date">&nbsp;&nbsp;End Date:<input type="date" name="end_date">&nbsp;&nbsp;
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+
+                            <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</button>
+                            <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+                        </div>
+                    </div>
+                    </section>
                     <div class="box-body">
 
                         <div class="box-body table-responsive no-padding">
-                            <h4>G.P : Gross Profit<br>D.P : Distributer Profit</h4>
-                            <form action="analysis_from_to_date.jsp" method="post">
-                                Start Date:<input type="date" name="start_date">&nbsp;&nbsp;End Date:<input type="date" name="end_date">&nbsp;&nbsp;
-                                <input type="submit"/>
-                            </form>
+
+
                             <%
                                 try {
                                     int srno = 0;
@@ -217,7 +229,7 @@
 
 
                             <div  style="overflow-x: scroll;">
-                                <table align="center" style="width: 100%">
+                                <table class="table table-bordered table-hover" align="center" style="width: 100%">
                                     <tr>
                                         <% out.print(th + tr);%>
                                     </tr>
