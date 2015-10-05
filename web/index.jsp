@@ -1,155 +1,65 @@
-<%-- 
-    Document   : index
-    Created on : Sep 10, 2015, 2:05:11 AM
-    Author     : Satyapal
---%>
-
-<!DOCTYPE html>
-<%@page import="java.util.List"%>
-<%@page import="org.hibernate.Criteria"%>
-<%@page import="org.hibernate.Session"%>
-<%@page import="org.hibernate.SessionFactory"%>
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
-<%@page import="org.hibernate.SessionFactory"%>
-<%@page import="com.nawandarfilmes.Hibernate.*"%>
 
 <html:html lang="true">
-<%@ include file="header.jsp" %>
-<div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <h1>
-            Nawandar Films
-            <small>Control panel</small>
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Dashboard</li>
-          </ol>
-        </section>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+        <title>NFD-Admin Login</title>
+        <script>
+            window.location.hash="no-back-button";
+            window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
+            window.onhashchange=function(){window.location.hash="no-back-button";}
+        </script>        
+    </head>
 
-        <!-- Main content -->
-        <section class="content">
-          <!-- Small boxes (Stat box) -->
-          <div class="row">
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-aqua">
-                <div class="inner">
-                  <h3>150</h3>
-                  <p>Party Add</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-person-add"></i>
-                </div>
-                <a href="add_Party.jsp" class="small-box-footer">Add Now <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div><!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-green">
-                <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
-                  <p>Theater Details</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-stats-bars"></i>
-                </div>
-                <a href="add_Theater.jsp" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div><!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-yellow">
-                <div class="inner">
-                  <h3>44</h3>
-                  <p>Movie Details</p>
-                </div>
-                <div class="icon">
-                  <i class="fa fa-film"></i>
-                </div>
-                <a href="add_Movie.jsp" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div><!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-red">
-                <div class="inner">
-                  <h3>65</h3>
-                  <p>New Work Order</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
-                </div>
-                <a href="select_Movie.jsp" class="small-box-footer">Order Now <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div><!-- ./col -->
-          </div><!-- /.row -->
-          <!-- Main row -->
-         
-          <div class="row">
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-red">
-                <div class="inner">
-                  <h3>150</h3>
-                  <p>Received Theater Log</p>
-                </div>
-                <div class="icon">
-                  <i class="fa fa-university"></i>
-                </div>
-                <a href="Login_Theater.jsp" class="small-box-footer">Click Here <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div><!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-yellow">
-                <div class="inner">
-                  <h3>132 <sup style="font-size: 20px">Lakh</sup></h3>
-                  <p>Received Payments</p>
-                </div>
-                <div class="icon">
-                  <i class="fa fa-money"></i>
-                </div>
-                <a href="select_Movie_accept_Payment.jsp" class="small-box-footer">Click Here <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div><!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-green">
-                <div class="inner">
-                  <h3>4</h3>
-                  <p>Graph Analysis</p>
-                </div>
-                <div class="icon">
-                  <i class="fa fa-bar-chart"></i>
-                </div>
-                <a href="profit_graph.jsp" class="small-box-footer">Click Here <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div><!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-aqua">
-                <div class="inner">
-                  <h3>1</h3>
-                  <p>Excel Analysis</p>
-                </div>
-                <div class="icon">
-                  <i class="fa fa-file-excel-o"></i>
-                </div>
-                <a href="analysis_week_EXCEL.jsp" class="small-box-footer">Click Here <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div><!-- ./col -->
-          </div><!-- /.row -->
+    <body class="hold-transition lockscreen">
+        <!-- Automatic element centering -->
+        <div class="lockscreen-wrapper">
+            <div class="lockscreen-logo">
+                <a href="http://NAWANDARFILMS.com" class="text-black"><b>Nawandar</b>FILMS</a>
+            </div>
+            <!-- User name -->
+            <div class="lockscreen-name">Admin Login</div>
 
-        </section><!-- /.content -->
-      </div><!-- /.content-wrapper -->
-      
-      <%@ include file="sidebar.jsp" %>
-      <%@ include file="footer.jsp" %>
-      </html:html>
+            <!-- START LOCK SCREEN ITEM -->
+            <div class="lockscreen-item">
+                <!-- lockscreen image -->
+                <div class="lockscreen-image">
+                    <img src="dist/img/avatar5.png" alt="User Image">
+                </div>
+                <!-- /.lockscreen-image -->                
+                <!-- lockscreen credentials (contains the form) -->
+                <div class="lockscreen-credentials">
+                    <html:form action="/admin_Login">
+                        <div class="input-group">
+                            <input type="password" class="form-control" placeholder="Unique Key" name="key"/>                            
+                            <div class="input-group-btn">
+                                <button class="btn" type="submit"><i class="fa fa-arrow-right text-muted"></i></button>
+                            </div>
+                        </div>
+                    </html:form>
+                </div><!-- /.lockscreen credentials -->
+            </div><!-- /.lockscreen-item -->
+
+            <div class="help-block text-center">
+                <html:errors property="login" />
+                Enter your password to Login
+            </div>
+            <div class="lockscreen-footer text-center">
+                Copyright &copy; 2015 <b><a href="http://NAWANDARFILMS.com" class="text-black">NAWANDAR FILMS</a></b><br>
+                All rights reserved
+            </div>
+        </div><!-- /.center -->
+
+
+    </body>
+</html:html>
