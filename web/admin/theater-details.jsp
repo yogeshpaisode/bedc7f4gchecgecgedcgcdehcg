@@ -25,7 +25,7 @@
 
     <%@ include file="header1.jsp" %>
 
-    
+
 
 
     <%@ include file="headermenu.jsp" %>
@@ -47,86 +47,90 @@
         <!-- Main content -->
         <section class="content">
 
-           <div class="box">
+            <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">All Party Names</h3>
+                    <h3 class="box-title">All Party Names</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                  <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
-                          <th>Sr.N</th>
-                        <th>Theater Name</th>
-                       
-                        <th>Screen Type</th>
-                        <th>Address</th>
-                        <th>City</th>
-                        <th>Email</th>
-                        <th>Mobile</th>
-                        <th>No.Screen</th>
-                      </tr>
-                    </thead>
-                    
-                    <tbody>
-                         <%
-                         int list = 1;
-                         int id=0;
-                        //Common common = new Common();
-                        //MovieDetail movieDetail = null;
-                        
-                          SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-            Session hib_session = sessionFactory.openSession();
-               
-            Criteria theater_details =hib_session.createCriteria(TheaterDetail.class);
-                List party_List = theater_details.list();
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Sr.N</th>
+                                <th>Theater Name</th>
+                                <th>Circuit</th>
+                                <th>Owner Name</th>
+                                <th>Screen Type</th>
+                                <th>Address</th>
+                                <th>City</th>
+                                <th>Email</th>
+                                <th>Mobile</th>
 
-                for (Object to : party_List) {
-                    
-                    TheaterDetail pd =(TheaterDetail) to;
-                    id=pd.getTId();
-                   
-%>
-                      <tr>
-                          <td><% out.print(++list); %></td>
-                        <td><% out.print(pd.getTName()); %></td>
-                        <td><% out.print(pd.getTType());%></td>
-                        <td><% out.print(pd.getTAddress());%></td>
-                        <td> <% out.print(pd.getTCity());%></td>
-                        <td><% out.print(pd.getTEmail());%></td>
-                        <td><% out.print(pd.getTPhoneNumber()); %></td>
-                        <td><% out.print(pd.getTNoScreens());%></td>
-                      </tr>
-                    <%   
-                }
-            %>
-                      
-                    </tbody>
-                    <tfoot>
-                      <tr>
-                         <th>Sr.N</th>
-                        <th>Theater Name</th>
-                       
-                        <th>Owner Name</th>
-                        <th>Address</th>
-                        <th>City</th>
-                        <th>Email</th>
-                        <th>Mobile</th>
-                        <th>No.Screen</th>
-                      </tr>
-                    </tfoot>
-                  </table>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <%
+                                int list = 1;
+                                int id = 0;
+                                //Common common = new Common();
+                                //MovieDetail movieDetail = null;
+
+                                SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+                                Session hib_session = sessionFactory.openSession();
+
+                                Criteria theater_details = hib_session.createCriteria(TheaterDetail.class);
+                                List party_List = theater_details.list();
+
+                                for (Object to : party_List) {
+
+                                    TheaterDetail pd = (TheaterDetail) to;
+                                    id = pd.getTId();
+
+                            %>
+                            <tr>
+                                <td><% out.print(++list);%></td>
+                                <td><% out.print(pd.getTName());%></td>
+                                <td></td>
+                                <td></td>
+                                <td><% out.print(pd.getTType());%></td>
+                                <td><% out.print(pd.getTAddress());%></td>
+                                <td> <% out.print(pd.getTCity());%></td>
+                                <td><% out.print(pd.getTEmail());%></td>
+                                <td><% out.print(pd.getTPhoneNumber());%></td>
+
+                            </tr>
+                            <%
+                                }
+                            %>
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Sr.N</th>
+                                <th>Theater Name</th>
+                                <th>Circuit</th>
+                                <th>Owner Name</th>
+                                <th>Screen Type</th>
+                                <th>Address</th>
+                                <th>City</th>
+                                <th>Email</th>
+                                <th>Mobile</th>
+
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div><!-- /.box-body -->
-              </div><!-- /.box -->
-            
+            </div><!-- /.box -->
 
 
-            
+
+
 
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
 
 
-    
+
     <%@ include file="footer.jsp" %>
     <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
@@ -144,17 +148,17 @@
     <script src="../dist/js/demo.js"></script>
     <!-- page script -->
     <script>
-      $(function () {
-        $("#example1").DataTable();
-        $('#example2').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false
+        $(function () {
+            $("#example1").DataTable();
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false
+            });
         });
-      });
     </script>
 </html:html>
 
