@@ -41,11 +41,13 @@
     String chart = "";
     String day_chart = "";
     String circuit_chart = "";
+    String movie_name="";
     SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     Session hib_session = sessionFactory.openSession();
     Criteria mov_criteria = hib_session.createCriteria(MovieDetail.class);
     mov_criteria.add(Restrictions.eq("movId", mov_id));
     MovieDetail movieDetail = (MovieDetail) mov_criteria.list().get(0);
+    movie_name=movieDetail.getMovName();
     Criteria wo_criteria = hib_session.createCriteria(WorkOrder.class);
     wo_criteria.add(Restrictions.eq("movieDetail", movieDetail));
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -203,9 +205,9 @@
                     "balloonText": "[[title]] of [[category]]:[[value]]",
                     "fillAlphas": 1,
                     "id": "AmGraph-1",
-                    "title": "Welcome Back",
+                    "title": "<%out.print(movie_name);%>",
                     "type": "column",
-                    "valueField": "Welcome Back"
+                    "valueField": "<%out.print(movie_name);%>"
                 },
                 {
                     "balloonText": "[[title]] of [[category]]:[[value]]",
@@ -238,42 +240,42 @@
             "dataProvider": [
                 {
                     "category": "1 Week",
-                    "Welcome Back": "37000000",
+                    "<%out.print(movie_name);%>": "37000000",
                     "Bajiraov Mastani": "45000000"
                 },
                 {
                     "category": "2 Week",
-                    "Welcome Back": "33000000",
+                    "<%out.print(movie_name);%>": "33000000",
                     "Bajiraov Mastani": "35000000"
                 },
                 {
                     "category": "3 Week",
-                    "Welcome Back": "23000000",
+                    "<%out.print(movie_name);%>": "23000000",
                     "Bajiraov Mastani": "30000000"
                 },
                 {
                     "category": "4 Week",
-                    "Welcome Back": "10000000",
+                    "<%out.print(movie_name);%>": "10000000",
                     "Bajiraov Mastani": "15000000"
                 },
                 {
                     "category": "5 Week",
-                    "Welcome Back": "15000000",
+                    "<%out.print(movie_name);%>": "15000000",
                     "Bajiraov Mastani": "18000000"
                 },
                 {
                     "category": "6 Week",
-                    "Welcome Back": "25000000",
+                    "<%out.print(movie_name);%>": "25000000",
                     "Bajiraov Mastani": "32000000"
                 },
                 {
                     "category": "7 Week",
-                    "Welcome Back": "18000000",
+                    "<%out.print(movie_name);%>": "18000000",
                     "Bajiraov Mastani": "20000000"
                 },
                 {
                     "category": "8 Week",
-                    "Welcome Back": "9000000",
+                    "<%out.print(movie_name);%>": "9000000",
                     "Bajiraov Mastani": "9500000"
                 }
             ]
@@ -345,7 +347,7 @@
                     "balloonText": "[[title]] of [[category]]:[[value]]",
                     "bullet": "round",
                     "id": "AmGraph-1",
-                    "title": "Welcome Back",
+                    "title": "<%out.print(movie_name);%>",
                     "type": "smoothedLine",
                     "valueField": "column-1"
                 },
