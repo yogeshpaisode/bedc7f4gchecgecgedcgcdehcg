@@ -109,6 +109,7 @@
             ben.setAmount(0);
             ben.setId(circuit);
             circuit_Map.put(circuit, ben);
+            circuit_list.add(circuit);
         }
         Common com = new Common();
         double total = 0;

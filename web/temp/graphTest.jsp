@@ -98,6 +98,7 @@
             ben.setAmount(0);
             ben.setId(circuit);
             circuit_Map.put(circuit, ben);
+            circuit_list.add(circuit);
         }
         Common com = new Common();
         double total = 0;
@@ -226,6 +227,10 @@
             Circuit_Bean circuit_Bean = (Circuit_Bean) m.getValue();
             out.print("Circuit: " + circuit_Bean.getId() + " Amount:" + circuit_Bean.getAmount() + "<br>");
         }
+        for(Object o:circuit_list){
+            out.print(o.toString()+"<br><br><br>");
+        }
+        out.print(circuit_list.size()+"<br><br>");
 
     %>
 
