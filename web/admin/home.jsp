@@ -39,6 +39,8 @@
     double global_distributer_profit = 0;
     int mov_id = 1;
     String chart = "";
+    String day_chart = "";
+    String circuit_chart = "";
     SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     Session hib_session = sessionFactory.openSession();
     Criteria mov_criteria = hib_session.createCriteria(MovieDetail.class);
@@ -48,7 +50,7 @@
     wo_criteria.add(Restrictions.eq("movieDetail", movieDetail));
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     Date start_Date = movieDetail.getMovReleaseDate();
-    Date end_Date =new Date();
+    Date end_Date = new Date();
     Common common = new Common();
     int days_from_two = common.getDays(end_Date, start_Date);
     Date temp_Date = null;
@@ -155,6 +157,14 @@
         DistributerProfit_Bean dpb = date_Map.get(o.toString());
         chart = chart + "{\"category\": \"" + dpb.getId() + "\",\"column-1\": \"" + dpb.getAmount() + "\"},";
         grand_Total = grand_Total + dpb.getAmount();
+    }
+    for (Object o : week_days_list) {
+        Days_Bean dpb = week_days_Map.get(o.toString());
+        day_chart = day_chart + "{\"category\": \"" + dpb.getId() + "\",\"column-1\": \"" + dpb.getAmount() + "\"},";
+    }
+    for (Map.Entry m : circuit_Map.entrySet()) {
+        Circuit_Bean dpb = (Circuit_Bean) m.getValue();
+        circuit_chart = circuit_chart + "{\"category\": \"" + dpb.getId() + "\",\"column-1\": \"" + dpb.getAmount() + "\"},";
     }
     hib_session.close();
 %>
@@ -291,37 +301,10 @@
             },
             "titles": [],
             "dataProvider": [
-                {
-                    "category": "Sunday",
-                    "column-1": "12"
-                },
-                {
-                    "category": "Monday",
-                    "column-1": "6"
-                },
-                {
-                    "category": "Tuesday",
-                    "column-1": "2"
-                },
-                {
-                    "category": "Wensday",
-                    "column-1": "3"
-                },
-                {
-                    "category": "Thursday",
-                    "column-1": "1"
-                },
-                {
-                    "category": "Friday",
-                    "column-1": "4"
-                },
-                {
-                    "category": "Saturday",
-                    "column-1": "8"
-                }
-            ]
-        }
-    );
+        <% out.print(day_chart);%>
+                ]
+            }
+        );
     </script>
 
     <script type="text/javascript">
@@ -341,53 +324,10 @@
             },
             "titles": [],
             "dataProvider": [
-                {
-                    "category": "Bombay",
-                    "column-1": 8
-                },
-                {
-                    "category": "Delhi",
-                    "column-1": 6
-                },
-                {
-                    "category": "Nizam",
-                    "column-1": 2
-                },
-                {
-                    "category": "East Punjab",
-                    "column-1": "3"
-                },
-                {
-                    "category": "Easten",
-                    "column-1": "1"
-                },
-                {
-                    "category": "C. P. Berar",
-                    "column-1": "12"
-                },
-                {
-                    "category": "Central India",
-                    "column-1": "13"
-                },
-                {
-                    "category": "Rajasthan",
-                    "column-1": "10"
-                },
-                {
-                    "category": "Mysore",
-                    "column-1": "2"
-                },
-                {
-                    "category": "Tamil Nadu",
-                    "column-1": "3"
-                },
-                {
-                    "category": "Andhra",
-                    "column-1": "11"
-                }
-            ]
-        }
-    );
+        <% out.print(circuit_chart);%>
+                         ]
+                     }
+                 );
     </script>
     <!-- amCharts javascript code -->
     <script type="text/javascript">
@@ -438,10 +378,10 @@
                 }
             ],
             "dataProvider": [
-               <% out.print(chart); %>
-            ]
-        }
-    );
+        <% out.print(chart);%>
+                ]
+            }
+        );
     </script>
 
 
