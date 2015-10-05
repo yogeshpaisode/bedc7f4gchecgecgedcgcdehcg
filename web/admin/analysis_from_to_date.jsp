@@ -78,8 +78,16 @@
                                     Criteria wo_criteria = hib_session.createCriteria(WorkOrder.class);
                                     wo_criteria.add(Restrictions.eq("movieDetail", movieDetail));
 
-                                    Date start_Date = movieDetail.getMovReleaseDate();
-                                    Date end_Date = new Date();
+                                    String start_Date_Temp = null;
+                                    String end_Date_temp = null;
+                                    start_Date_Temp = request.getParameter("start_date").toString();
+                                    end_Date_temp = request.getParameter("end_date").toString();
+                                    //--sdf.parse("2015-09-14")
+                                    Date start_Date = null;
+                                    Date end_Date = null;
+                                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                                    start_Date = sdf.parse(start_Date_Temp);
+                                    end_Date = sdf.parse(end_Date_temp);
                                     Common common = new Common();
                                     int days_from_two = common.getDays(end_Date, start_Date);
                                     String distri_Print = "";
@@ -214,6 +222,8 @@
                                     }
                                     tr = tr + "<td align='right'>" + (long) (global_distributer_profit + global_Mg) + "</td><td align='right'>" + (long) (global_amtRecv) + "</td><td align='right'>" + (long) (global_diffrence) + "</td></tr>";
                             %>
+
+
 
 
                             <div  style="overflow-x: scroll;">
