@@ -37,6 +37,7 @@
     int wo_id = 0;
     String flag = "";
     String hidden = "";
+    String message_Hid_Flag = "hidden=\"\"";
     try {
         flag = request.getAttribute("flag").toString();
         date = request.getAttribute("date").toString();
@@ -46,6 +47,7 @@
         if (flag.equals("false")) {
             message = request.getAttribute("msg").toString();
             hidden = "hidden=\"\"";
+            message_Hid_Flag = "";
         }
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session hib_session = sessionFactory.openSession();
@@ -282,15 +284,15 @@
                     </div><!-- /.row -->
 
                     <!-- this row will not appear when printing -->
-                    <div class="row no-print" <%  out.print(hidden);%>>
+                    <div class="row no-print" <%out.print(hidden);%>>
                         <div class="col-xs-12">
                             <button type="submit" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i>Submit Log</button>
                         </div>
                     </div>
-                    <div class="pad margin no-print">
+                    <div class="pad margin no-print" <%out.print(message_Hid_Flag);%>>
                         <div class="callout callout-info" style="margin-bottom: 0!important;">
                             <h4><i class="fa fa-info"></i> Note:</h4>
-                            All Details are Stored.
+                            Your Session Is Ended.
                         </div>
                     </div>  
 
