@@ -287,6 +287,13 @@
                             <button type="submit" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i>Submit Log</button>
                         </div>
                     </div>
+                    <div class="pad margin no-print">
+                        <div class="callout callout-info" style="margin-bottom: 0!important;">
+                            <h4><i class="fa fa-info"></i> Note:</h4>
+                            All Details are Stored.
+                        </div>
+                    </div>  
+
                 </html:form>
             </section><!-- /.content -->
 
