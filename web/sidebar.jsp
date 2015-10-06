@@ -46,7 +46,7 @@
               <a href="add_Theater.jsp">
                 <i class="fa fa-university"></i>
                 <span>Add Theater Details</span>
-                <span class="label label-primary pull-right">4</span>
+                <i class="fa fa-chevron-circle-right pull-right"></i>
               </a>
               
             </li>
