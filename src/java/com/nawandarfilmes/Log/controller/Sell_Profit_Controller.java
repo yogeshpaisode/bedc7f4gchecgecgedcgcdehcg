@@ -51,7 +51,7 @@ public class Sell_Profit_Controller extends org.apache.struts.action.Action {
         double grossProfit = Double.parseDouble(spm.getGross());
         double nettProfit = Double.parseDouble(spm.getNett());
         double edtaxProfit = Double.parseDouble(spm.getEdtax());
-        
+
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Date logDate = formatter.parse(spm.getDate());
         Date entryDateTime = new Date();
@@ -71,6 +71,11 @@ public class Sell_Profit_Controller extends org.apache.struts.action.Action {
             Transaction transaction = session.beginTransaction();
             ProfitTicketLog log = new ProfitTicketLog(wo, ticketSold, grossProfit, nettProfit, edtaxProfit, logDate, entryDateTime);
             session.save(log);
+            //--If Agrrement Ended
+            if (wo.getWoEndDate().equals(logDate)) {
+                wo.setWoAggrement(false);
+                session.save(wo);
+            }
             transaction.commit();
         }
         session.close();
