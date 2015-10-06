@@ -19,19 +19,30 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
+   
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Excel Analysis</title>
-        <style>
-            table, th, td {
-                border: 1px solid black;
-            }
-        </style>
-    </head>
-    <body>
-        <jsp:include page="header1.jsp"/>
+        
+ <jsp:include page="header1.jsp"/>
+
+        <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            var tableToExcel = (function () {
+                var uri = 'data:application/vnd.ms-excel;base64,'
+                , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+                , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
+                , format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) }
+                return function (table, name) {
+                    if (!table.nodeType) table = document.getElementById(table)
+                    var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
+                    window.location.href = uri + base64(format(template, ctx))
+                }
+            })()
+        </script>
+    
+       
         <%@ include file="headermenu.jsp" %>
-        <%@ include file="sidebar.jsp" %>
+        
 
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -55,19 +66,45 @@
 
                     </div><!-- /.box-header -->
                     <section class="invoice">
-                    <h4>G.P : Gross Profit<br>D.P : Distributer Profit</h4>
+                        <h4>G.P : Gross Profit<br>D.P : Distributer Profit</h4>
 
-                    <div class="row no-print">
-                        <div class="col-xs-12">
-                            <form action="analysis_from_to_date.jsp" method="post">
-                                Start Date:<input type="date" name="start_date">&nbsp;&nbsp;End Date:<input type="date" name="end_date">&nbsp;&nbsp;
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </form>
+                        <div class="row no-print">
+                            <div class="col-xs-12">
+                                <form action="analysis_from_to_date.jsp" method="post">
+                                    <!--  Start Date:<input type="date" name="start_date">&nbsp;&nbsp;End Date:<input type="date" name="end_date">&nbsp;&nbsp;
+                                      <button type="submit" class="btn btn-primary">Submit</button>
+                                  </form>-->
+                                    <div class="col-xs-3" style="width:20%;">
+                                        <div class="form-group">
+                                            <label>Select Movie</label>
+                                            <select class="form-control">
+                                                <option>option 1</option>
+                                                <option>option 2</option>
+                                                <option>option 3</option>
+                                                <option>option 4</option>
+                                                <option>option 5</option>
+                                            </select>
+                                        </div>
+                                    </div>
 
-                            <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</button>
-                            <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+                                    <div class="col-xs-3" style="width:20%;">
+                                        <label>Start Date</label>
+                                        <input type="date" class="form-control" name="start_date">
+                                    </div>
+                                    <div class="col-xs-3" style="width:20%;">
+                                        <label>End Date</label>
+                                        <input type="date" class="form-control" name="end_date">
+                                    </div>
+                                    <div class="col-xs-3" style="width:10%;">
+                                        <label><br></label>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                    <label><br></label>
+                                    <br>
+                                    <button type="button" class="btn btn-success pull-right" onclick="tableToExcel('testTable', 'Nawander Film Distibution')"><i class="fa fa-credit-card"></i> Generate Excel</button>
+                                    <button type="button" class="btn btn-primary pull-right" onclick="downloadPdf()" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+                            </div>
                         </div>
-                    </div>
                     </section>
                     <div class="box-body">
 
@@ -229,22 +266,25 @@
 
 
                             <div  style="overflow-x: scroll;">
-                                <table class="table table-bordered table-hover" align="center" style="width: 100%">
-                                    
-                                        <% out.print(th + tr);%>
-                                    
+                                <table id="testTable" class="table table-bordered table-hover" summary="Code page support in different versions of MS Windows."
+                                       rules="groups" frame="hsides" border="2" align="center" style="width: 100%">
+
+                                    <% out.print(th + tr);%>
+
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div><!-- /.box-body -->
-        </div><!-- /.box -->
+       
+        
     </section>
 </div>
 
-
+<%@ include file="sidebar.jsp" %>
 <%@ include file="footer.jsp" %>
-<script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+
+
 <!-- Bootstrap 3.3.5 -->
 <script src="../bootstrap/js/bootstrap.min.js"></script>
 <!-- DataTables -->
@@ -274,6 +314,6 @@
            
 </script>
 
-
 </body>
+
 </html>
