@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="com.nawandarfilmes.commonUtility.Common"%>
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 
@@ -38,6 +40,7 @@
     String flag = "";
     String hidden = "";
     String message_Hid_Flag = "hidden=\"\"";
+    Common common=new Common();
     try {
         flag = request.getAttribute("flag").toString();
         date = request.getAttribute("date").toString();
@@ -194,7 +197,7 @@
             <section class="content-header">
                 <h1>
                     Add Ticket Sell and Profit
-                    <small><%  out.print(s.getSId());%></small>
+                    <small><%  out.print("#NDF-"+common.getZeros(s.getSId())+s.getSId());%></small>
                 </h1>
 
             </section>
@@ -208,7 +211,7 @@
                     <div class="col-xs-12">
                         <h2 class="page-header">
                             <i class="fa fa-globe"></i> <% out.print(s.getSName());%> : <% out.print(m.getMovName());%>
-                            <small class="pull-right">Date: 2/10/2014</small>
+                            <small class="pull-right">Date: <%out.print(common.formateDate(new Date()));%></small>
                         </h2>
                     </div><!-- /.col -->
                 </div>
