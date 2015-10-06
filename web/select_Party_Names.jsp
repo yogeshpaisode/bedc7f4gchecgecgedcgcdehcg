@@ -66,30 +66,12 @@
             <div class="row">
                 <div class="col-xs-12">
                     <h2 class="page-header">
-                        <i class="fa fa-film"></i> <% out.print(movieDetail.getMovName());%>
+                        <i class="fa fa-film"></i> <b><% out.print(movieDetail.getMovName());%> </b>By <% out.print(movieDetail.getMovProduces());%>
                         <small class="pull-right">Realese Date:<% out.print(common.formateDate(movieDetail.getMovReleaseDate()));%></small>
                     </h2>
                 </div><!-- /.col -->
             </div>
-            <div class="row invoice-info">
-                <div class="col-sm-4 invoice-col">
-
-                    <address>
-                        <strong>Movie Name.</strong><br>
-                        <% out.print(movieDetail.getMovName());%><br>
-                        <strong>Producer:</strong><br>
-                        <% out.print(movieDetail.getMovProduces());%><br>
-                        <strong>Realese Date.</strong><br>
-                        <% out.print(common.formateDate(movieDetail.getMovReleaseDate()));%>
-                    </address>
-                </div><!-- /.col -->
-
-                <div class="col-sm-4 invoice-col">
-                    <div class="col-sm-6">
-                        <img class="img-responsive" src="https://starfriday.files.wordpress.com/2015/07/poster_h1.jpg" alt="Photo">
-                    </div><!-- /.col -->
-                </div><!-- /.col -->
-            </div><!-- /.row -->
+            
 
             <div class="row">
                 <div class="col-xs-12">
