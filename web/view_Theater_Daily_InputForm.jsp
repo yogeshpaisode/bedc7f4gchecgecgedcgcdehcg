@@ -40,7 +40,7 @@
     String flag = "";
     String hidden = "";
     String message_Hid_Flag = "hidden=\"\"";
-    Common common=new Common();
+    Common common = new Common();
     try {
         flag = request.getAttribute("flag").toString();
         date = request.getAttribute("date").toString();
@@ -197,13 +197,9 @@
             <section class="content-header">
                 <h1>
                     Add Ticket Sell and Profit
-                    <small><%  out.print("#NDF-"+common.getZeros(s.getSId())+s.getSId());%></small>
+                    <small><%  out.print("#NDF-" + common.getZeros(s.getSId()) + s.getSId());%></small>
                 </h1>
-
             </section>
-
-
-
             <!-- Main content -->
             <section class="invoice">
                 <!-- title row -->
@@ -304,8 +300,6 @@
 
             <div class="clearfix"></div>
         </div><!-- /.content-wrapper -->
-
-
         <%
                 hib_session.close();
 
