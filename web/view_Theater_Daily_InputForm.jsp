@@ -139,7 +139,7 @@
                                     <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                                     <p>
                                         <% out.print(s.getSName());%>
-                                        <small><% out.print(m.getMovName());%>: <% out.print(m.getMovReleaseDate());%></small>
+                                        <small><% out.print(m.getMovName());%>: <% out.print(common.formateDate(m.getMovReleaseDate()));%></small>
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
