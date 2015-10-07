@@ -42,7 +42,7 @@
     
        
         <%@ include file="headermenu.jsp" %>
-        
+        <%@ include file="sidebar.jsp" %>
 
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -281,7 +281,7 @@
     </section>
 </div>
 
-<%@ include file="sidebar.jsp" %>
+
 <%@ include file="footer.jsp" %>
 
 

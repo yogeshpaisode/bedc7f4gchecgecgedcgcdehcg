@@ -18,14 +18,14 @@
             </div>
           </div>
           <!-- search form -->
-          <form action="#" method="get" class="sidebar-form">
+         <!-- <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
               <input type="text" name="q" class="form-control" placeholder="Search...">
               <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
               </span>
             </div>
-          </form>
+          </form>-->
           <!-- /.search form -->
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
@@ -46,7 +46,7 @@
               <a href="profit_graph.jsp">
                 <i class="fa fa-university"></i>
                 <span>Circuit Wise Profit</span>
-                <span class="label label-primary pull-right">4</span>
+                <i class="fa fa-chevron-circle-right pull-right"></i>
               </a>
               
             </li>
