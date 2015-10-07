@@ -120,14 +120,9 @@ public class Add_Workorder_Controller extends org.apache.struts.action.Action {
         }
         //------------From Model--------------------
         int p_id = Integer.parseInt(awm.getP_id());
-        System.out.println("\n\n\n PID " + p_id + "\n\n\n");
         int t_id = Integer.parseInt(awm.getT_id());
-        System.out.println("\n\n\n TID " + t_id + "\n\n\n");
         int s_id = Integer.parseInt(awm.getS_id());
-        System.out.println("\n\n\n SID " + s_id + "\n\n\n");
         int mov_id = Integer.parseInt(awm.getMov_id());
-        System.out.println("\n\n\n MovID " + mov_id + "\n\n\n");
-        System.out.println("\n\n\n Shows Per Day :" + awm.getShows_per_day() + "\n\n\n");
         int woShowsPerDay = Integer.parseInt(awm.getShows_per_day());
 
         String randomString = "nawa#@53662ndarfilmes@43857462distr232ibutionpartyDetail89625438476209388@#$$#@";
@@ -149,12 +144,12 @@ public class Add_Workorder_Controller extends org.apache.struts.action.Action {
         double distr5_share = Double.parseDouble(awm.getDistr5_share());
         double distr6_share = Double.parseDouble(awm.getDistr6_share());
 
-        double owner1_share = Double.parseDouble(awm.getOwner1_share());
-        double owner2_share = Double.parseDouble(awm.getOwner2_share());
-        double owner3_share = Double.parseDouble(awm.getOwner3_share());
-        double owner4_share = Double.parseDouble(awm.getOwner4_share());
-        double owner5_share = Double.parseDouble(awm.getOwner5_share());
-        double owner6_share = Double.parseDouble(awm.getOwner6_share());
+        double owner1_share = 100-distr1_share;
+        double owner2_share = 100-distr2_share;
+        double owner3_share = 100-distr3_share;
+        double owner4_share = 100-distr4_share;
+        double owner5_share = 100-distr5_share;
+        double owner6_share = 100-distr6_share;
 
         String wo_type = awm.getWo_type();
         double woMgAmount = Double.parseDouble(awm.getMg_amount());
@@ -245,38 +240,38 @@ public class Add_Workorder_Controller extends org.apache.struts.action.Action {
             wo_id = wo.getWoId();
             //---Agreement's
 
-            if (!(t1_rent == 0.0)) {
+            if (!(t1_rent == 0.0)||!(distr1_share==0.0)) {
                 int weekNo = 1;
                 WoAgrrement wa = new WoAgrrement(wo, weekNo, t1_rent, distr1_share, owner1_share, w1_startDate, w1_endDate);
                 session.save(wa);
             }
 
-            if (!(t2_rent == 0.0)) {
+            if (!(t2_rent == 0.0)||!(distr2_share==0.0)) {
                 int weekNo = 2;
                 WoAgrrement wa = new WoAgrrement(wo, weekNo, t2_rent, distr2_share, owner2_share, w2_startDate, w2_endDate);
                 session.save(wa);
             }
 
-            if (!(t3_rent == 0.0)) {
+            if (!(t3_rent == 0.0)||!(distr3_share==0.0)) {
                 int weekNo = 3;
                 WoAgrrement wa = new WoAgrrement(wo, weekNo, t3_rent, distr3_share, owner3_share, w3_startDate, w3_endDate);
                 session.save(wa);
             }
 
 
-            if (!(t4_rent == 0.0)) {
+            if (!(t4_rent == 0.0)||!(distr4_share==0.0)) {
                 int weekNo = 4;
                 WoAgrrement wa = new WoAgrrement(wo, weekNo, t4_rent, distr4_share, owner4_share, w4_startDate, w4_endDate);
                 session.save(wa);
             }
 
-            if (!(t5_rent == 0.0)) {
+            if (!(t5_rent == 0.0)||!(distr5_share==0.0)) {
                 int weekNo = 5;
                 WoAgrrement wa = new WoAgrrement(wo, weekNo, t5_rent, distr5_share, owner5_share, w5_startDate, w5_endDate);
                 session.save(wa);
             }
 
-            if (!(t6_rent == 0.0)) {
+            if (!(t6_rent == 0.0)||!(distr6_share==0.0)) {
                 int weekNo = 6;
                 WoAgrrement wa = new WoAgrrement(wo, weekNo, t6_rent, distr6_share, owner6_share, w6_startDate, w6_endDate);
                 session.save(wa);
