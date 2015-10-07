@@ -288,10 +288,8 @@
                                     <th>Week</th>
                                     <th>Start Date</th>
                                     <th>End Date</th>
-                                    <th>Theater Rent</th>
-                                    <th>Distributor Share</th>
-                                    <th>Owner Share</th>
-
+                                    <th id="rent">Theater Rent</th>
+                                    <th id="share">Distributor Share</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -299,18 +297,13 @@
                                     <td id="1week">1st Week</td>
                                     <td id="1start"></td>
                                     <td id="1end"></td>
-                                    <td><div class="input-group">
+                                    <td id="rent1" style="width:30%;"><div class="input-group">
                                             <input type="text" hidden=""  name="d_1" id="1detil">
                                             <input type="text" class="form-control" value="00" name="t1_rent">
                                             <span class="input-group-addon">Rs.</span>
                                         </div></td>
-                                    <td style="width:30%;"> <div class="input-group">
+                                    <td style="width:30%;" id="share1"> <div class="input-group">
                                             <input type="text" class="form-control" value="00" name="distr1_share">
-                                            <span class="input-group-addon">%</span>
-                                        </div>
-                                    </td>
-                                    <td style="width:30%;"><div class="input-group">
-                                            <input type="text" class="form-control" value="00" name="owner1_share">
                                             <span class="input-group-addon">%</span>
                                         </div>
                                     </td>
@@ -319,18 +312,13 @@
                                     <td id="2week">2 Week</td>
                                     <td id="2start"></td>
                                     <td id="2end"></td>
-                                    <td><div class="input-group">
+                                    <td id="rent2" style="width:30%;"><div class="input-group">
                                             <input type="text" hidden=""  name="d_2" id="2detil">
                                             <input type="text" class="form-control" value="00" name="t2_rent">
                                             <span class="input-group-addon">Rs.</span>
                                         </div></td>
-                                    <td style="width:30%;"> <div class="input-group">
+                                    <td style="width:30%;" id="share2"> <div class="input-group">
                                             <input type="text" class="form-control" value="00" name="distr2_share">
-                                            <span class="input-group-addon">%</span>
-                                        </div>
-                                    </td>
-                                    <td style="width:30%;"><div class="input-group">
-                                            <input type="text" class="form-control" value="00" name="owner2_share">
                                             <span class="input-group-addon">%</span>
                                         </div>
                                     </td>
@@ -339,18 +327,13 @@
                                     <td id="3week">3 Week</td>
                                     <td id="3start"></td>
                                     <td id="3end"></td>
-                                    <td><div class="input-group">
+                                    <td id="rent3" style="width:30%;"><div class="input-group">
                                             <input type="text" hidden=""  name="d_3" id="3detil">
                                             <input type="text" class="form-control" value="00" name="t3_rent">
                                             <span class="input-group-addon">Rs.</span>
                                         </div></td>
-                                    <td style="width:30%;"> <div class="input-group">
+                                    <td style="width:30%;" id="share3"> <div class="input-group">
                                             <input type="text" class="form-control" value="00" name="distr3_share">
-                                            <span class="input-group-addon">%</span>
-                                        </div>
-                                    </td>
-                                    <td style="width:30%;"><div class="input-group">
-                                            <input type="text" class="form-control" value="00" name="owner3_share">
                                             <span class="input-group-addon">%</span>
                                         </div>
                                     </td>
@@ -360,18 +343,13 @@
                                     <td id="4week">4 Week</td>
                                     <td id="4start"></td>
                                     <td id="4end"></td>
-                                    <td><div class="input-group">
+                                    <td id="rent4" style="width:30%;"><div class="input-group">
                                             <input type="text" hidden=""  name="d_4" id="4detil">
                                             <input type="text" class="form-control" value="00" name="t4_rent">
                                             <span class="input-group-addon">Rs.</span>
                                         </div></td>
-                                    <td style="width:30%;"> <div class="input-group">
+                                    <td style="width:30%;" id="share4"> <div class="input-group">
                                             <input type="text" class="form-control" value="00" name="distr4_share">
-                                            <span class="input-group-addon">%</span>
-                                        </div>
-                                    </td>
-                                    <td style="width:30%;"><div class="input-group">
-                                            <input type="text" class="form-control" value="00" name="owner4_share">
                                             <span class="input-group-addon">%</span>
                                         </div>
                                     </td>
@@ -380,18 +358,13 @@
                                     <td id="5week">5 Week</td>
                                     <td id="5start"></td>
                                     <td id="5end"></td>
-                                    <td><div class="input-group">
+                                    <td id="rent5" style="width:30%;"><div class="input-group">
                                             <input type="text" hidden=""  name="d_5" id="5detil">
                                             <input type="text" class="form-control" value="00" name="t5_rent">
                                             <span class="input-group-addon">Rs.</span>
                                         </div></td>
-                                    <td style="width:30%;"> <div class="input-group">
+                                    <td style="width:30%;" id="share5"> <div class="input-group">
                                             <input type="text" class="form-control" value="00" name="distr5_share">
-                                            <span class="input-group-addon">%</span>
-                                        </div>
-                                    </td>
-                                    <td style="width:30%;"><div class="input-group">
-                                            <input type="text" class="form-control" value="00" name="owner5_share">
                                             <span class="input-group-addon">%</span>
                                         </div>
                                     </td>
@@ -400,18 +373,13 @@
                                     <td id="6week">6 Week</td>
                                     <td id="6start"></td>
                                     <td id="6end"></td>
-                                    <td><div class="input-group">
+                                    <td id="rent6" style="width:30%;"><div class="input-group">
                                             <input type="text" hidden=""  name="d_6" id="6detil">
                                             <input type="text" class="form-control" value="00" name="t6_rent">
                                             <span class="input-group-addon">Rs.</span>
                                         </div></td>
-                                    <td style="width:30%;"> <div class="input-group">
+                                    <td style="width:30%;" id="share6"> <div class="input-group">
                                             <input type="text" class="form-control" value="00" name="distr6_share">
-                                            <span class="input-group-addon">%</span>
-                                        </div>
-                                    </td>
-                                    <td style="width:30%;"><div class="input-group">
-                                            <input type="text" class="form-control" value="00" name="owner6_share">
                                             <span class="input-group-addon">%</span>
                                         </div>
                                     </td>
@@ -638,6 +606,24 @@
         $("#5flag").hide();
         $("#6flag").hide();
         $("#aggrement_table").hide();
+        
+        $("#rent1").hide();
+        $("#rent2").hide();
+        $("#rent3").hide();
+        $("#rent4").hide();
+        $("#rent5").hide();
+        $("#rent6").hide();
+        $("#share1").show();
+        $("#share2").show();
+        $("#share3").show();
+        $("#share4").show();
+        $("#share5").show();
+        $("#share6").show();
+        
+        $("#rent").hide();
+        $("#share").show();
+        
+        
         $('#ddlCategory').change(function () {
             if (this.value == "mg") {
                 $('#pm').show();
@@ -660,7 +646,41 @@
                 $('#ard').hide();
                 $('#art').hide();
             }
-
+            if (this.value == "rent"||this.value == "mg") {                
+                $("#share1").hide();
+                $("#share2").hide();
+                $("#share3").hide();
+                $("#share4").hide();
+                $("#share5").hide();
+                $("#share6").hide();
+        
+                $("#rent1").show();
+                $("#rent2").show();
+                $("#rent3").show();
+                $("#rent4").show();
+                $("#rent5").show();
+                $("#rent6").show();                
+                $("#rent").show();
+                $("#share").hide();
+        
+            }
+            else{
+                $("#rent1").hide();
+                $("#rent2").hide();
+                $("#rent3").hide();
+                $("#rent4").hide();
+                $("#rent5").hide();
+                $("#rent6").hide();
+                $("#share1").show();
+                $("#share2").show();
+                $("#share3").show();
+                $("#share4").show();
+                $("#share5").show();
+                $("#share6").show();
+                $("#rent").hide();
+                $("#share").show();
+        
+            }
         });
             
         $('#paymeth').change(function () {
