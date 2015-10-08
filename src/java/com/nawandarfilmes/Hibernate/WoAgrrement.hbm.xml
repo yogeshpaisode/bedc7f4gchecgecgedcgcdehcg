@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Sep 19, 2015 2:44:42 PM by Hibernate Tools 3.2.1.GA -->
+<!-- Generated Oct 8, 2015 3:47:51 PM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
     <class name="com.nawandarfilmes.Hibernate.WoAgrrement" table="wo_agrrement" catalog="nawandarfilmesdistribution">
         <id name="woAggriId" type="java.lang.Integer">
@@ -29,5 +29,11 @@
         <property name="endDate" type="date">
             <column name="end_date" length="10" />
         </property>
+        <set name="showCancelLogs" inverse="true">
+            <key>
+                <column name="wo_aggri_id" />
+            </key>
+            <one-to-many class="com.nawandarfilmes.Hibernate.ShowCancelLog" />
+        </set>
     </class>
 </hibernate-mapping>

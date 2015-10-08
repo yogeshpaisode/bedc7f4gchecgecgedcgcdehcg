@@ -34,52 +34,6 @@
     </script> 
     <html:base/>
 </head>
-<%
-    String date = null;
-    int wo_id = 0;
-    String flag = "";
-    String hidden = "";
-    String message_Hid_Flag = "hidden=\"\"";
-    Common common = new Common();
-    try {
-        flag = request.getAttribute("flag").toString();
-        date = request.getAttribute("date").toString();
-        WorkOrder wo = null;
-        String message = "";
-        wo_id = Integer.parseInt(request.getAttribute("wo_id").toString());
-        if (flag.equals("false")) {
-            message = request.getAttribute("msg").toString();
-            hidden = "hidden=\"\"";
-            message_Hid_Flag = "";
-        }
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        Session hib_session = sessionFactory.openSession();
-        Criteria criteria = hib_session.createCriteria(WorkOrder.class);
-        criteria.add(Restrictions.eq("woId", wo_id));
-
-        wo = (WorkOrder) criteria.list().get(0);
-
-        PartyDetail p = wo.getPartyDetail();
-        MovieDetail m = wo.getMovieDetail();
-        TheaterDetail t = wo.getTheaterDetail();
-        ScreenDetail s = wo.getScreenDetail();
-
-
-        //out.print("<table>");
-
-        //out.print("<th align='left'><h3>Work Order Detail:</h3>");
-        //out.print("<h5>Unique Id: NFD-" + wo.getWoId() + "</h5></th>");
-        //out.print("<th align='left'><h3>Movie Detail:</h3>");
-        //out.print("<h5>Name: " + m.getMovName() + "</h5><h5>Producer: " + m.getMovProduces() + "</h5></th>");
-        // out.print("<th align='left'><h3>Theater and Screen Detal</h3>");
-        //out.print("<h5>Unique Id: NFD-" + t.getTId() + "</h5>");
-        //out.print("<h5>Theater Name:" + t.getTName() + "</h5>");
-        //out.print("<th align='left'><h3>Screen Detail:</h3>");
-        //out.print("<h5>Screen Name:" + s.getSName() + "</h5>");
-        //out.print("<h5>Screen Seats Capacity:" + s.getSSeats() + "</h5><th></th>");
-
-        //out.print("</table><hr>");
-%>
 
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -127,6 +81,39 @@
                             </a>
 
                         </li>
+                        <%
+                            String date = null;
+                            int wo_id = 0;
+                            String flag = "";
+                            String hidden = "";
+                            String message_Hid_Flag = "hidden=\"\"";
+                            Common common = new Common();
+                            try {
+                                flag = request.getAttribute("flag").toString();
+                                date = request.getAttribute("date").toString();
+                                WorkOrder wo = null;
+                                String message = "";
+                                wo_id = Integer.parseInt(request.getAttribute("wo_id").toString());
+                                session.setAttribute("date", date);
+                                session.setAttribute("wo_id", wo_id);
+                                if (flag.equals("false")) {
+                                    message = request.getAttribute("msg").toString();
+                                    hidden = "hidden=\"\"";
+                                    message_Hid_Flag = "";
+                                }
+                                SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+                                Session hib_session = sessionFactory.openSession();
+                                Criteria criteria = hib_session.createCriteria(WorkOrder.class);
+                                criteria.add(Restrictions.eq("woId", wo_id));
+
+                                wo = (WorkOrder) criteria.list().get(0);
+
+                                PartyDetail p = wo.getPartyDetail();
+                                MovieDetail m = wo.getMovieDetail();
+                                TheaterDetail t = wo.getTheaterDetail();
+                                ScreenDetail s = wo.getScreenDetail();
+                        %>
+
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -244,9 +231,18 @@
 
 
                 <html:form action="/sell_profit">
-                    <input type="text" name="date" value="<% out.print(date);%>" hidden="">
-                    <input type="text" name="wo_id" value="<% out.print(wo_id);%>" hidden="">
                     <div class="row" <% out.print(hidden);%>>
+
+                        Shows For Day: <select name="shows_count">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+
+
                         <!-- accepted payments column -->
                         <div class="col-xs-6">
                             <p class="lead">Log Date: <% out.print(date);%></p>

@@ -7,16 +7,17 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/nawandarfilmesdistribution</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">root</property>
+    <mapping resource="com/nawandarfilmes/Hibernate/TheaterDetail.hbm.xml"/>
+    <mapping resource="com/nawandarfilmes/Hibernate/ScreenDetail.hbm.xml"/>
+    <mapping resource="com/nawandarfilmes/Hibernate/MovieDetail.hbm.xml"/>
+    <mapping resource="com/nawandarfilmes/Hibernate/PartyDetail.hbm.xml"/>
     <mapping resource="com/nawandarfilmes/Hibernate/WoAgrrement.hbm.xml"/>
     <mapping resource="com/nawandarfilmes/Hibernate/CheaquePayment.hbm.xml"/>
-    <mapping resource="com/nawandarfilmes/Hibernate/ScreenDetail.hbm.xml"/>
+    <mapping resource="com/nawandarfilmes/Hibernate/MembersDetail.hbm.xml"/>
     <mapping resource="com/nawandarfilmes/Hibernate/NeftRtgsPayment.hbm.xml"/>
-    <mapping resource="com/nawandarfilmes/Hibernate/PartyDetail.hbm.xml"/>
+    <mapping resource="com/nawandarfilmes/Hibernate/WorkOrder.hbm.xml"/>
     <mapping resource="com/nawandarfilmes/Hibernate/CashPayment.hbm.xml"/>
     <mapping resource="com/nawandarfilmes/Hibernate/ProfitTicketLog.hbm.xml"/>
-    <mapping resource="com/nawandarfilmes/Hibernate/MembersDetail.hbm.xml"/>
-    <mapping resource="com/nawandarfilmes/Hibernate/MovieDetail.hbm.xml"/>
-    <mapping resource="com/nawandarfilmes/Hibernate/WorkOrder.hbm.xml"/>
-    <mapping resource="com/nawandarfilmes/Hibernate/TheaterDetail.hbm.xml"/>
+    <mapping resource="com/nawandarfilmes/Hibernate/ShowCancelLog.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

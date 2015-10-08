@@ -189,3 +189,12 @@ PRIMARY KEY (pt_id),
 FOREIGN KEY (wo_id) REFERENCES Work_Order(wo_id)
 );
 
+create table Show_Cancel_Log (
+sc_id INT NOT NULL auto_increment,
+wo_aggri_id int,
+log_date date,
+amount_deducted double,
+PRIMARY KEY (sc_id),
+FOREIGN KEY (wo_aggri_id) REFERENCES wo_agrrement(wo_aggri_id)
+);
+

@@ -242,38 +242,38 @@ public class Add_Workorder_Controller extends org.apache.struts.action.Action {
 
             if (!(t1_rent == 0.0)||!(distr1_share==0.0)) {
                 int weekNo = 1;
-                WoAgrrement wa = new WoAgrrement(wo, weekNo, t1_rent, distr1_share, owner1_share, w1_startDate, w1_endDate);
+                WoAgrrement wa = new WoAgrrement(wo, weekNo, t1_rent, distr1_share, owner1_share, w1_startDate, w1_endDate,null);
                 session.save(wa);
             }
 
             if (!(t2_rent == 0.0)||!(distr2_share==0.0)) {
                 int weekNo = 2;
-                WoAgrrement wa = new WoAgrrement(wo, weekNo, t2_rent, distr2_share, owner2_share, w2_startDate, w2_endDate);
+                WoAgrrement wa = new WoAgrrement(wo, weekNo, t2_rent, distr2_share, owner2_share, w2_startDate, w2_endDate,null);
                 session.save(wa);
             }
 
             if (!(t3_rent == 0.0)||!(distr3_share==0.0)) {
                 int weekNo = 3;
-                WoAgrrement wa = new WoAgrrement(wo, weekNo, t3_rent, distr3_share, owner3_share, w3_startDate, w3_endDate);
+                WoAgrrement wa = new WoAgrrement(wo, weekNo, t3_rent, distr3_share, owner3_share, w3_startDate, w3_endDate,null);
                 session.save(wa);
             }
 
 
             if (!(t4_rent == 0.0)||!(distr4_share==0.0)) {
                 int weekNo = 4;
-                WoAgrrement wa = new WoAgrrement(wo, weekNo, t4_rent, distr4_share, owner4_share, w4_startDate, w4_endDate);
+                WoAgrrement wa = new WoAgrrement(wo, weekNo, t4_rent, distr4_share, owner4_share, w4_startDate, w4_endDate,null);
                 session.save(wa);
             }
 
             if (!(t5_rent == 0.0)||!(distr5_share==0.0)) {
                 int weekNo = 5;
-                WoAgrrement wa = new WoAgrrement(wo, weekNo, t5_rent, distr5_share, owner5_share, w5_startDate, w5_endDate);
+                WoAgrrement wa = new WoAgrrement(wo, weekNo, t5_rent, distr5_share, owner5_share, w5_startDate, w5_endDate,null);
                 session.save(wa);
             }
 
             if (!(t6_rent == 0.0)||!(distr6_share==0.0)) {
                 int weekNo = 6;
-                WoAgrrement wa = new WoAgrrement(wo, weekNo, t6_rent, distr6_share, owner6_share, w6_startDate, w6_endDate);
+                WoAgrrement wa = new WoAgrrement(wo, weekNo, t6_rent, distr6_share, owner6_share, w6_startDate, w6_endDate,null);
                 session.save(wa);
             }
 

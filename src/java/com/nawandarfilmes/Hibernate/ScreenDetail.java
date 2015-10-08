@@ -1,5 +1,5 @@
 package com.nawandarfilmes.Hibernate;
-// Generated Sep 19, 2015 2:44:42 PM by Hibernate Tools 3.2.1.GA
+// Generated Oct 8, 2015 3:47:50 PM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.HashSet;

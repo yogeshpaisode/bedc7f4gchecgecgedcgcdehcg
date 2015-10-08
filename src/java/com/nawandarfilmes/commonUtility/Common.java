@@ -6,12 +6,11 @@ package com.nawandarfilmes.commonUtility;
 
 import com.nawandarfilmes.Hibernate.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import java.util.List;
+import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -19,17 +18,17 @@ import org.hibernate.criterion.Restrictions;
  * @author yogesh
  */
 public class Common {
-
+    
     private double mg_net_amount = 0;
     private boolean flag = true;
     private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     private Date end_Date = null;
     Calendar c = Calendar.getInstance();
-
+    
     public int getDays(Date to, Date from) {
         return (int) ((to.getTime() - from.getTime()) / (1000 * 60 * 60 * 24)) + 1;
     }
-
+    
     public int getMovie_ID() {
         int mov_id = 0;
         Session session = sessionFactory.openSession();
@@ -41,7 +40,7 @@ public class Common {
         session.close();
         return mov_id;
     }
-
+    
     public Date get_Last_End_Date(int mov_id) {
         c.set(2014, 1, 1);
         end_Date = c.getTime();
@@ -60,11 +59,11 @@ public class Common {
         session.close();
         return end_Date;
     }
-
+    
     public String getZeros(int id) {
-
+        
         String zero = "";
-
+        
         if (id <= 9) {
             zero = "000";
         } else if (id > 9 && id <= 99) {
@@ -74,25 +73,25 @@ public class Common {
         } else {
             zero = "";
         }
-
+        
         return zero;
     }
-
+    
     public String getDayName(Date date) {
         SimpleDateFormat sdf = new SimpleDateFormat("EEE");
         return sdf.format(date);
     }
-
+    
     public String formateDate(Date date) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
         return sdf.format(date);
     }
-
+    
     public String formateDate_yyyy_MM_dd(Date date) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         return sdf.format(date);
     }
-
+    
     public boolean checkAggrement(Date from, Date to, Date on) {
         boolean flag = false;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -104,7 +103,7 @@ public class Common {
         }
         return flag;
     }
-
+    
     private double getDistributerShare(double dis_Share, double total_rent, double nett_Amount, boolean per_day_flag, int days) {
         double rent = total_rent;
         if (per_day_flag == true) {
@@ -118,7 +117,7 @@ public class Common {
         }
         return amount;
     }
-
+    
     private double getDistributerRent(double total_rent, double nett_Amount, boolean per_day_flag, int days) {
         double amount = 0;
         double rent = total_rent;
@@ -131,7 +130,7 @@ public class Common {
         }
         return amount;
     }
-
+    
     private double getDistributerMG(double dis_Share, double total_rent, double nett_Amount, boolean per_day_flag, int days, double mg_amount) {
         double amount = 0;
         mg_net_amount = mg_net_amount + nett_Amount;
@@ -153,10 +152,10 @@ public class Common {
         }//--Main IF
         return amount;
     }
-
+    
     public double getDistributerProfit(boolean rent_flag, boolean share_flag, boolean mg_flag, double total_rent, double dis_Share, double mg_amount, double nett_Amount, boolean per_day_flag, int days) {
         double amount = 0;
-
+        
         if (rent_flag) {
             amount = getDistributerRent(total_rent, nett_Amount, per_day_flag, days);
         }
@@ -168,7 +167,7 @@ public class Common {
         }
         return amount;
     }
-
+    
     public double getPaymentReceived(WorkOrder wo) {
         double amount = 0;
         Session session = sessionFactory.openSession();
@@ -192,5 +191,50 @@ public class Common {
         }
         session.close();
         return amount;
+    }
+    
+    public void deductRent(int deduction, WorkOrder wo, Date log_Date) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        Criteria criteria = session.createCriteria(WoAgrrement.class);
+        criteria.add(Restrictions.eq("workOrder", wo));
+        for (Object o : criteria.list()) {
+            WoAgrrement wa = (WoAgrrement) o;
+            if (log_Date.equals(wa.getStartDate()) || log_Date.after(wa.getStartDate()) || log_Date.equals(wa.getEndDate()) || log_Date.before(wa.getEndDate())) {
+                System.out.println("\n\n\n" + wa.getTheaterRent() + "  " + wo.getWoShowsPerDay() * getDays(wa.getEndDate(), wa.getStartDate()) + "\n\n\n");
+                double amt = (wa.getTheaterRent() / (wo.getWoShowsPerDay() * getDays(wa.getEndDate(), wa.getStartDate()))) * deduction;
+                ShowCancelLog log = new ShowCancelLog(wa, log_Date, amt);
+                session.save(log);
+                transaction.commit();
+                break;
+            }
+        }
+        session.close();
+    }
+    
+    public double getDeducedRent(WoAgrrement wa) {
+        double amt = 0;
+        Session session = sessionFactory.openSession();
+        
+        Criteria criteria = session.createCriteria(ShowCancelLog.class);
+        criteria.add(Restrictions.eq("woAgrrement", wa));
+        
+        for (Object o : criteria.list()) {
+            amt += ((ShowCancelLog) o).getAmountDeducted();
+        }
+        session.close();
+        return amt;
+    }
+    
+    public List getMovieList() {
+        List list = new ArrayList();
+        Session session = sessionFactory.openSession();        
+        Criteria criteria = session.createCriteria(MovieDetail.class);
+        for (Object o : criteria.list()) {
+            MovieDetail md = (MovieDetail) o;
+            list.add(md.getMovName());
+        }
+        session.close();
+        return list;
     }
 }

@@ -5,6 +5,7 @@
 package com.nawandarfilmes.Log.Model;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
@@ -22,6 +23,15 @@ public class Sell_Profit_Model extends org.apache.struts.action.ActionForm {
     private String gross = "";
     private String nett = "";
     private String edtax = "";
+    private String shows_count="";
+
+    public String getShows_count() {
+        return shows_count;
+    }
+
+    public void setShows_count(String shows_count) {
+        this.shows_count = shows_count;
+    }
 
     public String getDate() {
         return date;
@@ -87,6 +97,9 @@ public class Sell_Profit_Model extends org.apache.struts.action.ActionForm {
      * @return
      */
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
+        HttpSession session=request.getSession();
+        setDate(session.getAttribute("date").toString());
+        setWo_id(session.getAttribute("wo_id").toString());
         ActionErrors errors = new ActionErrors();
 //        if (getName() == null || getName().length() < 1) {
 //            errors.add("name", new ActionMessage("error.name.required"));

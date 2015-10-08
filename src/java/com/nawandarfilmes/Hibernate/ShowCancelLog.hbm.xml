@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 8, 2015 3:47:51 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.nawandarfilmes.Hibernate.ShowCancelLog" table="show_cancel_log" catalog="nawandarfilmesdistribution">
+        <id name="scId" type="java.lang.Integer">
+            <column name="sc_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="woAgrrement" class="com.nawandarfilmes.Hibernate.WoAgrrement" fetch="select">
+            <column name="wo_aggri_id" />
+        </many-to-one>
+        <property name="logDate" type="date">
+            <column name="log_date" length="10" />
+        </property>
+        <property name="amountDeducted" type="java.lang.Double">
+            <column name="amount_deducted" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

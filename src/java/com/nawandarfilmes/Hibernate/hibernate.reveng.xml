@@ -2,15 +2,16 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="nawandarfilmesdistribution"/>
-  <table-filter match-name="screen_detail"/>
-  <table-filter match-name="profit_ticket_log"/>
+  <table-filter match-name="party_detail"/>
+  <table-filter match-name="movie_detail"/>
+  <table-filter match-name="cash_payment"/>
+  <table-filter match-name="show_cancel_log"/>
+  <table-filter match-name="neft_rtgs_payment"/>
+  <table-filter match-name="members_detail"/>
   <table-filter match-name="theater_detail"/>
   <table-filter match-name="work_order"/>
-  <table-filter match-name="party_detail"/>
-  <table-filter match-name="members_detail"/>
+  <table-filter match-name="profit_ticket_log"/>
   <table-filter match-name="wo_agrrement"/>
-  <table-filter match-name="cash_payment"/>
-  <table-filter match-name="neft_rtgs_payment"/>
-  <table-filter match-name="movie_detail"/>
   <table-filter match-name="cheaque_payment"/>
+  <table-filter match-name="screen_detail"/>
 </hibernate-reverse-engineering>

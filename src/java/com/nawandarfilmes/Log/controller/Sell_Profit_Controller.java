@@ -13,6 +13,7 @@ import com.nawandarfilmes.Log.Model.Sell_Profit_Model;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import com.nawandarfilmes.Hibernate.*;
+import com.nawandarfilmes.commonUtility.Common;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -51,6 +52,8 @@ public class Sell_Profit_Controller extends org.apache.struts.action.Action {
         double grossProfit = Double.parseDouble(spm.getGross());
         double nettProfit = Double.parseDouble(spm.getNett());
         double edtaxProfit = Double.parseDouble(spm.getEdtax());
+        int show_for_day=Integer.parseInt(spm.getShows_count());
+        Common common=new Common();
 
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Date logDate = formatter.parse(spm.getDate());
@@ -77,6 +80,10 @@ public class Sell_Profit_Controller extends org.apache.struts.action.Action {
                 session.save(wo);
             }
             transaction.commit();
+            if(show_for_day<wo.getWoShowsPerDay()&&wo.getWoRent()){
+                int deduction=wo.getWoShowsPerDay()-show_for_day;
+                common.deductRent(deduction, wo, logDate);
+            }
         }
         session.close();
 
