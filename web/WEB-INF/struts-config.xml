@@ -30,6 +30,7 @@
         <forward name="Login_Theater"  path="/view_Theater_Daily_InputForm.jsp"/>
         <forward name="view_all_Profit_Ticket"  path="/view_all_Profit_Ticket.jsp"/>
         <forward name="home-priless.jsp"  path="/home-priless.jsp"/>
+        <forward name="/admin/home.jsp"  path="/admin/redir.jsp"/>
     </global-forwards>
 
     <action-mappings>

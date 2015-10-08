@@ -151,11 +151,12 @@
                             double mg_amount = wo.getWoMgAmount();
                             double amount = 0;
                             double th_rent = wa.getTheaterRent();
+                            double deduct = common.getDeducedRent(wa);
                             if (wo.getWoRent()) {
                                 th_rent -= common.getDeducedRent(wa);
                             }
                             //--com is object define at line no 101 specially use for MG
-                            amount = com.getDistributerProfit(wo.getWoRent(), wo.getWoSharing(), wo.getWoMg(), th_rent, wa.getDistributerShare(), mg_amount, ptl.getNettProfit(), true, days);
+                            amount = com.getDistributerProfit(wo.getWoRent(), wo.getWoSharing(), wo.getWoMg(), wa.getTheaterRent(), wa.getDistributerShare(), mg_amount, ptl.getNettProfit(), true, days, deduct);
                             if (wo.getWoSharing()) {
                                 amount -= (amount / 100) * 1;
                             }

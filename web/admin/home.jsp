@@ -38,17 +38,17 @@
     double global_diffrence = 0;
     double global_distributer_profit = 0;
     Common common = new Common();
-    int mov_id=common.getMovie_ID();
+    int mov_id = common.getMovie_ID();
     String chart = "";
     String day_chart = "";
     String circuit_chart = "";
-    String movie_name="";
+    String movie_name = "";
     SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     Session hib_session = sessionFactory.openSession();
     Criteria mov_criteria = hib_session.createCriteria(MovieDetail.class);
-    mov_criteria.add(Restrictions.eq("movId",mov_id));
+    mov_criteria.add(Restrictions.eq("movId", mov_id));
     MovieDetail movieDetail = (MovieDetail) mov_criteria.list().get(0);
-    movie_name=movieDetail.getMovName();
+    movie_name = movieDetail.getMovName();
     Criteria wo_criteria = hib_session.createCriteria(WorkOrder.class);
     wo_criteria.add(Restrictions.eq("movieDetail", movieDetail));
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -135,8 +135,9 @@
                 if (common.checkAggrement(wa.getStartDate(), wa.getEndDate(), ptl.getLogDate())) {
                     double mg_amount = wo.getWoMgAmount();
                     double amount = 0;
+                    double deduct = common.getDeducedRent(wa);
                     //--com is object define at line no 101 specially use for MG
-                    amount = com.getDistributerProfit(wo.getWoRent(), wo.getWoSharing(), wo.getWoMg(), wa.getTheaterRent(), wa.getDistributerShare(), mg_amount, ptl.getNettProfit(), true, days);
+                    amount = com.getDistributerProfit(wo.getWoRent(), wo.getWoSharing(), wo.getWoMg(), wa.getTheaterRent(), wa.getDistributerShare(), mg_amount, ptl.getNettProfit(), true, days, deduct);
                     global_distributer_profit = global_distributer_profit + amount;
                     total = total + amount;
                     DistributerProfit_Bean dpb = date_Map.get(common.formateDate(ptl.getLogDate()));
@@ -158,16 +159,16 @@
 
     for (Object o : date_List) {
         DistributerProfit_Bean dpb = date_Map.get(o.toString());
-        chart = chart + "{\"category\": \"" + dpb.getId() + "\",\"column-1\": \"" + dpb.getAmount() + "\"},";
+        chart = chart + "{\"category\": \"" + dpb.getId() + "\",\"column-1\": \"" +(long) dpb.getAmount() + "\"},";
         grand_Total = grand_Total + dpb.getAmount();
     }
     for (Object o : week_days_list) {
         Days_Bean dpb = week_days_Map.get(o.toString());
-        day_chart = day_chart + "{\"category\": \"" + dpb.getId() + "\",\"column-1\": \"" + dpb.getAmount() + "\"},";
+        day_chart = day_chart + "{\"category\": \"" + dpb.getId() + "\",\"column-1\": \"" + (long)dpb.getAmount() + "\"},";
     }
     for (Map.Entry m : circuit_Map.entrySet()) {
         Circuit_Bean dpb = (Circuit_Bean) m.getValue();
-        circuit_chart = circuit_chart + "{\"category\": \"" + dpb.getId() + "\",\"column-1\": \"" + dpb.getAmount() + "\"},";
+        circuit_chart = circuit_chart + "{\"category\": \"" + dpb.getId() + "\",\"column-1\": \"" + (long)dpb.getAmount() + "\"},";
     }
     hib_session.close();
 %>

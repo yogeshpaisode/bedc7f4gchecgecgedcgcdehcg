@@ -1,3 +1,14 @@
+<%
+
+    try {
+        session.getAttribute("admin").toString();
+       // throw new Exception();
+    } catch (Exception e) {
+        response.sendRedirect("../index.jsp");
+    }
+
+%>
+
 <%-- 
     Document   : header1
     Created on : Sep 23, 2015, 10:42:59 PM

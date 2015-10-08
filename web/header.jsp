@@ -7,7 +7,8 @@
 <%
 
     try {
-       // throw new Exception();
+        session.getAttribute("operator").toString();
+    
     } catch (Exception e) {
         response.sendRedirect("index.jsp");
     }

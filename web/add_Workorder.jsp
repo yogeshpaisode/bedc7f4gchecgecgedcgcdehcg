@@ -9,7 +9,7 @@
 <html:html lang="true">
     <head>
         <title>NFD-Work Order</title>
-        <jsp:include page="header.jsp"/>
+        <%@ include file="header.jsp" %>
         <jsp:include page="sidebar.jsp"/>
 
 

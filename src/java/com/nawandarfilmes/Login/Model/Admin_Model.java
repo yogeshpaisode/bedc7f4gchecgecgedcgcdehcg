@@ -15,7 +15,17 @@ import org.apache.struts.action.ActionMessage;
  * @author yogesh
  */
 public class Admin_Model extends org.apache.struts.action.ActionForm {
-    
+
+    String key = "";
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     /**
      *
      */
@@ -37,6 +47,11 @@ public class Admin_Model extends org.apache.struts.action.ActionForm {
 //            errors.add("name", new ActionMessage("error.name.required"));
 //            // TODO: add 'error.name.required' key to your resources
 //        }
+
+        if (!(key.equals("admin") || key.equals("operator"))) {
+            errors.add("login", new ActionMessage("errors.theater"));
+        }
+
         return errors;
     }
 }

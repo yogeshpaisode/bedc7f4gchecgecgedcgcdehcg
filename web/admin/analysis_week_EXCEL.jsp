@@ -142,20 +142,22 @@
                             double mg_amount = wo.getWoMgAmount();
                             double amount = 0;
                             double th_rent = wa.getTheaterRent();
-                            if (wo.getWoRent()) {
+                            double deduct=common.getDeducedRent(wa);
+                            if (wo.getWoRent()||wo.getWoMg()) {
                                 th_rent -= common.getDeducedRent(wa);
                             }
                             //--com is object define at line no 101 specially use for MG
-                            amount = com.getDistributerProfit(wo.getWoRent(), wo.getWoSharing(), wo.getWoMg(), th_rent, wa.getDistributerShare(), mg_amount, ptl.getNettProfit(), true, days);
+                            amount = com.getDistributerProfit(wo.getWoRent(), wo.getWoSharing(), wo.getWoMg(), wa.getTheaterRent(), wa.getDistributerShare(), mg_amount, ptl.getNettProfit(), true, days,deduct);
                             if (wo.getWoSharing()) {
                                 amount -= (amount / 100) * 1;
                             }
-                            if (!(wo.getWoRent())) {
+                            if (wo.getWoSharing()) {
                                 global_distributer_profit += amount;
                             }
                             total += amount;
                             if (!(rent_Date_list.contains(wa.getEndDate()))) {
                                 rent += th_rent;
+                                rent_Date_list.add(wa.getEndDate());
                                 rent_Date_list.add(wa.getEndDate());
                             }
 
@@ -172,7 +174,7 @@
                         }
                     }//--Aggrement Loop
                 }//--PTL Loop
-                if (wo.getWoRent()) {
+                if (wo.getWoRent()||wo.getWoMg()) {
                     deduction = (nett_amt / 100) * 1;
                     total = (nett_amt - deduction) - rent;
                     global_distributer_profit += total;
